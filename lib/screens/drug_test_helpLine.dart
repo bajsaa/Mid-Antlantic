@@ -16,30 +16,39 @@ class _DrugTestHelpLineState extends State<DrugTestHelpLine> {
     return Scaffold(
 
         extendBodyBehindAppBar: false,
-        appBar: MyAppBar(),
+        appBar: MyAppBar(title: Text("Drug Addiction Helpline",style: TextStyle(color: Colors.black)), appBar: AppBar(),),
         drawer: CustomDrawer(),
 
         body:Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [
-
-                    Color(0XFF3D9798),
-                    Color(0XFF2E7FC0)],
-
-                  begin: Alignment(0,0),
-                  end: Alignment(0,1)
-              )
-          ),
+          // decoration: BoxDecoration(
+          //     gradient: LinearGradient(
+          //         colors: [
+          //
+          //           Color(0XFF3D9798),
+          //           Color(0XFF2E7FC0)],
+          //
+          //         begin: Alignment(0,0),
+          //         end: Alignment(0,1)
+          //     )
+          // ),
           child: Container(
             child: SafeArea(
               child: Column(
                 children: [
 
-                  Text("Drug Addiction HelpLine", style:  Constants.boldheading,),
+
                  Container(
                       padding: EdgeInsets.all(90),
-                     child: Image.asset("assets/images/helpline.png")
+                     child: GestureDetector(
+                         onTap:() async {
+                           const phone= 'tel: 1-800-662-4357';
+                           if (await canLaunch(phone)) {
+                             await launch(phone);
+                           } else {
+                             throw 'Could not launch $phone';
+                           }
+                         },
+                         child: Image.asset("assets/images/call.png"))
                  ),
 
                   Container(
@@ -51,7 +60,7 @@ class _DrugTestHelpLineState extends State<DrugTestHelpLine> {
                     child: ListView(
                       children: [
                         ListTile(
-                          title: Text("SAMHSA’s National Helpline", textAlign: TextAlign.center , style: TextStyle(color: Colors.blue),),
+                          title: Text("SAMHSA’s National Helpline", textAlign: TextAlign.center , style: TextStyle(color: Colors.black),),
                           subtitle: GestureDetector(
                             onTap:() async {
                               const phone= 'tel: 1-800-662-4357';
@@ -69,7 +78,7 @@ class _DrugTestHelpLineState extends State<DrugTestHelpLine> {
                           child: Divider(color: Colors.black, thickness: 1,),
                         ),
                         ListTile(
-                          title: Text("Visit Website", textAlign: TextAlign.center , style: TextStyle(color:Colors.blue),),
+                          title: Text("Visit Website", textAlign: TextAlign.center , style: TextStyle(color:Colors.black),),
                           subtitle: GestureDetector(
                             onTap: () async {
                               const url = 'https://www.samhsa.gov/find-help/national-helpline';

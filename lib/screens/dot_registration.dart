@@ -1,15 +1,17 @@
-import 'package:mid_antlantic/screens/schedule_test_date.dart';
-import 'package:mid_antlantic/screens/select_drug_test_table.dart';
+import 'package:mid_antlantic/images_path.dart';
 import 'package:mid_antlantic/size_config.dart';
 import 'package:mid_antlantic/ui/responsive_builder.dart';
 import 'package:mid_antlantic/widgets/Bottom_Navigation_Bar.dart';
 import 'package:mid_antlantic/widgets/Custom_back_forward_button.dart';
 import 'package:mid_antlantic/widgets/appBar.dart';
+import 'package:mid_antlantic/widgets/custom_dropdown_Observation.dart';
+import 'package:mid_antlantic/widgets/custom_dropdown_Reason.dart';
 import 'package:mid_antlantic/widgets/drawer.dart';
 import 'file:///F:/AndroidStudioProject/OFFICE-PROJECT-1/lib/images_path.dart';
 import 'package:flutter/material.dart';
-import 'package:mid_antlantic/widgets/custom_dropdown.dart';
+import 'package:mid_antlantic/widgets/custom_dropdown_dot_agency.dart';
 import 'package:mid_antlantic/widgets/custom_field.dart';
+import '../images_path.dart';
 
 import '../constants.dart';
  class DotRegistration extends StatefulWidget {
@@ -27,7 +29,7 @@ import '../constants.dart';
      return Scaffold(
          resizeToAvoidBottomInset: false,
          extendBodyBehindAppBar: false,
-         appBar: MyAppBar(),
+         appBar: MyAppBar(title: Text("D.O.T",style: TextStyle(color: Colors.black)), appBar: AppBar(),),
 
        drawer: CustomDrawer(),
 
@@ -35,54 +37,28 @@ import '../constants.dart';
        body: Container(
          height: MediaQuery.of(context).size.height,
          width: MediaQuery.of(context).size.width,
-         decoration: BoxDecoration(
-             gradient: LinearGradient(
-                 colors: [
-
-                   Color(0XFF3D9798),
-                   Color(0XFF2E7FC0)],
-
-                 begin: Alignment(0,0),
-                 end: Alignment(0,1)
-             )
-         ),
+         // decoration: BoxDecoration(
+         //     gradient: LinearGradient(
+         //         colors: [
+         //
+         //           Color(0XFF3D9798),
+         //           Color(0XFF2E7FC0)],
+         //
+         //         begin: Alignment(0,0),
+         //         end: Alignment(0,1)
+         //     )
+         // ),
          child: SingleChildScrollView(
            child: Container(
              child: Column(
                children: [
-                 Container(
-                   width: MediaQuery.of(context).size.width,
-                   //30
-                   margin: EdgeInsets.only(left: 7.246 * SizeConfig.widthMultiplier , right: 7.246 * SizeConfig.widthMultiplier),
-                   //10
-                   padding: EdgeInsets.only(top: 1.1160 * SizeConfig.heightMultiplier, left: 1.1160 * SizeConfig.widthMultiplier, right: 1.1160 * SizeConfig.widthMultiplier, bottom: 1.1160 * SizeConfig.heightMultiplier),
-                   child: Row(
 
-                     children: [
-                       GestureDetector(
-                           onTap: (){
-                             Navigator.of(context).pop();
-                           },
-                           child: ResponsiveBuilder(
-                             builder: (context, sizingInformation)=>Icon(
-                               Icons.keyboard_arrow_left_sharp,
-                               color: Colors.white,
-                               size: 7.2463 * SizeConfig.imageSizeMultiplier,),)
-
-                       ),
-
-                       //20
-                       SizedBox(width: 4.8309 * SizeConfig.widthMultiplier),
-                       ResponsiveBuilder(builder: (context, sizingInformation)=>Text("D.O.T", style: Constants.boldheading,),)
-                     ],
-                   ),
-                 ),
                  Container(
                    child: Center(
                      child: Padding(
                        padding: EdgeInsets.all(2.0089 * SizeConfig.heightMultiplier),
                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text(
-                         "You selected a DOT Drug test. All information below is required", style: TextStyle(fontSize: 2.23214 * SizeConfig.textMultiplier , color: Colors.white,),
+                         "You selected a DOT Drug test. All information below is required", style: TextStyle(fontSize: 2.23214 * SizeConfig.textMultiplier , color: Colors.black,),
                          textAlign: TextAlign.center,
                        ),
                        )
@@ -111,7 +87,7 @@ import '../constants.dart';
 
                      Padding(
                        padding: const EdgeInsets.all(16.0),
-                       child: Divider(color: Colors.white,),
+                       child: Divider(color: Colors.black,),
                      ),
 
                      CustomInput(
@@ -124,18 +100,18 @@ import '../constants.dart';
 
                      Padding(
                        padding: const EdgeInsets.all(16.0),
-                       child: Divider(color: Colors.white,),
+                       child: Divider(color: Colors.black,),
                      ),
 
                      CustomInput(
                        hintText: "DOB",
                      ),
 
-                     CustomDropDown(),
-                     CustomDropDown(),
-                     CustomDropDown(),
+                     DropDownDotAgency(),
+                     DropDownReason(),
+                     DropDownObservation(),
                      CustomInput(
-                       hintText: "DOB",
+                       hintText: "Zip Code",
                      ),
 
                    ],
@@ -144,7 +120,10 @@ import '../constants.dart';
 
 
 
-                 CustomBackForwardDirectionBtn()
+                 Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: CustomBackForwardDirectionBtn(),
+                 )
 
 
 
@@ -159,7 +138,7 @@ import '../constants.dart';
          ),
        ),
 
-       bottomNavigationBar:MyBottomNavBar(ImagesPath.testIcon, ImagesPath.locationIcon, ImagesPath.orderIcon, ImagesPath.profileIcon )
+         bottomNavigationBar:MyBottomNavBar("assets/images/testblack.png", "assets/images/locationblack.png", "assets/images/orderblack.png" ,"assets/images/profileblack.png" )
 
 
        );

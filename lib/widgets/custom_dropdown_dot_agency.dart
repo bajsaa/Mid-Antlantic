@@ -3,20 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 
-class CustomDropDown extends StatefulWidget {
+class DropDownDotAgency extends StatefulWidget {
+
 
 
 
   @override
-  _CustomDropDownState createState() => _CustomDropDownState();
+  _DropDownDotAgencyState createState() => _DropDownDotAgencyState();
 }
 
-class _CustomDropDownState extends State<CustomDropDown> {
-
+class _DropDownDotAgencyState extends State<DropDownDotAgency> {
 
   List _myItems = [
-    "item 1", "item 2"
+    "FOLLOW-UP", "OTHER", "POST-ACCIDENT", "PRE-EMPLOYMENT","RANDOM", "REASONABLE SUSPICION"
   ];
+
   String _itemVal;
 
   @override
@@ -31,7 +32,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
       decoration: BoxDecoration(
 
           border: Border.all(
-              color: Color(0xFFF2F2F2)
+              color: Colors.black
           ),
           borderRadius: BorderRadius.circular(50.0)
       ),
@@ -41,8 +42,10 @@ class _CustomDropDownState extends State<CustomDropDown> {
       ),
       child: Center(
         child: DropdownButton(
-          hint: Text("Dot Agency"),
-          dropdownColor: Color(0xFF84C9FF),
+          hint: Text("Dot Agency",style: TextStyle(color: Colors.black.withOpacity(0.5)),),
+          focusColor: Colors.white,
+          dropdownColor:  Colors.white,
+          style: TextStyle(color: Colors.black),
           value: _itemVal,
           onChanged: (value){
               setState(() {

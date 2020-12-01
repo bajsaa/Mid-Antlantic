@@ -10,7 +10,7 @@ class FindLocationBtn extends RaisedButton {
       Navigator.of(context).push(
           MaterialPageRoute(builder: (_) => ScheduleTestDate()));
     },
-    child: Text("Find Location"),
-    color: Color(0xFF84C9FF),
+    child: Text("Find Location", style: TextStyle(color: Colors.white),),
+    color: Colors.black,
   );
 }

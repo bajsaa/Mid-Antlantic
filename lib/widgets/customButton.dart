@@ -23,7 +23,7 @@ class CustomBtn extends StatelessWidget {
         height: 7.90 * SizeConfig.heightMultiplier,
 
         decoration: BoxDecoration(
-          color: _outlineBtn ? Colors.transparent : Color(0xFFFFFFFF),
+          color: _outlineBtn ? Colors.transparent : Colors.black,
           border: Border.all(
             color: Colors.white,
             width: 1 * SizeConfig.widthMultiplier
@@ -44,7 +44,7 @@ class CustomBtn extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 2.107 * SizeConfig.textMultiplier,
-                  color: Color(0XFF3D97A0)
+                  color: Colors.white
                 ),),
               ),
             ),

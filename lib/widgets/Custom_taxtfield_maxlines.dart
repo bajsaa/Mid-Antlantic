@@ -25,7 +25,7 @@ class CustomTextFieldMaxLines extends StatelessWidget {
       ),
       decoration: BoxDecoration(
           border: Border.all(
-              color: Color(0xFFF2F2F2)
+              color: Colors.black
           ),
           borderRadius: BorderRadius.circular(6.327512022272842 * SizeConfig.heightMultiplier)
       ),
@@ -38,7 +38,7 @@ class CustomTextFieldMaxLines extends StatelessWidget {
         obscureText: _isObscureText,
         decoration: InputDecoration(
             hintText: hintText ?? 'hint text',
-            hintStyle: TextStyle(color: Colors.white60),
+            hintStyle: TextStyle(color: Colors.black26),
             border: InputBorder.none,
             contentPadding: EdgeInsets.symmetric(
                 horizontal: 6.111 * SizeConfig.widthMultiplier,

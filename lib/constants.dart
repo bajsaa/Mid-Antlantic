@@ -9,14 +9,14 @@ class Constants{
       //18
       fontSize: 2.0089 * SizeConfig.textMultiplier,
       fontWeight: FontWeight.w600,
-      color: Colors.white
+      color: Colors.black
   );
 
   static final boldheading = TextStyle(
       //20
       fontSize: 3.2321 * SizeConfig.textMultiplier ,
       fontWeight: FontWeight.w600,
-      color: Colors.white
+      color: Colors.black
 
   );
 
@@ -24,7 +24,7 @@ class Constants{
       //16
       fontSize: 1.7857 * SizeConfig.textMultiplier,
       fontWeight: FontWeight.w600,
-      color: Colors.white
+      color: Colors.black
 
   );
 

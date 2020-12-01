@@ -22,8 +22,10 @@ class MyBottomNavBar extends StatelessWidget{
   Widget build(BuildContext context){
 
     return new BottomNavigationBar(
+      //elevation: 5.0,
+
       type : BottomNavigationBarType.fixed,
-      backgroundColor: Color(0xFF2E7FC0),
+      backgroundColor: Colors.white,
       unselectedLabelStyle: TextStyle( fontSize: 16),
       selectedLabelStyle: TextStyle(fontSize: 16) ,
       showUnselectedLabels: true,
@@ -42,7 +44,8 @@ class MyBottomNavBar extends StatelessWidget{
                   Navigator.of(context).push(MaterialPageRoute(builder: (_)=>FindLocation()));
                 },
                 child: Image.asset(imageIcon2,  height:4.46428 * SizeConfig.heightMultiplier, width: 9.66183 * SizeConfig.widthMultiplier)),
-            label: "Location"
+            label: "Location",
+
         ),
         BottomNavigationBarItem(
             icon: GestureDetector(

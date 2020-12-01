@@ -36,14 +36,14 @@ class CustomBackForwardDirectionBtn extends StatelessWidget {
               width: 36.231 * SizeConfig.widthMultiplier,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: Colors.white
+                  color: Colors.black
               ),
               child: Center(
                 child: Text("PREVIOUS", style:TextStyle(
                   //16
                   fontSize: 1.7857 * SizeConfig.textMultiplier,
                   fontWeight: FontWeight.w600,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
                 ),
               ),
@@ -63,14 +63,14 @@ class CustomBackForwardDirectionBtn extends StatelessWidget {
               width:36.231 * SizeConfig.widthMultiplier,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: Colors.white
+                  color: Colors.black
               ),
               child: Center(
                 child: Text("SELECT A LAB", style:TextStyle(
                                 //16
                       fontSize: 1.7857 * SizeConfig.textMultiplier,
                       fontWeight: FontWeight.w600,
-                      color: Colors.black,
+                      color: Colors.white,
                 ),
               ),
             ) ,

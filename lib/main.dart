@@ -5,7 +5,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'screens/splash_screen.dart';
 
 
-void main() => runApp(DevicePreview(builder: (context) => MyApp(),));
+// void main() => runApp(DevicePreview(builder: (context) => MyApp(),));
+
+void main() => runApp( MyApp());
 
 
 class MyApp extends StatelessWidget {
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
                 builder: DevicePreview.appBuilder ,
                 debugShowCheckedModeBanner: false,
-                title: 'Drud Testing App',
+                title: 'Drug Testing App',
                 theme: ThemeData(
                   textTheme: GoogleFonts.poppinsTextTheme(
                       Theme.of(context).textTheme

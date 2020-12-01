@@ -6,6 +6,7 @@ import 'package:mid_antlantic/widgets/customButton.dart';
 import 'package:mid_antlantic/widgets/custom_field.dart';
 import 'package:mid_antlantic/widgets/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../images_path.dart';
 
@@ -21,55 +22,86 @@ class _ZoomCallState extends State<ZoomCall> {
     return Scaffold(
 
         extendBodyBehindAppBar: false,
-        appBar: MyAppBar(),
+        appBar: MyAppBar(title: Text("Zoom Call",style: TextStyle(color: Colors.black)), appBar: AppBar(),),
         drawer: CustomDrawer(),
 
         body:Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [
-
-                    Color(0XFF3D9798),
-                    Color(0XFF2E7FC0)],
-
-                  begin: Alignment(0,0),
-                  end: Alignment(0,1)
-              )
-          ),
-          child: SingleChildScrollView(
-            child: Container(
-              child: Column(
-                children: [
-                  Center(
-                    child: Container(
-                        child: Text("Contact Us", style: Constants.boldheading,)
-
-                    ),
-                  ),
-                  SizedBox(height: 120,),
-
-                  Column(
-                    children: [
-                      CustomInput(
-                        hintText: "Name",
-                      ),
-                      CustomInput(
-                        hintText: "Email",
-                      ),
-                      CustomInput(
-                        hintText: "Phone",
-                      ),
-                      CustomTextFieldMaxLines(hintText: "Describe help needed",),
-
-                      CustomBtn(text: "Schedule Zoom Call",)
-                    ],
-                  ),
-
-
-
-                ],
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          // decoration: BoxDecoration(
+          //     gradient: LinearGradient(
+          //         colors: [
+          //
+          //           Color(0XFF3D9798),
+          //           Color(0XFF2E7FC0)],
+          //
+          //         begin: Alignment(0,0),
+          //         end: Alignment(0,1)
+          //     )
+          // ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CustomInput(
+                hintText: "Name",
               ),
-            ),
+              CustomInput(
+                hintText: "Email",
+              ),
+              CustomInput(
+                hintText: "Phone",
+              ),
+              CustomTextFieldMaxLines(hintText: "Describe help needed",),
+
+              CustomBtn(text: "Schedule Zoom Call",),
+
+              Container(
+                child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Website: ", style: TextStyle(color: Colors.black),),
+                        GestureDetector(
+                            onTap: () async {
+                              const url = 'https://www.jerseydrugtesting.com';
+                              if (await canLaunch(url)) {
+                                await launch(url);
+                              } else {
+                                throw 'Could not launch $url';
+                              }
+                            },
+                            child: Text("www.jerseydrugtesting.com", style: TextStyle(color: Colors.red), textAlign: TextAlign.center ))
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Email: ", style: TextStyle(color: Colors.black),),
+                        GestureDetector(
+                            onTap: () async {
+                              const url = 'mailto:info@jerseydrugtesting.com';
+                              if (await canLaunch(url)) {
+                                await launch(url);
+                              } else {
+                                throw 'Could not launch $url';
+                              }
+                            },
+                            child: Text("info@jerseydrugtesting.com",style: TextStyle(color: Colors.red), textAlign: TextAlign.center )
+                        )
+                      ],
+                    ),
+
+
+
+                  ],
+                ),
+              ),
+
+            ],
           ),
         ),
 

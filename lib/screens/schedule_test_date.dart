@@ -49,66 +49,40 @@ class _ScheduleTestDateState extends State<ScheduleTestDate> {
     }
     return Scaffold(
         resizeToAvoidBottomInset: false,
-      appBar: MyAppBar(),
+      appBar: MyAppBar(title: Text("Schedule Test Date",style: TextStyle(color: Colors.black)), appBar: AppBar(),),
       drawer: CustomDrawer(),
 
       body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [
-
-                  Color(0XFF3D9798),
-                  Color(0XFF2E7FC0)],
-
-                begin: Alignment(0,0),
-                end: Alignment(0,1)
-            )
-        ),
+        // decoration: BoxDecoration(
+        //     gradient: LinearGradient(
+        //         colors: [
+        //
+        //           Color(0XFF3D9798),
+        //           Color(0XFF2E7FC0)],
+        //
+        //         begin: Alignment(0,0),
+        //         end: Alignment(0,1)
+        //     )
+        // ),
         child: Container(
           child: SafeArea(
             child: Column(
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  //30
-                  margin: EdgeInsets.only(left: 7.246 * SizeConfig.widthMultiplier , right: 7.246 * SizeConfig.widthMultiplier),
-                  //10
-                  padding: EdgeInsets.only(top: 1.1160 * SizeConfig.heightMultiplier, left: 1.1160 * SizeConfig.widthMultiplier, right: 1.0160 * SizeConfig.widthMultiplier, bottom: 1.1160 * SizeConfig.heightMultiplier),
-                  child: Row(
 
-                    children: [
-                      GestureDetector(
-                          onTap: (){
-                            Navigator.of(context).pop();
-                          },
-                          child: ResponsiveBuilder(
-                            builder: (context, sizingInformation)=>Icon(
-                              Icons.keyboard_arrow_left_sharp,
-                              color: Colors.white,
-                              size: 7.2463 * SizeConfig.imageSizeMultiplier,),)
-
-                      ),
-
-                      //20
-                      SizedBox(width: 2.3309 * SizeConfig.widthMultiplier),
-                      ResponsiveBuilder(builder: (context, sizingInformation)=>Text("Schedule", style: Constants.boldheading,),)
-                    ],
-                  ),
-                ),
 
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     //100
-                    SizedBox(height: 11.1607 * SizeConfig.heightMultiplier,),
-                    CustomBtn(
-                      text: "Select your Date",
-                      onPressed: (){
-                        setState(() {
-                          selectDate(context);
-                        });
-                      },
-                    ),
+                    // SizedBox(height: 11.1607 * SizeConfig.heightMultiplier,),
+                    // CustomBtn(
+                    //   text: "Select your Date",
+                    //   onPressed: (){
+                    //     setState(() {
+                    //       selectDate(context);
+                    //     });
+                    //   },
+                    // ),
 
                     SizedBox(height: 11.1607 * SizeConfig.heightMultiplier,),
 
@@ -131,6 +105,14 @@ class _ScheduleTestDateState extends State<ScheduleTestDate> {
                     ),
 
                     SizedBox(height: 11.1607 * SizeConfig.heightMultiplier,),
+                    CustomBtn(
+                      text: "Select your Date",
+                      onPressed: (){
+                        setState(() {
+                          selectDate(context);
+                        });
+                      },
+                    ),
 
 
                    CustomBtn(

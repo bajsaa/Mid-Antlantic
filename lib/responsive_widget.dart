@@ -23,7 +23,7 @@ class ResponsiveWidget extends StatelessWidget {
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           drawer: CustomDrawer(),
-          appBar: MyAppBar(),
+          appBar: MyAppBar(title: Text("Find Location"), appBar: AppBar(),),
           body: Builder(builder: (context){
             return builder(context, information);
           }),

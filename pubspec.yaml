@@ -30,9 +30,6 @@ dependencies:
   cupertino_icons: ^1.0.0
   google_fonts:
   table_calendar: ^2.3.0
-  google_maps_flutter: ^1.0.6
-  flutter_map: ^0.10.1+1
-  multilevel_drawer:
   url_launcher: ^5.7.10
   device_preview:
   responsive_framework:

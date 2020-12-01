@@ -30,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
   double _loginWidth = 0;
   double _loginHeight = 0;
   bool _keyboardVisible = false;
+  double _welcomeOpacity = 1;
 
   @override
   void initState() {
@@ -65,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
         _loginXOffset = 0;
         _loginWidth = windowWidth;
         _loginHeight =_keyboardVisible ? windowHeight : windowHeight - 300;
+        _welcomeOpacity = 1;
 
         break;
 
@@ -72,6 +74,7 @@ class _LoginPageState extends State<LoginPage> {
         _loginXOffset = 0;
         _loginWidth = windowWidth ;
         _loginYOffset = 300;
+        _welcomeOpacity = 0.7;
         break;
     }
 
@@ -93,19 +96,19 @@ class _LoginPageState extends State<LoginPage> {
                   width: MediaQuery.of(context).size.width,
                   curve: Curves.fastLinearToSlowEaseIn,
                   duration: Duration(milliseconds: 2000),
-
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [
-
-                            Color(0XFF3D9798),
-                            Color(0XFF2E7FC0)],
-
-                          begin: Alignment(0,0),
-                          end: Alignment(0,1)
-
-                      )
-                  ),
+                  //
+                  // decoration: BoxDecoration(
+                  //     gradient: LinearGradient(
+                  //         colors: [
+                  //
+                  //           Color(0XFF3D9798),
+                  //           Color(0XFF2E7FC0)],
+                  //
+                  //         begin: Alignment(0,0),
+                  //         end: Alignment(0,1)
+                  //
+                  //     )
+                  // ),
 
                   child: Column(
                     children: [
@@ -113,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                         padding: EdgeInsets.symmetric(horizontal:32, vertical: 100 ),
                         child: Center(
                             child:
-                            Image.asset("assets/images/logo1.png")
+                            Image.asset("assets/images/logoblack.png")
                         ),
                       ),
                       Column(
@@ -190,7 +193,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding: EdgeInsets.all(16),
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.black,
                     borderRadius: BorderRadius.circular(30)
                 ),
 
@@ -200,13 +203,13 @@ class _LoginPageState extends State<LoginPage> {
 
                     Padding(
                       padding:  EdgeInsets.only(left: 33.104 * SizeConfig.widthMultiplier, right: 33.104 * SizeConfig.widthMultiplier, top: 2 * SizeConfig.heightMultiplier),
-                      child: Divider(color: Color(0xFF3F9995), thickness: 3.2,
+                      child: Divider(color: Colors.white, thickness: 3.2,
                       ),
                     ),
 
                       ResponsiveBuilder(
                       builder: (context, sizingInformation)=> Text("Select a way to receive the verification code",
-                    style: TextStyle(fontSize: 2.00892 * SizeConfig.textMultiplier, color: Color(0xFF3F9995)),
+                    style: TextStyle(fontSize: 2.00892 * SizeConfig.textMultiplier, color: Colors.white),
                         textAlign: TextAlign.center,
                         ),
                         ),
@@ -229,7 +232,7 @@ class _LoginPageState extends State<LoginPage> {
                                     children: [
                                       // FOR ICON
                                       Container(
-                                        child: Icon(Icons.mail_outline, size: 10.0446 * SizeConfig.heightMultiplier, color: Color(0XFF3F9995),),
+                                        child: Icon(Icons.mail_outline, size: 10.0446 * SizeConfig.heightMultiplier, color: Colors.white,),
 
                                       ),
                                       Column(
@@ -238,7 +241,7 @@ class _LoginPageState extends State<LoginPage> {
                                             Text("Email Code to",
                                               style: TextStyle(
                                                 fontSize: 2.7901 * SizeConfig.textMultiplier,
-                                                color: Color(0xFF3F9995),
+                                                color: Colors.white,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -258,7 +261,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 "hariswilliam@gmail.com",
                                                 maxLines: 3,
                                                 style: TextStyle(
-                                                  fontSize: 2.0089 * SizeConfig.textMultiplier, color: Color(0xFF3F9995),
+                                                  fontSize: 2.0089 * SizeConfig.textMultiplier, color: Colors.white,
                                                 ),
                                               ),
                                             ),
@@ -276,7 +279,7 @@ class _LoginPageState extends State<LoginPage> {
                                                   "Check your mail",
                                                   maxLines: 3,
                                                   style: TextStyle(
-                                                    fontSize: 2.0089 * SizeConfig.textMultiplier, color: Color(0xFF3F9995),
+                                                    fontSize: 2.0089 * SizeConfig.textMultiplier, color: Colors.white,
                                                   ),
                                                 ),
                                               ),
@@ -294,7 +297,7 @@ class _LoginPageState extends State<LoginPage> {
 
                               Padding(
                                 padding: EdgeInsets.only(left: 4.8309 * SizeConfig.widthMultiplier, right: 4.8309 * SizeConfig.widthMultiplier, top: 1.11607 * SizeConfig.heightMultiplier),
-                                child: Divider(color: Color(0xFF2E7FC0), thickness: 0.9,),
+                                child: Divider(color: Colors.white, thickness: 0.9,),
                               ),
 
 
@@ -309,7 +312,7 @@ class _LoginPageState extends State<LoginPage> {
                                     children: [
                                       // FOR ICON
                                       Container(
-                                        child: Icon(Icons.sms, size: 10.0446 * SizeConfig.heightMultiplier, color: Color(0XFF3F9995)),
+                                        child: Icon(Icons.sms, size: 10.0446 * SizeConfig.heightMultiplier, color: Colors.white),
 
                                       ),
                                       Column(
@@ -318,7 +321,7 @@ class _LoginPageState extends State<LoginPage> {
                                             Text("Sms Code to",
                                               style: TextStyle(
                                                 fontSize: 2.7901 * SizeConfig.textMultiplier,
-                                                color: Color(0xFF3F9995),
+                                                color: Colors.white,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -355,7 +358,7 @@ class _LoginPageState extends State<LoginPage> {
                                                   "Check your Message Box",
                                                   maxLines: 3,
                                                   style: TextStyle(
-                                                    fontSize: 2.0089 * SizeConfig.textMultiplier, color: Color(0xFF3F9995),
+                                                    fontSize: 2.0089 * SizeConfig.textMultiplier, color: Colors.white,
                                                   ),
                                                 ),
                                               ),
@@ -399,7 +402,7 @@ class _LoginPageState extends State<LoginPage> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal:1.9323 * SizeConfig.widthMultiplier),
       child: SizedBox(
-        width: 3.6855 * SizeConfig.widthMultiplier,
+        width: 5.6855 * SizeConfig.widthMultiplier,
         height: 5.58035 * SizeConfig.heightMultiplier,
         child: Container(
           decoration: BoxDecoration(

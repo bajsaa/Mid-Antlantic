@@ -6,6 +6,8 @@ import 'package:mid_antlantic/screens/add_location.dart';
 import 'package:mid_antlantic/screens/contact_us_screen.dart';
 import 'package:mid_antlantic/screens/dot_registration.dart';
 import 'package:mid_antlantic/screens/drug_test_helpLine.dart';
+import 'package:mid_antlantic/screens/edit_dot_registration_form.dart';
+import 'package:mid_antlantic/screens/edit_non_dot_registration_form.dart';
 import 'package:mid_antlantic/screens/not_dot_regtistration.dart';
 import 'package:mid_antlantic/screens/select_drug_test_table.dart';
 import 'package:mid_antlantic/screens/sucide_helpline.dart';
@@ -31,18 +33,18 @@ var orientation = MediaQuery.of(context).orientation;
 
       child: Container(
         width: orientation == Orientation.portrait ? 250 : 100,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [
-                  Color(0XFF3D9798),
-                  Color(0XFF2E7FC0)],
-
-                begin: Alignment(0, 0),
-                end: Alignment(0, 1)
-            )
-        ),
+        // decoration: BoxDecoration(
+        //     gradient: LinearGradient(
+        //         colors: [
+        //           Color(0XFF3D9798),
+        //           Color(0XFF2E7FC0)],
+        //
+        //         begin: Alignment(0, 0),
+        //         end: Alignment(0, 1)
+        //     )
+        // ),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(16.0),
           child: ListView(
             children: <Widget>[
 
@@ -52,7 +54,7 @@ var orientation = MediaQuery.of(context).orientation;
                 },
                 child: ListTile(
 
-                  leading: Icon(Icons.power_settings_new, color:Color(0XFF84C9FF) , size:6.9511 * SizeConfig.imageSizeMultiplier,),
+                  leading: Icon(Icons.power_settings_new, color:Colors.black , size:6.9511 * SizeConfig.imageSizeMultiplier,),
                   title: Text("Sign On", style: Constants.regularDarkText,),
 
                 ),
@@ -60,10 +62,10 @@ var orientation = MediaQuery.of(context).orientation;
 
               Padding(
                 padding: EdgeInsets.only(left:4.83091 * SizeConfig.widthMultiplier , right: 4.83091 * SizeConfig.widthMultiplier),
-                child: Divider(color: Colors.white, thickness: 2,),
+                child: Divider(color: Colors.black, thickness: 2,),
               ),
               ExpansionTile(
-                leading: Icon(Icons.person, color: Color(0XFF84C9FF), size: 6.9511 * SizeConfig.imageSizeMultiplier,),
+                leading: Icon(Icons.person, color: Colors.black, size: 6.9511 * SizeConfig.imageSizeMultiplier,),
                 title: Text("Individual",style: Constants.regularDarkText),
                 children: [
                   ListTile(
@@ -79,13 +81,23 @@ var orientation = MediaQuery.of(context).orientation;
                     title: Text("Edit Profile", style: Constants.regularDarkText),
                     children: [
 
-                      ListTile(
-                        leading: Icon(Icons.subdirectory_arrow_right, color: Color(0XFF84C9FF)),
-                        title: Text("D.O.T Profile", style: Constants.regularDarkText),
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (_)=>EditDotRegistrationForm()));
+                        },
+                        child: ListTile(
+                          leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
+                          title: Text("D.O.T Profile", style: Constants.regularDarkText),
+                        ),
                       ),
-                      ListTile(
-                        leading: Icon(Icons.subdirectory_arrow_right, color: Color(0XFF84C9FF)),
-                        title: Text("Non D.O.T Profile", style: Constants.regularDarkText),
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (_)=>EditNonDotRegistration()));
+                        },
+                        child: ListTile(
+                          leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
+                          title: Text("Non D.O.T Profile", style: Constants.regularDarkText),
+                        ),
                       )
                     ],
                   ),
@@ -94,10 +106,10 @@ var orientation = MediaQuery.of(context).orientation;
 
               Padding(
                 padding: EdgeInsets.only(left:4.83091 * SizeConfig.widthMultiplier , right: 4.83091 * SizeConfig.widthMultiplier),
-                child: Divider(color: Colors.white, thickness: 2,),
+                child: Divider(color: Colors.black, thickness: 2,),
               ),
               ExpansionTile(
-                leading: Icon(Icons.corporate_fare, color: Color(0XFF84C9FF), size: 6.9511 * SizeConfig.imageSizeMultiplier,),
+                leading: Icon(Icons.corporate_fare, color: Colors.black, size: 6.9511 * SizeConfig.imageSizeMultiplier,),
                 title: Text("Corporation", style: Constants.regularDarkText),
                 children: [
                   GestureDetector(
@@ -132,10 +144,10 @@ var orientation = MediaQuery.of(context).orientation;
 
               Padding(
                 padding:EdgeInsets.only(left:4.83091 * SizeConfig.widthMultiplier , right: 4.83091 * SizeConfig.widthMultiplier),
-                child: Divider(color: Colors.white, thickness: 2,),
+                child: Divider(color: Colors.black, thickness: 2,),
               ),
               ExpansionTile(
-                leading: Icon(Icons.science, color: Color(0XFF84C9FF), size: 6.9511 * SizeConfig.imageSizeMultiplier,),
+                leading: Icon(Icons.science, color: Colors.black, size: 6.9511 * SizeConfig.imageSizeMultiplier,),
                 title: Text("Labs", style: Constants.regularDarkText),
                 children: [
                   ListTile(
@@ -151,10 +163,10 @@ var orientation = MediaQuery.of(context).orientation;
 
               Padding(
                 padding: EdgeInsets.only(left:4.83091 * SizeConfig.widthMultiplier , right: 4.83091 * SizeConfig.widthMultiplier),
-                child: Divider(color: Colors.white, thickness: 2,),
+                child: Divider(color: Colors.black, thickness: 2,),
               ),
               ExpansionTile(
-                leading: Icon(Icons.call, color: Color(0XFF84C9FF), size: 6.9511 * SizeConfig.imageSizeMultiplier,),
+                leading: Icon(Icons.call, color: Colors.black, size: 6.9511 * SizeConfig.imageSizeMultiplier,),
                 title: Text("Emergency HotLine Numbers", style: Constants.regularDarkText),
                 children: [
                   ListTile(
@@ -186,10 +198,10 @@ var orientation = MediaQuery.of(context).orientation;
 
               Padding(
                 padding: EdgeInsets.only(left:4.83091 * SizeConfig.widthMultiplier , right:4.83091 * SizeConfig.widthMultiplier),
-                child: Divider(color: Colors.white, thickness: 2,),
+                child: Divider(color: Colors.black, thickness: 2,),
               ),
               ExpansionTile(
-                leading: Icon(Icons.help, color: Color(0XFF84C9FF),size: 6.9511 * SizeConfig.imageSizeMultiplier, ),
+                leading: Icon(Icons.help, color: Colors.black,size: 6.9511 * SizeConfig.imageSizeMultiplier, ),
                 title: Text("Help", style: Constants.regularDarkText),
                 children: [
                   ListTile(

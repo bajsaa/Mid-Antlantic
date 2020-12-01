@@ -17,7 +17,7 @@ class _TestHistoryState extends State<TestHistory> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: false,
-        appBar: MyAppBar(),
+        appBar: MyAppBar(title: Text("Test History",style: TextStyle(color: Colors.black)), appBar: AppBar(),),
         drawer: CustomDrawer(),
 
         body: SingleChildScrollView(
@@ -25,34 +25,7 @@ class _TestHistoryState extends State<TestHistory> {
             child: Column(
               children: [
 
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  //30
-                  margin: EdgeInsets.only(left: 7.246 * SizeConfig.widthMultiplier , right: 7.246 * SizeConfig.widthMultiplier),
-                  //10
-                  padding: EdgeInsets.only(top: 1.1160 * SizeConfig.heightMultiplier, left: 1.1160 * SizeConfig.widthMultiplier, right: 1.1160 * SizeConfig.widthMultiplier, bottom: 1.1160 * SizeConfig.heightMultiplier),
-                  child: Row(
 
-                    children: [
-                      GestureDetector(
-                          onTap: (){
-                            Navigator.of(context).pop();
-                          },
-                          child: ResponsiveBuilder(
-                            builder: (context, sizingInformation)=>Icon(
-                              Icons.keyboard_arrow_left_sharp,
-                              color: Colors.white,
-                              size: 7.2463 * SizeConfig.imageSizeMultiplier,),)
-
-                      ),
-
-                      //20
-                      SizedBox(width: 4.8309 * SizeConfig.widthMultiplier),
-                      ResponsiveBuilder(builder: (context, sizingInformation)=>Text("Confirm Details", style: Constants.boldheading,),),
-
-                    ],
-                  ),
-                ),
 
                 Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -67,26 +40,49 @@ class _TestHistoryState extends State<TestHistory> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Order Information", style: TextStyle(color: Color(0xFF409A93), fontSize: 25), textAlign: TextAlign.start, ),
+                          Text("Order Information", style: TextStyle(color: Colors.black, fontSize: 2.790178 * SizeConfig.textMultiplier), textAlign: TextAlign.start, ),
                           SizedBox(height: 20,),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
 
                               children: [
-                                Image.asset("assets/images/eye.png"),
+                                GestureDetector(
+                                  onTap:(){
+                                    setState(() {
+                                      Icon(Icons.remove_red_eye_outlined, size: 50, color: Colors.blue, );
+                                    });
+                                  },
+                                    child: Icon(Icons.remove_red_eye, size: 5.580357 * SizeConfig.heightMultiplier, )
+                                ),
+                                //Image.asset("assets/images/eyeblack.png"),
                                 SizedBox(height: 10,),
-                                Image.asset("assets/images/print.png"),
+                                GestureDetector(
+                                    onTap: (){
+                                      Icon(Icons.print, size: 5.580357 * SizeConfig.heightMultiplier, color: Colors.blue,);
+                                    },
+                                    child: Icon(Icons.print, size: 5.580357 * SizeConfig.heightMultiplier,)),
+                                //Image.asset("assets/images/printblack.png"),
                                 SizedBox(height: 10,),
-                                Image.asset("assets/images/mail.png"),
+                                GestureDetector(
+                                    onTap: (){
+                                      Icon(Icons.mail_outline_outlined, size: 5.580357 * SizeConfig.heightMultiplier, color: Colors.blue,);
+                                    },
+                                    child: Icon(Icons.mail_outline_outlined, size: 5.580357 * SizeConfig.heightMultiplier, )),
+                                //Image.asset("assets/images/mailblack.png"),
                                 SizedBox(height: 10,),
-                                Image.asset("assets/images/pdf.png"),
+                                GestureDetector(
+                                    onTap: (){
+                                      Icon(Icons.picture_as_pdf_rounded, size: 5.580357 * SizeConfig.heightMultiplier,color: Colors.blue, );
+                                    },
+                                    child: Icon(Icons.picture_as_pdf_rounded, size: 5.580357 * SizeConfig.heightMultiplier, )),
+                                //Image.asset("assets/images/pdfblack.png"),
                               ],
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 30, right: 30),
-                            child: Divider(color: Color(0xFF3D9798), thickness: 1,),
+                            padding:  EdgeInsets.only(left: 7.24637 * SizeConfig.widthMultiplier, right: 7.24637 * SizeConfig.widthMultiplier),
+                            child: Divider(color: Colors.black, thickness: 1.5,),
                           ),
 
                           Padding(
@@ -94,13 +90,13 @@ class _TestHistoryState extends State<TestHistory> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("View", style: TextStyle(fontSize: 20, color: Color(0xFF2E80BC)),),
-                                SizedBox(height: 30,),
-                                Text("First Name: ", style: TextStyle(color: Color(0xFF409A93)),),
-                                Text("Last Name: ", style: TextStyle(color: Color(0xFF409A93)),),
-                                Text("MRO Results: ", style: TextStyle(color: Color(0xFF409A93)),),
-                                Text("CCF/Test Number: ", style: TextStyle(color: Color(0xFF409A93)),),
-                                Text("Report Date: ", style: TextStyle(color: Color(0xFF409A93)),),
+                                Text("View", style: TextStyle(fontSize: 2.232142 * SizeConfig.textMultiplier, color: Colors.black),),
+                                SizedBox(height: 3.348214285714286 * SizeConfig.heightMultiplier,),
+                                Text("First Name: ", style: TextStyle(color: Colors.black),),
+                                Text("Last Name: ", style: TextStyle(color: Colors.black),),
+                                Text("MRO Results: ", style: TextStyle(color: Colors.black),),
+                                Text("CCF/Test Number: ", style: TextStyle(color: Colors.black),),
+                                Text("Report Date: ", style: TextStyle(color: Colors.black),),
                               ],
                             ),
                           )
