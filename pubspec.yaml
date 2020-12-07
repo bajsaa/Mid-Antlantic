@@ -37,6 +37,7 @@ dependencies:
   flutter_spinkit: "^4.1.2"
   flutter_plugin_android_lifecycle: 1.0.3
   credit_card: any
+  provider:
 
 dev_dependencies:
   flutter_test:

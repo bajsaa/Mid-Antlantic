@@ -63,12 +63,36 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                 ),
               ),
-              CustomBtn(text: "Check Out", onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (_)=>PaymentScreen()));},)
+              //CustomBtn(text: "Check Out", onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (_)=>PaymentScreen()));},)
             ],
           ),
         ),
 
-        bottomNavigationBar:MyBottomNavBar("assets/images/testblack.png", "assets/images/locationblack.png", "assets/images/orderblack.png" ,"assets/images/profileblack.png" )
+        //bottomNavigationBar:MyBottomNavBar("assets/images/testblack.png", "assets/images/locationblack.png", "assets/images/orderblack.png" ,"assets/images/profileblack.png" )
+
+      bottomNavigationBar: new Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black)
+        ),
+        child: Row(
+          children: [
+            Expanded(
+                child: ListTile(
+                  title: Text("Total", style: Constants.regularDarkText,),
+                  subtitle:Text("\$75") ,
+
+                )
+            ),
+            Expanded(child: MaterialButton(
+              child: Text("CheckOut", style: TextStyle(color: Colors.white, fontSize: 16),),
+              color: Colors.black,disabledColor: Colors.black,
+                onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (_)=>PaymentScreen()));},
+              height: 80,
+            )
+            )
+          ],
+        ),
+      ),
 
 
 

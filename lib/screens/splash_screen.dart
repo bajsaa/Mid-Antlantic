@@ -7,7 +7,7 @@ import 'package:mid_antlantic/screens/select_drug_test_table.dart';
 import 'package:mid_antlantic/size_config.dart';
 import 'package:mid_antlantic/widgets/welcome_buttons.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'first_screen.dart';
+import 'Select_Drug_Screen.dart';
 import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
