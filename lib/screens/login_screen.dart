@@ -32,20 +32,74 @@ class _LoginPageState extends State<LoginPage> {
   bool _keyboardVisible = false;
   double _welcomeOpacity = 1;
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    KeyboardVisibilityNotification().addNewListener(
-      onChange: (bool visible) {
-        setState(() {
-          _keyboardVisible = visible;
-        });
-      },
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   KeyboardVisibilityNotification().addNewListener(
+  //     onChange: (bool visible) {
+  //       setState(() {
+  //         _keyboardVisible = visible;
+  //       });
+  //     },
+  //   );
+  // }
+
+
+  Future<void> _alertDialogBuilder(String error) async{
+    return showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context){
+          return AlertDialog(
+            title: Text("Error"),
+            content: Container(
+              child: Text(error),
+            ),
+            actions: [
+              FlatButton(
+                child: Text("close"),
+                onPressed:(){Navigator.pop(context);} ,
+              )
+            ],
+          );
+        }
     );
   }
 
 
+
+  // Default Form Loading State
+  bool _loginFormLoading = false;
+
+// Focus Node for input fields
+  FocusNode _passwordFocusNode;
+
+  @override
+  void initState() {
+    _passwordFocusNode = FocusNode();
+    super.initState();
+  }
+  @override
+  void dispose() {
+    _passwordFocusNode.dispose();
+    super.dispose();
+  }
+
+  void _submitForm() async{
+    setState(() {
+      _loginFormLoading = true;
+    });
+    // String _loginFeedback = await _loginAccount();
+    // if(_loginFeedback != null){
+    //   _alertDialogBuilder(_loginFeedback);
+    //
+    //   setState(() {
+    //     _loginFormLoading = false;
+    //   });
+    // }
+
+  }
 
 
 
@@ -116,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                         padding: EdgeInsets.symmetric(horizontal:32, vertical: 100 ),
                         child: Center(
                             child:
-                            Image.asset("assets/images/logoblack.png")
+                            Image.asset("assets/images/newlogo.png")
                         ),
                       ),
                       Column(
@@ -130,12 +184,21 @@ class _LoginPageState extends State<LoginPage> {
                                 onChanged: (value){
                                   _loginEmail = value;
                                 },
+                                onSubmitted: (value) {
+                                  _passwordFocusNode.requestFocus();
+                                },
+                                textInputAction: TextInputAction.next,
                               ),
 
                               CustomInput(
                                 hintText: "Password",
                                 onChanged: (value){
-                                  _loginEmail = value;
+                                  _loginPassword = value;
+                                },
+                                focusNode: _passwordFocusNode,
+
+                                onSubmitted: (value){
+                                  _submitForm();
                                 },
                               ),
                               CustomBtn(

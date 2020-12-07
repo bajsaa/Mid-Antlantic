@@ -817,7 +817,7 @@ class _DrugTestTableState extends State<DrugTestTable> {
                                   actions: [
                                     FlatButton(
                                         onPressed: (){Navigator.pop(context);},
-                                        child: Text("Close"))
+                                        child: Text("Close", style: TextStyle(color:Colors.black ),))
                                   ],
                                 ),
                               );

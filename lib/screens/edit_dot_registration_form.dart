@@ -1,6 +1,7 @@
 import 'package:mid_antlantic/ui/responsive_builder.dart';
 import 'package:mid_antlantic/widgets/Bottom_Navigation_Bar.dart';
 import 'package:mid_antlantic/widgets/appBar.dart';
+import 'package:mid_antlantic/widgets/custom_back_forward_button_edit.dart';
 import 'package:mid_antlantic/widgets/drawer.dart';
 import '../size_config.dart';
 import 'file:///F:/AndroidStudioProject/OFFICE-PROJECT-1/lib/images_path.dart';
@@ -49,7 +50,7 @@ class _EditDotRegistrationFormState extends State<EditDotRegistrationForm> {
                       child: Padding(
                           padding: EdgeInsets.all(2.0089 * SizeConfig.heightMultiplier),
                           child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text(
-                            "You selected a DOT Drug test. All information below is required", style: TextStyle(fontSize: 2.23214 * SizeConfig.textMultiplier , color: Colors.black,),
+                            "A Dot drug test is for Corporations or individuals, who are under the DOT's authority or are under contract with DOT will be required to take a DOT drug test. All the information below is required.", style: TextStyle(fontSize: 2.23214 * SizeConfig.textMultiplier , color: Colors.black,),
                             textAlign: TextAlign.center,
                           ),
                           )
@@ -113,7 +114,7 @@ class _EditDotRegistrationFormState extends State<EditDotRegistrationForm> {
 
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: CustomBackForwardDirectionBtn(),
+                    child: CustomBackForwardDirectionEditBtn(),
                   )
 
 
@@ -129,6 +130,7 @@ class _EditDotRegistrationFormState extends State<EditDotRegistrationForm> {
           ),
         ),
 
+        //bottomNavigationBar:MyBottomNavBar("assets/images/test.png", "assets/images/location.png", "assets/images/order.png" ,"assets/images/Profile.png" )
         bottomNavigationBar:MyBottomNavBar("assets/images/testblack.png", "assets/images/locationblack.png", "assets/images/orderblack.png" ,"assets/images/profileblack.png" )
 
 

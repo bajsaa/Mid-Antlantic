@@ -1,7 +1,10 @@
 import 'package:mid_antlantic/ui/responsive_builder.dart';
 import 'package:mid_antlantic/widgets/Bottom_Navigation_Bar.dart';
 import 'package:mid_antlantic/widgets/Custom_back_forward_button.dart';
+import 'package:mid_antlantic/widgets/Custom_taxtfield_maxlines.dart';
 import 'package:mid_antlantic/widgets/appBar.dart';
+import 'package:mid_antlantic/widgets/custom_back_forward_button_edit.dart';
+import 'package:mid_antlantic/widgets/custom_dropdown_reason_nondot.dart';
 import 'package:mid_antlantic/widgets/drawer.dart';
 import '../size_config.dart';
 import 'file:///F:/AndroidStudioProject/OFFICE-PROJECT-1/lib/images_path.dart';
@@ -51,7 +54,7 @@ class _EditNonDotRegistrationState extends State<EditNonDotRegistration> {
                       child: Padding(
                           padding: EdgeInsets.all(18),
                           child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text(
-                            "You selected a Non DOT Drug test. All information below is required", style: TextStyle(fontSize: 2.23214 * SizeConfig.textMultiplier , color: Colors.black,),
+                            "You selected Non DOT Drug test is an effective test for to identify drug use and discourage consumption of illicit substances.", style: TextStyle(fontSize: 2.23214 * SizeConfig.textMultiplier , color: Colors.black,),
                             textAlign: TextAlign.center,
                           ),)
                       ),
@@ -89,24 +92,10 @@ class _EditNonDotRegistrationState extends State<EditNonDotRegistration> {
                         hintText: "DOB",
                       ),
 
+                      DropDownReasonNonDot(),
+                      CustomTextFieldMaxLines(hintText: "Message/Comment",),
                       CustomInput(
-                        hintText: "Driver License Country",
-                      ),
-
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Divider(color: Colors.black,),
-                      ),
-
-                      CustomInput(
-                        hintText: "DOB",
-                      ),
-
-                      DropDownDotAgency(),
-                      DropDownDotAgency(),
-                      DropDownDotAgency(),
-                      CustomInput(
-                        hintText: "DOB",
+                        hintText: "Zip Code",
                       ),
 
                     ],
@@ -114,7 +103,7 @@ class _EditNonDotRegistrationState extends State<EditNonDotRegistration> {
 
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: CustomBackForwardDirectionBtn(),
+                    child: CustomBackForwardDirectionEditBtn(),
                   )
 
 
@@ -131,6 +120,7 @@ class _EditNonDotRegistrationState extends State<EditNonDotRegistration> {
           ),
         ),
 
+        //bottomNavigationBar:MyBottomNavBar("assets/images/test.png", "assets/images/location.png", "assets/images/order.png" ,"assets/images/Profile.png" )
         bottomNavigationBar:MyBottomNavBar("assets/images/testblack.png", "assets/images/locationblack.png", "assets/images/orderblack.png" ,"assets/images/profileblack.png" )
 
 

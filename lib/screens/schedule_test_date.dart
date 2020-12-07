@@ -33,7 +33,12 @@ class _ScheduleTestDateState extends State<ScheduleTestDate> {
 
     Future<Null> selectDate(BuildContext context) async{
       DateTime _datePicker = await showDatePicker(
-
+          builder: (context, child) {
+            return Theme(
+              data: ThemeData.dark(), // This will change to light theme.
+              child: child,
+            );
+          },
           context: context,
           initialDate: _dateTime == null ? DateTime.now() : _dateTime,
           firstDate:DateTime(1947),
@@ -44,8 +49,6 @@ class _ScheduleTestDateState extends State<ScheduleTestDate> {
             });
             return null;
       });
-
-
     }
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -135,6 +138,7 @@ class _ScheduleTestDateState extends State<ScheduleTestDate> {
 
 
       ),
+
         bottomNavigationBar:MyBottomNavBar(ImagesPath.testIcon, ImagesPath.locationIcon, ImagesPath.orderIcon, ImagesPath.profileIcon)
     );
   }

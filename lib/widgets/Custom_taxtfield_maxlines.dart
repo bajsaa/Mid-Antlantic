@@ -38,7 +38,7 @@ class CustomTextFieldMaxLines extends StatelessWidget {
         obscureText: _isObscureText,
         decoration: InputDecoration(
             hintText: hintText ?? 'hint text',
-            hintStyle: TextStyle(color: Colors.black26),
+            hintStyle: TextStyle(color: Colors.black38),
             border: InputBorder.none,
             contentPadding: EdgeInsets.symmetric(
                 horizontal: 6.111 * SizeConfig.widthMultiplier,

@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 
-class DropDownReason extends StatefulWidget {
+class DropDownReasonNonDot extends StatefulWidget {
 
 
 
 
   @override
-  _DropDownReasonState createState() => _DropDownReasonState();
+  _DropDownReasonNonDotState createState() => _DropDownReasonNonDotState();
 }
 
-class _DropDownReasonState extends State<DropDownReason> {
+class _DropDownReasonNonDotState extends State<DropDownReasonNonDot> {
 
   List _myItems = [
-    "FOLLOW-UP", "OTHER", "POST-ACCIDENT", "PRE-EMPLOYMENT","RANDOM", "REASONABLE SUSPICION", "RETURN TO DUTY"
+    "ANNUAL", "AUDIOGRAM", "POST-ACCIDENT", "PRE-EMPLOYMENT","RANDOM", "REASONABLE SUSPICION", "RETURN TO DUTY", "BLIND SAMPLE", "COURT ORDERED", "FITNESS FOR DUTY", "FOLLOW UP", "JOB TRANSFER", "PERIODIC", "PERIODIC MEDICAL","POST RANDOM", "POST-ACCIDENT", "PRE-EMPLOYMENT", "PRE-SITE ACCESS", "PROMOTION", "RE-CERTFICATION", "SWEEP", "RETURN TO DUTY"
   ];
 
   String _itemVal;

@@ -1,4 +1,5 @@
 import 'package:mid_antlantic/constants.dart';
+import 'package:mid_antlantic/widgets/Bottom_Navigation_Bar.dart';
 import 'package:mid_antlantic/widgets/appBar.dart';
 import 'package:mid_antlantic/widgets/drawer.dart';
 import 'package:flutter/material.dart';
@@ -116,6 +117,9 @@ class _TestHistoryState extends State<TestHistory> {
             ),
           ),
         ),
+
+        //bottomNavigationBar:MyBottomNavBar("assets/images/test.png", "assets/images/location.png", "assets/images/order.png" ,"assets/images/Profile.png" )
+        bottomNavigationBar:MyBottomNavBar("assets/images/testblack.png", "assets/images/locationblack.png", "assets/images/orderblack.png", "assets/images/profileblack.png")
 
 
 

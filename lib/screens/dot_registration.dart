@@ -58,7 +58,8 @@ import '../constants.dart';
                      child: Padding(
                        padding: EdgeInsets.all(2.0089 * SizeConfig.heightMultiplier),
                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text(
-                         "You selected a DOT Drug test. All information below is required", style: TextStyle(fontSize: 2.23214 * SizeConfig.textMultiplier , color: Colors.black,),
+                         "A Dot drug test is for Corporations or individuals, who are under the DOT's authority or are under contract with DOT will be required to take a DOT drug test. All the information below is required.",
+                         style: TextStyle(fontSize: 2.23214 * SizeConfig.textMultiplier , color: Colors.black,),
                          textAlign: TextAlign.center,
                        ),
                        )

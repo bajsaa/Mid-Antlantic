@@ -1,4 +1,6 @@
 import 'package:mid_antlantic/constants.dart';
+import 'package:mid_antlantic/size_config.dart';
+import 'package:mid_antlantic/widgets/Bottom_Navigation_Bar.dart';
 import 'package:mid_antlantic/widgets/appBar.dart';
 import 'package:mid_antlantic/widgets/drawer.dart';
 import 'package:flutter/material.dart';
@@ -14,30 +16,20 @@ class _DrugTestHelpLineState extends State<DrugTestHelpLine> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+        resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: false,
         appBar: MyAppBar(title: Text("Drug Addiction Helpline",style: TextStyle(color: Colors.black)), appBar: AppBar(),),
         drawer: CustomDrawer(),
 
-        body:Container(
-          // decoration: BoxDecoration(
-          //     gradient: LinearGradient(
-          //         colors: [
-          //
-          //           Color(0XFF3D9798),
-          //           Color(0XFF2E7FC0)],
-          //
-          //         begin: Alignment(0,0),
-          //         end: Alignment(0,1)
-          //     )
-          // ),
-          child: Container(
-            child: SafeArea(
+        body:Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
               child: Column(
                 children: [
 
-
-                 Container(
+                  Container(
                       padding: EdgeInsets.all(90),
                      child: GestureDetector(
                          onTap:() async {
@@ -52,8 +44,8 @@ class _DrugTestHelpLineState extends State<DrugTestHelpLine> {
                  ),
 
                   Container(
-                    height: 200,
-                    width: 350,
+                    height: 22.32142 * SizeConfig.heightMultiplier,
+                    width: 84.541062 * SizeConfig.widthMultiplier,
                     decoration: BoxDecoration(
                       color: Colors.white
                     ),
@@ -98,8 +90,10 @@ class _DrugTestHelpLineState extends State<DrugTestHelpLine> {
                 ],
               ),
             ),
-          ),
-        )
+          ],
+        ),
+
+        bottomNavigationBar:MyBottomNavBar("assets/images/testblack.png", "assets/images/locationblack.png", "assets/images/orderblack.png" ,"assets/images/profileblack.png" )
 
 
 

@@ -1,4 +1,5 @@
 import 'package:mid_antlantic/screens/add_location.dart';
+import 'package:mid_antlantic/screens/first_screen.dart';
 import 'package:mid_antlantic/screens/test_history.dart';
 import 'package:mid_antlantic/size_config.dart';
 import 'package:flutter/material.dart';
@@ -26,14 +27,14 @@ class MyBottomNavBar extends StatelessWidget{
 
       type : BottomNavigationBarType.fixed,
       backgroundColor: Colors.white,
-      unselectedLabelStyle: TextStyle( fontSize: 16),
-      selectedLabelStyle: TextStyle(fontSize: 16) ,
+      unselectedLabelStyle: TextStyle( fontSize: 16, color: Colors.black),
+      selectedLabelStyle: TextStyle(fontSize: 16, color: Colors.black) ,
       showUnselectedLabels: true,
       items: <BottomNavigationBarItem> [
         BottomNavigationBarItem(
             icon: GestureDetector(
                 onTap: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_)=>DrugTestTable()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_)=>FirstScreen()));
                 },
                 child: Image.asset(imageIcon1, height:4.46428 * SizeConfig.heightMultiplier, width: 9.66183 * SizeConfig.widthMultiplier)),
             label: "Test"

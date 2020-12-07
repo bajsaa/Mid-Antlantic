@@ -8,7 +8,9 @@ import 'package:mid_antlantic/screens/dot_registration.dart';
 import 'package:mid_antlantic/screens/drug_test_helpLine.dart';
 import 'package:mid_antlantic/screens/edit_dot_registration_form.dart';
 import 'package:mid_antlantic/screens/edit_non_dot_registration_form.dart';
+import 'package:mid_antlantic/screens/first_screen.dart';
 import 'package:mid_antlantic/screens/not_dot_regtistration.dart';
+import 'package:mid_antlantic/screens/schedule_test_date.dart';
 import 'package:mid_antlantic/screens/select_drug_test_table.dart';
 import 'package:mid_antlantic/screens/sucide_helpline.dart';
 import 'package:mid_antlantic/screens/test_history.dart';
@@ -70,12 +72,22 @@ var orientation = MediaQuery.of(context).orientation;
                 children: [
                   ListTile(
                     leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
+                    title: GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ScheduleTestDate()));
+                        },
+                        child: Text("Schedule a Test", style: Constants.regularDarkText)),
+                  ),
+
+                  ListTile(
+                    leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
                       title: GestureDetector(
                           onTap: (){
                             Navigator.of(context).push(MaterialPageRoute(builder: (_)=>TestHistory()));
                           },
                           child: Text("Test History", style: Constants.regularDarkText)),
                   ),
+
                   ExpansionTile(
                     leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
                     title: Text("Edit Profile", style: Constants.regularDarkText),
@@ -100,6 +112,14 @@ var orientation = MediaQuery.of(context).orientation;
                         ),
                       )
                     ],
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
+                    title: GestureDetector(
+                        onTap: (){
+                          //Navigator.of(context).push(MaterialPageRoute(builder: (_)=>TestHistory()));
+                        },
+                        child: Text("Cancel Test", style: Constants.regularDarkText)),
                   ),
                 ],
               ),
@@ -134,7 +154,7 @@ var orientation = MediaQuery.of(context).orientation;
                     leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
                     title: GestureDetector(
                       onTap: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>DrugTestTable()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>FirstScreen()));
                       },
                         child: Text("Select A Drug Test", style: Constants.regularDarkText)
                     ),

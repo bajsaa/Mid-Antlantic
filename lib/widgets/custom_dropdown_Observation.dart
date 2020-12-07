@@ -15,7 +15,7 @@ class DropDownObservation extends StatefulWidget {
 class _DropDownObservationState extends State<DropDownObservation> {
 
   List _myItems = [
-    "FOLLOW-UP", "OTHER", "POST-ACCIDENT", "PRE-EMPLOYMENT","RANDOM", "REASONABLE SUSPICION"
+    "YES", "NO"
   ];
 
   String _itemVal;

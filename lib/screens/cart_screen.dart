@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mid_antlantic/constants.dart';
+import 'package:mid_antlantic/screens/payment_screen.dart';
+import 'package:mid_antlantic/test_model.dart';
+import 'package:mid_antlantic/widgets/Bottom_Navigation_Bar.dart';
 import 'package:mid_antlantic/widgets/appBar.dart';
 import 'package:mid_antlantic/widgets/appBar_cart.dart';
 import 'package:mid_antlantic/widgets/customButton.dart';
@@ -7,11 +10,20 @@ import 'package:mid_antlantic/widgets/drawer.dart';
 
 
 class CartScreen extends StatefulWidget {
+
+
+
   @override
   _CartScreenState createState() => _CartScreenState();
 }
 
 class _CartScreenState extends State<CartScreen> {
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,37 +55,20 @@ class _CartScreenState extends State<CartScreen> {
                     scrollDirection: Axis.vertical,
                     children: [
                       ListTile(
-                        title: Text("DOT Drug Panel(CDL Drivers)", style: Constants.regularHeading,),
-                        subtitle: Text("Price: 75\$"),
+                        title: Text("5 Panel", style: Constants.regularHeading,),
+                        subtitle: Text("\$75"),
                       ),
-                      Divider(color: Colors.black, thickness: 1,),
-                      ListTile(
-                        title: Text("5 Panel", style: Constants.regularHeading),
-                        subtitle: Text("Price: 60\$"),
-                      ),
-                      Divider(color: Colors.black, thickness: 1,),
-                      ListTile(
-                        title: Text("7 Panel", style: Constants.regularHeading),
-                        subtitle: Text("Price: 65\$"),
-                      ),
-                      Divider(color: Colors.black, thickness: 1,),
-                      ListTile(
-                        title: Text("10 Panel", style: Constants.regularHeading),
-                        subtitle: Text("Price: 75\$"),
-                      ),
-                      Divider(color: Colors.black, thickness: 1,),
-                      ListTile(
-                        title: Text("5 Panel+ Exp Opiates Oxy, MDMA", style: Constants.regularHeading),
-                        subtitle: Text("Price: 80\$"),
-                      ),
+
                     ],
                   ),
                 ),
               ),
-              CustomBtn(text: "Check Out",)
+              CustomBtn(text: "Check Out", onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (_)=>PaymentScreen()));},)
             ],
           ),
-        )
+        ),
+
+        bottomNavigationBar:MyBottomNavBar("assets/images/testblack.png", "assets/images/locationblack.png", "assets/images/orderblack.png" ,"assets/images/profileblack.png" )
 
 
 

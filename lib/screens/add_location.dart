@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mid_antlantic/size_config.dart';
 import 'package:mid_antlantic/ui/responsive_builder.dart';
+import 'package:mid_antlantic/widgets/Bottom_Navigation_Bar.dart';
 import 'package:mid_antlantic/widgets/appBar.dart';
 import 'package:mid_antlantic/widgets/drawer.dart';
 import 'package:mid_antlantic/widgets/find_location_button.dart';
@@ -140,7 +141,9 @@ class _FindLocationState extends State<FindLocation> {
             ),
 
           ),
-        )
+        ),
+
+        bottomNavigationBar:MyBottomNavBar("assets/images/testblack.png", "assets/images/locationblack.png", "assets/images/orderblack.png" ,"assets/images/profileblack.png" )
 
 
 
