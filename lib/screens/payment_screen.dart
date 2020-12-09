@@ -3,6 +3,7 @@ import 'package:credit_card/credit_card_form.dart';
 import 'package:credit_card/credit_card_model.dart';
 import 'package:credit_card/credit_card_widget.dart';
 import 'package:mid_antlantic/images_path.dart';
+import 'package:mid_antlantic/screens/thank_you.dart';
 import 'package:mid_antlantic/size_config.dart';
 import 'package:mid_antlantic/ui/responsive_builder.dart';
 import 'package:mid_antlantic/widgets/Bottom_Navigation_Bar.dart';
@@ -39,6 +40,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Column(
+
           children: [
             CreditCardWidget(
                 cardNumber: cardNumber,
@@ -60,6 +62,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
             )),
             CustomBtn(
               text: "Proceed to pay",
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (_)=>ThankYouScreen()));
+              },
             ),
           ],
         ),

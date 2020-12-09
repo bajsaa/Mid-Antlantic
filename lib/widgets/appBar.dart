@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mid_antlantic/models/product_model.dart';
 import 'package:mid_antlantic/screens/cart_screen.dart';
+
 
 // class MyAppBar extends AppBar {
 //
@@ -23,6 +25,8 @@ import 'package:mid_antlantic/screens/cart_screen.dart';
 
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
+
+
   final Text title;
   final AppBar appBar;
   const MyAppBar({Key key, this.title, this.appBar, })
@@ -30,6 +34,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<ProductModel> cart = [];
+    double sum = 0;
     return AppBar(
       elevation: 2.0,
       title: title,
@@ -42,7 +48,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {},
           icon: GestureDetector(
               onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>CartScreen()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>CartScreen(cart, sum)));
               },
               child: Icon(Icons.add_shopping_cart)),
           color: Colors.black,

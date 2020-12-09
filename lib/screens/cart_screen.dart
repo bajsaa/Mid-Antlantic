@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mid_antlantic/constants.dart';
+import 'package:mid_antlantic/models/product_model.dart';
 import 'package:mid_antlantic/screens/payment_screen.dart';
 import 'package:mid_antlantic/test_model.dart';
 import 'package:mid_antlantic/widgets/Bottom_Navigation_Bar.dart';
@@ -9,19 +10,12 @@ import 'package:mid_antlantic/widgets/customButton.dart';
 import 'package:mid_antlantic/widgets/drawer.dart';
 
 
-class CartScreen extends StatefulWidget {
+class CartScreen extends StatelessWidget {
 
+  final cart;
+  final sum;
 
-
-  @override
-  _CartScreenState createState() => _CartScreenState();
-}
-
-class _CartScreenState extends State<CartScreen> {
-
-
-
-
+  CartScreen(this.cart,this.sum);
 
 
   @override
@@ -35,32 +29,28 @@ class _CartScreenState extends State<CartScreen> {
         body:Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          // decoration: BoxDecoration(
-          //     gradient: LinearGradient(
-          //         colors: [
-          //
-          //           Color(0XFF3D9798),
-          //           Color(0XFF2E7FC0)],
-          //
-          //         begin: Alignment(0,0),
-          //         end: Alignment(0,1)
-          //     )
-          // ),
+
           child: Column(
             children: [
               Expanded(
                 flex: 5,
                 child: Container(
-                  child: ListView(
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      ListTile(
-                        title: Text("5 Panel", style: Constants.regularHeading,),
-                        subtitle: Text("\$75"),
-                      ),
+                  child:    ListView.separated(
+                    itemBuilder: (context, index){
+                      return ListTile(
+                        title: Text(cart[index].name),
+                        trailing: Text("\$${cart[index].price}", style: TextStyle(color: Colors.redAccent, fontSize: 20, fontWeight: FontWeight.w500),),
+                        onTap: (){
 
-                    ],
-                  ),
+                        },
+                      );
+                    },
+                    separatorBuilder: (context, index){
+                      return Divider();
+                    },
+                    itemCount: cart.length,
+                    shrinkWrap: true,
+                  )
                 ),
               ),
               //CustomBtn(text: "Check Out", onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (_)=>PaymentScreen()));},)

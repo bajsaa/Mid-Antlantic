@@ -123,6 +123,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+  flutter_redux:
+    dependency: "direct main"
+    description:
+      name: flutter_redux
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.7.0"
   flutter_spinkit:
     dependency: "direct main"
     description:
@@ -322,6 +329,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.3.2+2"
+  redux:
+    dependency: "direct main"
+    description:
+      name: redux
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.0+3"
+  redux_thunk:
+    dependency: "direct main"
+    description:
+      name: redux_thunk
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.0"
   responsive_framework:
     dependency: "direct main"
     description:
@@ -330,7 +351,7 @@ packages:
     source: hosted
     version: "0.0.14"
   shared_preferences:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: shared_preferences
       url: "https://pub.dartlang.org"

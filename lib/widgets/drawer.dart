@@ -154,7 +154,7 @@ var orientation = MediaQuery.of(context).orientation;
                     leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
                     title: GestureDetector(
                       onTap: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>FirstScreen()));
+                       // Navigator.of(context).push(MaterialPageRoute(builder: (_)=>FirstScreen()));
                       },
                         child: Text("Select A Drug Test", style: Constants.regularDarkText)
                     ),

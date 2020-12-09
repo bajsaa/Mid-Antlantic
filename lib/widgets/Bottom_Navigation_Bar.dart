@@ -34,7 +34,7 @@ class MyBottomNavBar extends StatelessWidget{
         BottomNavigationBarItem(
             icon: GestureDetector(
                 onTap: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_)=>FirstScreen()));
+                  //Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ProductScreen()));
                 },
                 child: Image.asset(imageIcon1, height:4.46428 * SizeConfig.heightMultiplier, width: 9.66183 * SizeConfig.widthMultiplier)),
             label: "Test"
