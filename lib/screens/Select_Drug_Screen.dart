@@ -116,9 +116,7 @@ import '../test_model.dart';
 
 
 class FirstScreen extends StatelessWidget {
-  final ValueSetter<ProductModel> _valueSetter;
 
-  FirstScreen(this._valueSetter);
 
 
   List<ProductModel> tests = [
@@ -135,7 +133,7 @@ class FirstScreen extends StatelessWidget {
     ProductModel("5 Panel + exp Opiates", 150.00),
   ];
 
-  List<ProductModel> cart = [];
+
 
 
   @override
@@ -178,52 +176,176 @@ class FirstScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing: Container(
-                width: 60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      onTap: (){
-                        _valueSetter(tests[0]);
-                      },
-                      child: Icon(Icons.add_shopping_cart, color: Colors.black54,),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          showDialog(context: context, builder: (context) {
-                            return Container(
-                              padding: EdgeInsets.only(
-                                  top: 20.32142 * SizeConfig.heightMultiplier,
-                                  bottom: 13.32142 * SizeConfig.heightMultiplier,
-                                  left: 20,
-                                  right: 20),
-                              child: AlertDialog(
+              trailing: GestureDetector(
+                  onTap: () {
+                    showDialog(context: context, builder: (context) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        width: MediaQuery.of(context).size.width,
 
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)
-                                ),
-                                title: Text("DOT Drug Panel(CDL Drivers)",
-                                  textAlign: TextAlign.center,),
-                                content: SingleChildScrollView(child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")),
-                                actions: [
-                                  FlatButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text("Close",
-                                        style: TextStyle(color: Colors.black),))
-                                ],
-                              ),
-                            );
-                          }
-                          );
-                        },
-                        child: Icon(Icons.help, color: Colors.blueAccent,)
-                    ),
-                  ],
-                ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: AlertDialog(
+                              scrollable: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)
+                            ),
+                            title: Text("DOT Drug Panel(CDL Drivers)",
+                              textAlign: TextAlign.center,),
+                            content: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                                child: DataTable(
+                                columnSpacing: 8.0,
+                                  columns: [
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 29.55458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text("DRUG CLASS",
+                                            style: Constants.regularHeading
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("INITIAL TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY METHOD",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    )
+
+                                  ],
+                                  rows: [
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "AMPHETAMINES",
+                                              child: Text("AMPHETAMINES",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("1000 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "Amphetamine",
+                                              child: Text("Amphetamine",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("500 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("MS",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+
+                                  ],
+                                )),
+                            actions: [
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("Close",
+                                    style: TextStyle(color: Colors.black),))
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                    );
+                  },
+                  child: Icon(Icons.help, color: Colors.blueAccent,)
               ),
 
             ),
@@ -233,7 +355,7 @@ class FirstScreen extends StatelessWidget {
                 "${tests[1].name}", style: Constants.regularDarkText,),
               subtitle: GestureDetector(
                 onTap: () {
-                  _valueSetter(tests[1]);
+
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => NonDotRegistration()));
                 },
@@ -253,50 +375,176 @@ class FirstScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing:  Container(
-                width: 60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      onTap: (){},
-                      child: Icon(Icons.add_shopping_cart, color: Colors.black54,),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          showDialog(context: context, builder: (context) {
-                            return Container(
-                              padding: EdgeInsets.only(
-                                  top: 20.32142 * SizeConfig.heightMultiplier,
-                                  bottom: 13.32142 * SizeConfig.heightMultiplier,
-                                  left: 20,
-                                  right: 20),
-                              child: AlertDialog(
+              trailing:  GestureDetector(
+                  onTap: () {
+                    showDialog(context: context, builder: (context) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        width: MediaQuery.of(context).size.width,
 
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)
-                                ),
-                                title: Text("DOT Drug Panel(CDL Drivers)",
-                                  textAlign: TextAlign.center,),
-                                content: SingleChildScrollView(child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")),
-                                actions: [
-                                  FlatButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text("Close",
-                                        style: TextStyle(color: Colors.black),))
-                                ],
-                              ),
-                            );
-                          }
-                          );
-                        },
-                        child: Icon(Icons.help, color: Colors.blueAccent,)
-                    ),
-                  ],
-                ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: AlertDialog(
+                            scrollable: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)
+                            ),
+                            title: Text("DOT Drug Panel(CDL Drivers)",
+                              textAlign: TextAlign.center,),
+                            content: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: DataTable(
+                                  columnSpacing: 8.0,
+                                  columns: [
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 29.55458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text("DRUG CLASS",
+                                            style: Constants.regularHeading
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("INITIAL TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY METHOD",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    )
+
+                                  ],
+                                  rows: [
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "AMPHETAMINES",
+                                              child: Text("AMPHETAMINES",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("1000 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "Amphetamine",
+                                              child: Text("Amphetamine",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("500 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("MS",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+
+                                  ],
+                                )),
+                            actions: [
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("Close",
+                                    style: TextStyle(color: Colors.black),))
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                    );
+                  },
+                  child: Icon(Icons.help, color: Colors.blueAccent,)
               ),
             ),
             ListTile(
@@ -305,7 +553,7 @@ class FirstScreen extends StatelessWidget {
                 "${tests[2].name}", style: Constants.regularDarkText,),
               subtitle: GestureDetector(
                 onTap: () {
-                  _valueSetter(tests[2]);
+
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => NonDotRegistration()));
                 },
@@ -325,50 +573,176 @@ class FirstScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing: Container(
-                width: 60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      onTap: (){},
-                      child: Icon(Icons.add_shopping_cart, color: Colors.black54,),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          showDialog(context: context, builder: (context) {
-                            return Container(
-                              padding: EdgeInsets.only(
-                                  top: 20.32142 * SizeConfig.heightMultiplier,
-                                  bottom: 13.32142 * SizeConfig.heightMultiplier,
-                                  left: 20,
-                                  right: 20),
-                              child: AlertDialog(
+              trailing: GestureDetector(
+                  onTap: () {
+                    showDialog(context: context, builder: (context) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        width: MediaQuery.of(context).size.width,
 
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)
-                                ),
-                                title: Text("DOT Drug Panel(CDL Drivers)",
-                                  textAlign: TextAlign.center,),
-                                content: SingleChildScrollView(child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")),
-                                actions: [
-                                  FlatButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text("Close",
-                                        style: TextStyle(color: Colors.black),))
-                                ],
-                              ),
-                            );
-                          }
-                          );
-                        },
-                        child: Icon(Icons.help, color: Colors.blueAccent,)
-                    ),
-                  ],
-                ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: AlertDialog(
+                            scrollable: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)
+                            ),
+                            title: Text("DOT Drug Panel(CDL Drivers)",
+                              textAlign: TextAlign.center,),
+                            content: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: DataTable(
+                                  columnSpacing: 8.0,
+                                  columns: [
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 29.55458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text("DRUG CLASS",
+                                            style: Constants.regularHeading
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("INITIAL TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY METHOD",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    )
+
+                                  ],
+                                  rows: [
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "AMPHETAMINES",
+                                              child: Text("AMPHETAMINES",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("1000 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "Amphetamine",
+                                              child: Text("Amphetamine",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("500 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("MS",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+
+                                  ],
+                                )),
+                            actions: [
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("Close",
+                                    style: TextStyle(color: Colors.black),))
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                    );
+                  },
+                  child: Icon(Icons.help, color: Colors.blueAccent,)
               ),
             ),
             ListTile(
@@ -377,7 +751,7 @@ class FirstScreen extends StatelessWidget {
                 "${tests[3].name}", style: Constants.regularDarkText,),
               subtitle: GestureDetector(
                 onTap: () {
-                  _valueSetter(tests[3]);
+
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => NonDotRegistration()));
                 },
@@ -397,50 +771,176 @@ class FirstScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing:  Container(
-                width: 60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      onTap: (){},
-                      child: Icon(Icons.add_shopping_cart, color: Colors.black54,),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          showDialog(context: context, builder: (context) {
-                            return Container(
-                              padding: EdgeInsets.only(
-                                  top: 20.32142 * SizeConfig.heightMultiplier,
-                                  bottom: 13.32142 * SizeConfig.heightMultiplier,
-                                  left: 20,
-                                  right: 20),
-                              child: AlertDialog(
+              trailing:  GestureDetector(
+                  onTap: () {
+                    showDialog(context: context, builder: (context) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        width: MediaQuery.of(context).size.width,
 
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)
-                                ),
-                                title: Text("DOT Drug Panel(CDL Drivers)",
-                                  textAlign: TextAlign.center,),
-                                content: SingleChildScrollView(child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")),
-                                actions: [
-                                  FlatButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text("Close",
-                                        style: TextStyle(color: Colors.black),))
-                                ],
-                              ),
-                            );
-                          }
-                          );
-                        },
-                        child: Icon(Icons.help, color: Colors.blueAccent,)
-                    ),
-                  ],
-                ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: AlertDialog(
+                            scrollable: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)
+                            ),
+                            title: Text("DOT Drug Panel(CDL Drivers)",
+                              textAlign: TextAlign.center,),
+                            content: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: DataTable(
+                                  columnSpacing: 8.0,
+                                  columns: [
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 29.55458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text("DRUG CLASS",
+                                            style: Constants.regularHeading
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("INITIAL TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY METHOD",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    )
+
+                                  ],
+                                  rows: [
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "AMPHETAMINES",
+                                              child: Text("AMPHETAMINES",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("1000 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "Amphetamine",
+                                              child: Text("Amphetamine",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("500 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("MS",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+
+                                  ],
+                                )),
+                            actions: [
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("Close",
+                                    style: TextStyle(color: Colors.black),))
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                    );
+                  },
+                  child: Icon(Icons.help, color: Colors.blueAccent,)
               ),
             ),
             ListTile(
@@ -449,7 +949,7 @@ class FirstScreen extends StatelessWidget {
                 "${tests[4].name}", style: Constants.regularDarkText,),
               subtitle: GestureDetector(
                 onTap: () {
-                  _valueSetter(tests[4]);
+
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => NonDotRegistration()));
                 },
@@ -469,50 +969,176 @@ class FirstScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing:  Container(
-                width: 60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      onTap: (){},
-                      child: Icon(Icons.add_shopping_cart, color: Colors.black54,),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          showDialog(context: context, builder: (context) {
-                            return Container(
-                              padding: EdgeInsets.only(
-                                  top: 20.32142 * SizeConfig.heightMultiplier,
-                                  bottom: 13.32142 * SizeConfig.heightMultiplier,
-                                  left: 20,
-                                  right: 20),
-                              child: AlertDialog(
+              trailing:  GestureDetector(
+                  onTap: () {
+                    showDialog(context: context, builder: (context) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        width: MediaQuery.of(context).size.width,
 
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)
-                                ),
-                                title: Text("DOT Drug Panel(CDL Drivers)",
-                                  textAlign: TextAlign.center,),
-                                content: SingleChildScrollView(child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")),
-                                actions: [
-                                  FlatButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text("Close",
-                                        style: TextStyle(color: Colors.black),))
-                                ],
-                              ),
-                            );
-                          }
-                          );
-                        },
-                        child: Icon(Icons.help, color: Colors.blueAccent,)
-                    ),
-                  ],
-                ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: AlertDialog(
+                            scrollable: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)
+                            ),
+                            title: Text("DOT Drug Panel(CDL Drivers)",
+                              textAlign: TextAlign.center,),
+                            content: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: DataTable(
+                                  columnSpacing: 8.0,
+                                  columns: [
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 29.55458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text("DRUG CLASS",
+                                            style: Constants.regularHeading
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("INITIAL TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY METHOD",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    )
+
+                                  ],
+                                  rows: [
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "AMPHETAMINES",
+                                              child: Text("AMPHETAMINES",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("1000 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "Amphetamine",
+                                              child: Text("Amphetamine",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("500 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("MS",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+
+                                  ],
+                                )),
+                            actions: [
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("Close",
+                                    style: TextStyle(color: Colors.black),))
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                    );
+                  },
+                  child: Icon(Icons.help, color: Colors.blueAccent,)
               ),
             ),
             ListTile(
@@ -521,7 +1147,7 @@ class FirstScreen extends StatelessWidget {
                 "${tests[5].name}", style: Constants.regularDarkText,),
               subtitle: GestureDetector(
                 onTap: () {
-                  _valueSetter(tests[5]);
+
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => NonDotRegistration()));
                 },
@@ -541,50 +1167,176 @@ class FirstScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing:  Container(
-                width: 60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      onTap: (){},
-                      child: Icon(Icons.add_shopping_cart, color: Colors.black54,),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          showDialog(context: context, builder: (context) {
-                            return Container(
-                              padding: EdgeInsets.only(
-                                  top: 20.32142 * SizeConfig.heightMultiplier,
-                                  bottom: 13.32142 * SizeConfig.heightMultiplier,
-                                  left: 20,
-                                  right: 20),
-                              child: AlertDialog(
+              trailing:  GestureDetector(
+                  onTap: () {
+                    showDialog(context: context, builder: (context) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        width: MediaQuery.of(context).size.width,
 
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)
-                                ),
-                                title: Text("DOT Drug Panel(CDL Drivers)",
-                                  textAlign: TextAlign.center,),
-                                content: SingleChildScrollView(child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")),
-                                actions: [
-                                  FlatButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text("Close",
-                                        style: TextStyle(color: Colors.black),))
-                                ],
-                              ),
-                            );
-                          }
-                          );
-                        },
-                        child: Icon(Icons.help, color: Colors.blueAccent,)
-                    ),
-                  ],
-                ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: AlertDialog(
+                            scrollable: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)
+                            ),
+                            title: Text("DOT Drug Panel(CDL Drivers)",
+                              textAlign: TextAlign.center,),
+                            content: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: DataTable(
+                                  columnSpacing: 8.0,
+                                  columns: [
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 29.55458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text("DRUG CLASS",
+                                            style: Constants.regularHeading
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("INITIAL TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY METHOD",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    )
+
+                                  ],
+                                  rows: [
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "AMPHETAMINES",
+                                              child: Text("AMPHETAMINES",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("1000 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "Amphetamine",
+                                              child: Text("Amphetamine",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("500 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("MS",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+
+                                  ],
+                                )),
+                            actions: [
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("Close",
+                                    style: TextStyle(color: Colors.black),))
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                    );
+                  },
+                  child: Icon(Icons.help, color: Colors.blueAccent,)
               ),
             ),
             ListTile(
@@ -593,7 +1345,7 @@ class FirstScreen extends StatelessWidget {
                 "${tests[6].name}", style: Constants.regularDarkText,),
               subtitle: GestureDetector(
                 onTap: () {
-                  _valueSetter(tests[6]);
+
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => NonDotRegistration()));
                 },
@@ -613,50 +1365,176 @@ class FirstScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing:  Container(
-                width: 60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      onTap: (){},
-                      child: Icon(Icons.add_shopping_cart, color: Colors.black54,),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          showDialog(context: context, builder: (context) {
-                            return Container(
-                              padding: EdgeInsets.only(
-                                  top: 20.32142 * SizeConfig.heightMultiplier,
-                                  bottom: 13.32142 * SizeConfig.heightMultiplier,
-                                  left: 20,
-                                  right: 20),
-                              child: AlertDialog(
+              trailing: GestureDetector(
+                  onTap: () {
+                    showDialog(context: context, builder: (context) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        width: MediaQuery.of(context).size.width,
 
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)
-                                ),
-                                title: Text("DOT Drug Panel(CDL Drivers)",
-                                  textAlign: TextAlign.center,),
-                                content: SingleChildScrollView(child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")),
-                                actions: [
-                                  FlatButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text("Close",
-                                        style: TextStyle(color: Colors.black),))
-                                ],
-                              ),
-                            );
-                          }
-                          );
-                        },
-                        child: Icon(Icons.help, color: Colors.blueAccent,)
-                    ),
-                  ],
-                ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: AlertDialog(
+                            scrollable: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)
+                            ),
+                            title: Text("DOT Drug Panel(CDL Drivers)",
+                              textAlign: TextAlign.center,),
+                            content: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: DataTable(
+                                  columnSpacing: 8.0,
+                                  columns: [
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 29.55458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text("DRUG CLASS",
+                                            style: Constants.regularHeading
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("INITIAL TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY METHOD",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    )
+
+                                  ],
+                                  rows: [
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "AMPHETAMINES",
+                                              child: Text("AMPHETAMINES",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("1000 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "Amphetamine",
+                                              child: Text("Amphetamine",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("500 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("MS",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+
+                                  ],
+                                )),
+                            actions: [
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("Close",
+                                    style: TextStyle(color: Colors.black),))
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                    );
+                  },
+                  child: Icon(Icons.help, color: Colors.blueAccent,)
               ),
             ),
             ListTile(
@@ -665,7 +1543,7 @@ class FirstScreen extends StatelessWidget {
                 "${tests[7].name}", style: Constants.regularDarkText,),
               subtitle: GestureDetector(
                 onTap: () {
-                  _valueSetter(tests[7]);
+
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => NonDotRegistration()));
                 },
@@ -685,50 +1563,176 @@ class FirstScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing:  Container(
-                width: 60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      onTap: (){},
-                      child: Icon(Icons.add_shopping_cart, color: Colors.black54,),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          showDialog(context: context, builder: (context) {
-                            return Container(
-                              padding: EdgeInsets.only(
-                                  top: 20.32142 * SizeConfig.heightMultiplier,
-                                  bottom: 13.32142 * SizeConfig.heightMultiplier,
-                                  left: 20,
-                                  right: 20),
-                              child: AlertDialog(
+              trailing:  GestureDetector(
+                  onTap: () {
+                    showDialog(context: context, builder: (context) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        width: MediaQuery.of(context).size.width,
 
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)
-                                ),
-                                title: Text("DOT Drug Panel(CDL Drivers)",
-                                  textAlign: TextAlign.center,),
-                                content: SingleChildScrollView(child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")),
-                                actions: [
-                                  FlatButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text("Close",
-                                        style: TextStyle(color: Colors.black),))
-                                ],
-                              ),
-                            );
-                          }
-                          );
-                        },
-                        child: Icon(Icons.help, color: Colors.blueAccent,)
-                    ),
-                  ],
-                ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: AlertDialog(
+                            scrollable: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)
+                            ),
+                            title: Text("DOT Drug Panel(CDL Drivers)",
+                              textAlign: TextAlign.center,),
+                            content: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: DataTable(
+                                  columnSpacing: 8.0,
+                                  columns: [
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 29.55458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text("DRUG CLASS",
+                                            style: Constants.regularHeading
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("INITIAL TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY METHOD",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    )
+
+                                  ],
+                                  rows: [
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "AMPHETAMINES",
+                                              child: Text("AMPHETAMINES",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("1000 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "Amphetamine",
+                                              child: Text("Amphetamine",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("500 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("MS",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+
+                                  ],
+                                )),
+                            actions: [
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("Close",
+                                    style: TextStyle(color: Colors.black),))
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                    );
+                  },
+                  child: Icon(Icons.help, color: Colors.blueAccent,)
               ),
             ),
             ListTile(
@@ -737,7 +1741,7 @@ class FirstScreen extends StatelessWidget {
                 "${tests[8].name}", style: Constants.regularDarkText,),
               subtitle: GestureDetector(
                 onTap: () {
-                  _valueSetter(tests[8]);
+
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => NonDotRegistration()));
                 },
@@ -757,50 +1761,176 @@ class FirstScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing:  Container(
-                width: 60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      onTap: (){},
-                      child: Icon(Icons.add_shopping_cart, color: Colors.black54,),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          showDialog(context: context, builder: (context) {
-                            return Container(
-                              padding: EdgeInsets.only(
-                                  top: 20.32142 * SizeConfig.heightMultiplier,
-                                  bottom: 13.32142 * SizeConfig.heightMultiplier,
-                                  left: 20,
-                                  right: 20),
-                              child: AlertDialog(
+              trailing:  GestureDetector(
+                  onTap: () {
+                    showDialog(context: context, builder: (context) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        width: MediaQuery.of(context).size.width,
 
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)
-                                ),
-                                title: Text("DOT Drug Panel(CDL Drivers)",
-                                  textAlign: TextAlign.center,),
-                                content: SingleChildScrollView(child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")),
-                                actions: [
-                                  FlatButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text("Close",
-                                        style: TextStyle(color: Colors.black),))
-                                ],
-                              ),
-                            );
-                          }
-                          );
-                        },
-                        child: Icon(Icons.help, color: Colors.blueAccent,)
-                    ),
-                  ],
-                ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: AlertDialog(
+                            scrollable: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)
+                            ),
+                            title: Text("DOT Drug Panel(CDL Drivers)",
+                              textAlign: TextAlign.center,),
+                            content: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: DataTable(
+                                  columnSpacing: 8.0,
+                                  columns: [
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 29.55458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text("DRUG CLASS",
+                                            style: Constants.regularHeading
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("INITIAL TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY METHOD",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    )
+
+                                  ],
+                                  rows: [
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "AMPHETAMINES",
+                                              child: Text("AMPHETAMINES",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("1000 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "Amphetamine",
+                                              child: Text("Amphetamine",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("500 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("MS",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+
+                                  ],
+                                )),
+                            actions: [
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("Close",
+                                    style: TextStyle(color: Colors.black),))
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                    );
+                  },
+                  child: Icon(Icons.help, color: Colors.blueAccent,)
               ),
             ),
             ListTile(
@@ -809,7 +1939,7 @@ class FirstScreen extends StatelessWidget {
                 "${tests[9].name}", style: Constants.regularDarkText,),
               subtitle: GestureDetector(
                 onTap: () {
-                  _valueSetter(tests[9]);
+
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => NonDotRegistration()));
                 },
@@ -830,50 +1960,176 @@ class FirstScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing:  Container(
-                width: 60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      onTap: (){},
-                      child: Icon(Icons.add_shopping_cart, color: Colors.black54,),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          showDialog(context: context, builder: (context) {
-                            return Container(
-                              padding: EdgeInsets.only(
-                                  top: 20.32142 * SizeConfig.heightMultiplier,
-                                  bottom: 13.32142 * SizeConfig.heightMultiplier,
-                                  left: 20,
-                                  right: 20),
-                              child: AlertDialog(
+              trailing:  GestureDetector(
+                  onTap: () {
+                    showDialog(context: context, builder: (context) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        width: MediaQuery.of(context).size.width,
 
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)
-                                ),
-                                title: Text("DOT Drug Panel(CDL Drivers)",
-                                  textAlign: TextAlign.center,),
-                                content: SingleChildScrollView(child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")),
-                                actions: [
-                                  FlatButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text("Close",
-                                        style: TextStyle(color: Colors.black),))
-                                ],
-                              ),
-                            );
-                          }
-                          );
-                        },
-                        child: Icon(Icons.help, color: Colors.blueAccent,)
-                    ),
-                  ],
-                ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: AlertDialog(
+                            scrollable: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)
+                            ),
+                            title: Text("DOT Drug Panel(CDL Drivers)",
+                              textAlign: TextAlign.center,),
+                            content: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: DataTable(
+                                  columnSpacing: 8.0,
+                                  columns: [
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 29.55458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text("DRUG CLASS",
+                                            style: Constants.regularHeading
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("INITIAL TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY METHOD",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    )
+
+                                  ],
+                                  rows: [
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "AMPHETAMINES",
+                                              child: Text("AMPHETAMINES",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("1000 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "Amphetamine",
+                                              child: Text("Amphetamine",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("500 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("MS",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+
+                                  ],
+                                )),
+                            actions: [
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("Close",
+                                    style: TextStyle(color: Colors.black),))
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                    );
+                  },
+                  child: Icon(Icons.help, color: Colors.blueAccent,)
               ),
             ),
             ListTile(
@@ -882,7 +2138,7 @@ class FirstScreen extends StatelessWidget {
                 "${tests[10].name}", style: Constants.regularDarkText,),
               subtitle: GestureDetector(
                 onTap: () {
-                  _valueSetter(tests[10]);
+
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => NonDotRegistration()));
                 },
@@ -902,50 +2158,176 @@ class FirstScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing:  Container(
-                width: 60,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      onTap: (){},
-                      child: Icon(Icons.add_shopping_cart, color: Colors.black54,),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          showDialog(context: context, builder: (context) {
-                            return Container(
-                              padding: EdgeInsets.only(
-                                  top: 20.32142 * SizeConfig.heightMultiplier,
-                                  bottom: 13.32142 * SizeConfig.heightMultiplier,
-                                  left: 20,
-                                  right: 20),
-                              child: AlertDialog(
+              trailing:  GestureDetector(
+                  onTap: () {
+                    showDialog(context: context, builder: (context) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        width: MediaQuery.of(context).size.width,
 
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)
-                                ),
-                                title: Text("DOT Drug Panel(CDL Drivers)",
-                                  textAlign: TextAlign.center,),
-                                content: SingleChildScrollView(child: Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")),
-                                actions: [
-                                  FlatButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text("Close",
-                                        style: TextStyle(color: Colors.black),))
-                                ],
-                              ),
-                            );
-                          }
-                          );
-                        },
-                        child: Icon(Icons.help, color: Colors.blueAccent,)
-                    ),
-                  ],
-                ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: AlertDialog(
+                            scrollable: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)
+                            ),
+                            title: Text("DOT Drug Panel(CDL Drivers)",
+                              textAlign: TextAlign.center,),
+                            content: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: DataTable(
+                                  columnSpacing: 8.0,
+                                  columns: [
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 29.55458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>Text("DRUG CLASS",
+                                            style: Constants.regularHeading
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("INITIAL TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY TEST LEVEL",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    ),
+                                    DataColumn(
+                                      numeric: false,
+                                      label: Container(
+                                        //100
+                                        width: 24.15458 * SizeConfig.widthMultiplier,
+                                        child: ResponsiveBuilder(builder: (context, sizingInformation)=>FittedBox(
+                                          child: Text("CONFIRMATORY METHOD",
+                                              style: Constants.regularHeading
+                                          ),
+                                        ),),
+                                      ),
+                                    )
+
+                                  ],
+                                  rows: [
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "AMPHETAMINES",
+                                              child: Text("AMPHETAMINES",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("1000 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+                                    DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Tooltip(
+                                              message: "Amphetamine",
+                                              child: Text("Amphetamine",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,)),
+                                            ),
+
+
+
+
+                                          ),
+                                          DataCell(
+                                              Text("",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("500 ng/mL",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+                                          DataCell(
+                                              Text("MS",
+                                                  style: TextStyle(
+                                                    fontSize: 1.452  * SizeConfig.textMultiplier,
+                                                    fontFamily:"Poppins",
+                                                    color: Colors.black,))
+                                          ),
+
+
+                                        ]
+                                    ),
+
+                                  ],
+                                )),
+                            actions: [
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("Close",
+                                    style: TextStyle(color: Colors.black),))
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                    );
+                  },
+                  child: Icon(Icons.help, color: Colors.blueAccent,)
               ),
             ),
 

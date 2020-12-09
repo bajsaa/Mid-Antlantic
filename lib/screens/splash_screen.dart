@@ -48,15 +48,7 @@ double sum = 0;
                     text: "Drug Testing",
                     onPressed: (){
                       Navigator.push(context, MaterialPageRoute(builder: (_)=>
-                         FirstScreen((selectedProduct){
-                           setState(() {
-                             cart.add(selectedProduct);//update
-                             sum = 0;
-                             cart.forEach((item){
-                               sum = sum + item.price;
-                             });
-                           });
-                         })
+                         FirstScreen()
                       ));
                     },
                   ),

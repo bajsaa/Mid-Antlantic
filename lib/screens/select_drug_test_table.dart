@@ -498,7 +498,8 @@ class _DrugTestTableState extends State<DrugTestTable> {
                       child: Divider(color: Colors.white, thickness: 2,),
                     ),
 
-                    ResponsiveBuilder(builder: (context, sizingInformation)=>DataTable(
+                    ResponsiveBuilder(builder: (context, sizingInformation)=>
+                        DataTable(
                       columnSpacing:  0.24154 * SizeConfig.widthMultiplier,
                       columns: <DataColumn> [
 

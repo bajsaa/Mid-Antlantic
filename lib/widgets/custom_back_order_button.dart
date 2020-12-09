@@ -1,5 +1,6 @@
 import 'package:mid_antlantic/constants.dart';
 import 'package:mid_antlantic/screens/add_location.dart';
+import 'package:mid_antlantic/screens/payment_screen.dart';
 import 'package:mid_antlantic/screens/select_drug_test_table.dart';
 import 'package:mid_antlantic/size_config.dart';
 import 'package:flutter/cupertino.dart';
@@ -53,7 +54,7 @@ class CustomBackOrderDirectionBtn extends StatelessWidget {
           SizedBox(width: 3.9511 * SizeConfig.widthMultiplier,),
           GestureDetector(
             onTap: (){
-
+                Navigator.push(context, MaterialPageRoute(builder: (_)=>PaymentScreen()));
             },
             child:Container(
               padding: EdgeInsets.only(left: 1.273 * SizeConfig.widthMultiplier, right: 1.273 * SizeConfig.widthMultiplier, top: 1.5 * SizeConfig.heightMultiplier, bottom: 1.5 * SizeConfig.heightMultiplier),
