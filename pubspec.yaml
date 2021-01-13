@@ -33,15 +33,20 @@ dependencies:
   url_launcher: ^5.7.10
   device_preview:
   responsive_framework:
-  keyboard_visibility: any
+  page_transition:
   flutter_spinkit: "^4.1.2"
-  flutter_plugin_android_lifecycle: 1.0.3
+
   credit_card: any
   provider:
   flutter_redux: ^0.7.0
   redux: ^4.0.0+3
   redux_thunk: ^0.3.0
   shared_preferences: ^0.5.12+4
+  http:
+  pdf_flutter:
+
+  path_provider:
+  flutter_calendar_carousel:
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +69,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

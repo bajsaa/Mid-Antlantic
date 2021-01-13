@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mid_antlantic/constants.dart';
-import 'package:mid_antlantic/screens/Select_Drug_Screen.dart';
+import 'package:mid_antlantic/screens/TestListScreen.dart';
 import 'package:mid_antlantic/screens/splash_screen.dart';
-import 'package:mid_antlantic/widgets/customButton.dart';
+import 'package:page_transition/page_transition.dart';
+
+import '../size_config.dart';
 
 class ThankYouScreen extends StatefulWidget {
   @override
@@ -34,12 +36,27 @@ class _ThankYouScreenState extends State<ThankYouScreen> {
 
                 Text("Thank You", style: Constants.boldheading,),
 
-                CustomBtn(
-                  text: "Back to Home",
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (_)=>SplashScreen()));
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, PageTransition(child: SplashScreen(), type: PageTransitionType.rightToLeftWithFade));
+
                   },
-                )
+                  child: Container(
+                    height: 7.90 * SizeConfig.heightMultiplier,
+                    margin:
+                    EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
+                    decoration: BoxDecoration(
+                        color: Colors.black,
+                        border: Border.all(color: Colors.white, width: 1 * SizeConfig.widthMultiplier),
+                        borderRadius: BorderRadius.circular(30)),
+                    child: Center(
+                      child: Text(
+                        "Back to home",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
 
               ],
             ),

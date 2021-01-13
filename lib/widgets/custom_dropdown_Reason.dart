@@ -42,7 +42,7 @@ class _DropDownReasonState extends State<DropDownReason> {
       ),
       child: Center(
         child: DropdownButton(
-            hint: Text("Result",style: TextStyle(color: Colors.black.withOpacity(0.5)),),
+            hint: Text("Reason",style: TextStyle(color: Colors.black.withOpacity(0.5)),),
             dropdownColor:  Colors.white,
             style: TextStyle(color: Colors.black),
             value: _itemVal,

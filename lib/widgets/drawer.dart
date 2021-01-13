@@ -1,17 +1,20 @@
 
 
 import 'package:mid_antlantic/constants.dart';
+import 'package:mid_antlantic/screens/JoinaRandomForm.dart';
+import 'package:mid_antlantic/screens/PurchaseWorkplaceForm.dart';
+import 'package:mid_antlantic/screens/TestListScreen.dart';
 import 'package:mid_antlantic/screens/Zoom_call.dart';
-import 'package:mid_antlantic/screens/add_location.dart';
+import 'package:mid_antlantic/screens/FindLocation.dart';
 import 'package:mid_antlantic/screens/contact_us_screen.dart';
-import 'package:mid_antlantic/screens/dot_registration.dart';
-import 'package:mid_antlantic/screens/drug_test_helpLine.dart';
-import 'package:mid_antlantic/screens/edit_dot_registration_form.dart';
-import 'package:mid_antlantic/screens/edit_non_dot_registration_form.dart';
-import 'package:mid_antlantic/screens/Select_Drug_Screen.dart';
-import 'package:mid_antlantic/screens/not_dot_regtistration.dart';
-import 'package:mid_antlantic/screens/schedule_test_date.dart';
-import 'package:mid_antlantic/screens/select_drug_test_table.dart';
+
+import 'package:mid_antlantic/screens/drugAddictionHelpline.dart';
+import 'package:mid_antlantic/screens/editDotForm.dart';
+import 'package:mid_antlantic/screens/editNonDotForm.dart';
+
+import 'package:mid_antlantic/screens/registerCompanyForm.dart';
+import 'package:mid_antlantic/screens/selectDate.dart';
+
 import 'package:mid_antlantic/screens/sucide_helpline.dart';
 import 'package:mid_antlantic/screens/test_history.dart';
 import 'package:mid_antlantic/size_config.dart';
@@ -35,16 +38,7 @@ var orientation = MediaQuery.of(context).orientation;
 
       child: Container(
         width: orientation == Orientation.portrait ? 250 : 100,
-        // decoration: BoxDecoration(
-        //     gradient: LinearGradient(
-        //         colors: [
-        //           Color(0XFF3D9798),
-        //           Color(0XFF2E7FC0)],
-        //
-        //         begin: Alignment(0, 0),
-        //         end: Alignment(0, 1)
-        //     )
-        // ),
+
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: ListView(
@@ -74,9 +68,25 @@ var orientation = MediaQuery.of(context).orientation;
                     leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
                     title: GestureDetector(
                         onTap: (){
-                          Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ScheduleTestDate()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (_)=>TestListScreen()));
                         },
-                        child: Text("Schedule a Test", style: Constants.regularDarkText)),
+                        child: Text("Schedule a new Test", style: Constants.regularDarkText)),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
+                    title: GestureDetector(
+                        onTap: (){
+                          //Navigator.of(context).push(MaterialPageRoute(builder: (_)=>TestHistory()));
+                        },
+                        child: Text("Cancel Test", style: Constants.regularDarkText)),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
+                    title: GestureDetector(
+                        onTap: (){
+                          //Navigator.of(context).push(MaterialPageRoute(builder: (_)=>TestHistory()));
+                        },
+                        child: Text("Reschedule an open order", style: Constants.regularDarkText)),
                   ),
 
                   ListTile(
@@ -85,7 +95,7 @@ var orientation = MediaQuery.of(context).orientation;
                           onTap: (){
                             Navigator.of(context).push(MaterialPageRoute(builder: (_)=>TestHistory()));
                           },
-                          child: Text("Test History", style: Constants.regularDarkText)),
+                          child: Text("View Test History", style: Constants.regularDarkText)),
                   ),
 
                   ExpansionTile(
@@ -97,30 +107,29 @@ var orientation = MediaQuery.of(context).orientation;
                         onTap: (){
                           Navigator.of(context).push(MaterialPageRoute(builder: (_)=>EditDotRegistrationForm()));
                         },
-                        child: ListTile(
-                          leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
-                          title: Text("D.O.T Profile", style: Constants.regularDarkText),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left:50),
+                          child: ListTile(
+                           // leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
+                            title: Text("D.O.T Profile", style: Constants.regularDarkText),
+                          ),
                         ),
                       ),
                       GestureDetector(
                         onTap: (){
                           Navigator.of(context).push(MaterialPageRoute(builder: (_)=>EditNonDotRegistration()));
                         },
-                        child: ListTile(
-                          leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
-                          title: Text("Non D.O.T Profile", style: Constants.regularDarkText),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left:50),
+                          child: ListTile(
+                           // leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
+                            title: Text("Non D.O.T Profile", style: Constants.regularDarkText),
+                          ),
                         ),
                       )
                     ],
                   ),
-                  ListTile(
-                    leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
-                    title: GestureDetector(
-                        onTap: (){
-                          //Navigator.of(context).push(MaterialPageRoute(builder: (_)=>TestHistory()));
-                        },
-                        child: Text("Cancel Test", style: Constants.regularDarkText)),
-                  ),
+
                 ],
               ),
 
@@ -134,7 +143,7 @@ var orientation = MediaQuery.of(context).orientation;
                 children: [
                   GestureDetector(
                     onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (_)=>DotRegistration()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_)=>RegisterCompanyForm()));
                     },
                     child: ListTile(
                       leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
@@ -143,7 +152,7 @@ var orientation = MediaQuery.of(context).orientation;
                   ),
                   GestureDetector(
                     onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (_)=>NonDotRegistration()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_)=>JoinRandomForm()));
                     },
                     child: ListTile(
                       leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
@@ -154,9 +163,9 @@ var orientation = MediaQuery.of(context).orientation;
                     leading: Icon(Icons.subdirectory_arrow_right, color: Colors.black),
                     title: GestureDetector(
                       onTap: (){
-                       // Navigator.of(context).push(MaterialPageRoute(builder: (_)=>FirstScreen()));
+                       Navigator.of(context).push(MaterialPageRoute(builder: (_)=>PurchaseDrugFreeForm()));
                       },
-                        child: Text("Select A Drug Test", style: Constants.regularDarkText)
+                        child: Text("Purchase a DrugFree Workplace Policy", style: Constants.regularDarkText)
                     ),
                   ),
                 ],
