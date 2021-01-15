@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mid_antlantic/screens/FindLocation.dart';
 import 'package:mid_antlantic/screens/TestListScreen.dart';
+import 'package:mid_antlantic/screens/profileScreen.dart';
 import 'package:mid_antlantic/screens/test_history.dart';
 import 'package:mid_antlantic/widgets/colors.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';
@@ -15,11 +17,19 @@ class ZoomCallHelpers with ChangeNotifier{
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController commentController = TextEditingController();
-  Widget zoomCallAppBar(){
+  Widget zoomCallAppBar(BuildContext context){
     return AppBar(
       centerTitle: true,
       backgroundColor: constantColors.whiteColor,
       title: Text("Contact Us", style: Constants.boldheading),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.person),
+          color: Colors.black,
+          onPressed: (){
+            Navigator.push(context, PageTransition(child: ProfileScreen(), type: PageTransitionType.rightToLeft));
+          }, )
+      ],
     );
   }
 
@@ -100,7 +110,7 @@ class ZoomCallHelpers with ChangeNotifier{
                       // },
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
-                          hintText: "Name",
+                          hintText: "Phone",
                           hintStyle: TextStyle(color: Colors.black38) ,
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 30, vertical: 10),

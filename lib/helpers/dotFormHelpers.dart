@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:mid_antlantic/helpers/profileScreenHelpers.dart';
 import 'package:mid_antlantic/screens/FindLocation.dart';
 import 'package:mid_antlantic/screens/TestListScreen.dart';
+import 'package:mid_antlantic/screens/profileScreen.dart';
 import 'package:mid_antlantic/screens/test_history.dart';
 import 'package:mid_antlantic/widgets/colors.dart';
 import 'package:mid_antlantic/widgets/custom_dropdown_Observation.dart';
 import 'package:mid_antlantic/widgets/custom_dropdown_Reason.dart';
 import 'package:mid_antlantic/widgets/custom_dropdown_dot_agency.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 import '../constants.dart';
 import '../size_config.dart';
@@ -33,6 +37,14 @@ class DotFormHelpers with ChangeNotifier{
       centerTitle: true,
       backgroundColor: constantColors.whiteColor,
       title: Text("D.O.T", style: Constants.boldheading),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.person),
+          color: Colors.black,
+          onPressed: (){
+              Navigator.push(context, PageTransition(child: ProfileScreen(), type: PageTransitionType.rightToLeft));
+        }, )
+      ],
     );
   }
 
@@ -43,6 +55,17 @@ class DotFormHelpers with ChangeNotifier{
         //mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: SizedBox(height: 20,
+              child: Row(
+                children: [
+                  Image.asset("assets/images/lock.png"),
+                  Text("Secure & Private", style: Constants.regularDarkText,)
+                ],
+              ),),
+            ),
+            
             Container(
               child: Center(
                   child: Padding(

@@ -26,7 +26,7 @@ class _EditDotRegistrationFormState extends State<EditDotRegistrationForm> {
 
       body:Provider.of<EditDotFormHelpers>(context,listen: false).editDotFormBody(context) ,
 
-      bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
+     // bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
     );
   }
 }

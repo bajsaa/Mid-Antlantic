@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mid_antlantic/screens/profileScreen.dart';
 import 'package:mid_antlantic/widgets/colors.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';
@@ -8,11 +10,20 @@ import '../constants.dart';
 class DrugAddictionHelpers with ChangeNotifier{
   final ConstantColors constantColors = ConstantColors();
 
-  Widget drugAddictionAppBar(){
+  Widget drugAddictionAppBar(BuildContext context){
     return AppBar(
       centerTitle: true,
       backgroundColor: constantColors.whiteColor,
       title: Text("Drug Addiction Helpline", style: Constants.boldheading),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.person),
+          color: Colors.black,
+          onPressed: (){
+            Navigator.push(context, PageTransition(child: ProfileScreen(), type: PageTransitionType.rightToLeft));
+          }, )
+      ],
+
     );
   }
 

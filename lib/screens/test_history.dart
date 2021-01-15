@@ -19,9 +19,9 @@ class _TestHistoryState extends State<TestHistory> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: false,
-      appBar: Provider.of<TestHistoryHelpers>(context,listen: false).testHistoryAppbar(),
+      appBar: Provider.of<TestHistoryHelpers>(context,listen: false).testHistoryAppbar(context),
       body: Provider.of<TestHistoryHelpers>(context,listen: false).testHistoryBody(context),
-      bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
+    //  bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
     );
   }
 }

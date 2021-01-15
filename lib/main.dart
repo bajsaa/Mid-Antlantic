@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:mid_antlantic/helpers/SelectTestScreenHelpers.dart';
+import 'package:mid_antlantic/helpers/profileScreenHelpers.dart';
 import 'package:mid_antlantic/helpers/purchaseWorkplaceHelpers.dart';
 
 import 'package:mid_antlantic/size_config.dart';
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
                 ChangeNotifierProvider(create: (_)=>JoinRandomHelpers()),
                 ChangeNotifierProvider(create: (_)=>PurchaseWorkplaceHelpers()),
                 ChangeNotifierProvider(create: (_)=>BottomNavBar()),
+                ChangeNotifierProvider(create: (_)=>ProfileScreenHelpers()),
               ],
               child: MaterialApp(
                   builder: DevicePreview.appBuilder ,

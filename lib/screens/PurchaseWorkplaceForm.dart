@@ -15,11 +15,11 @@ class _PurchaseDrugFreeFormState extends State<PurchaseDrugFreeForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      extendBodyBehindAppBar: false,
-      appBar: Provider.of<PurchaseWorkplaceHelpers>(context,listen: false).purchaseWorkplaceAppBar(),
+      resizeToAvoidBottomInset: true,
+
+      appBar: Provider.of<PurchaseWorkplaceHelpers>(context,listen: false).purchaseWorkplaceAppBar(context),
       body: Provider.of<PurchaseWorkplaceHelpers>(context,listen: false).purchaseWorkplaceBody(context),
-      bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
+      //bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
     );
   }
 }

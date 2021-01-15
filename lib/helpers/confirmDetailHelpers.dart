@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mid_antlantic/screens/FindLocation.dart';
 import 'package:mid_antlantic/screens/TestListScreen.dart';
 import 'package:mid_antlantic/screens/payment_screen.dart';
+import 'package:mid_antlantic/screens/profileScreen.dart';
 import 'package:mid_antlantic/screens/test_history.dart';
 import 'package:mid_antlantic/widgets/colors.dart';
 import 'package:page_transition/page_transition.dart';
@@ -12,11 +13,19 @@ import '../size_config.dart';
 class ConfirmDetailHelpers with ChangeNotifier{
   final ConstantColors constantColors = ConstantColors();
 
-  Widget confirmDetailAppbar(){
+  Widget confirmDetailAppbar(BuildContext context){
     return AppBar(
       centerTitle: true,
       backgroundColor: constantColors.whiteColor,
       title: Text("Confirm Details", style: Constants.boldheading),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.person),
+          color: Colors.black,
+          onPressed: (){
+            Navigator.push(context, PageTransition(child: ProfileScreen(), type: PageTransitionType.rightToLeft));
+          }, )
+      ],
     );
   }
 

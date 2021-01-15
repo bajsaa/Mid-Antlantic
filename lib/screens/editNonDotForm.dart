@@ -21,7 +21,7 @@ class _EditNonDotRegistrationState extends State<EditNonDotRegistration> {
 
       body:Provider.of<EditNonDotFormHelpers>(context,listen: false).editNonDotFormBody(context) ,
 
-      bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
+      //bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
     );
   }
 }

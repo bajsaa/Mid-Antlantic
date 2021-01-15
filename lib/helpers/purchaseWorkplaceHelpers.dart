@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mid_antlantic/screens/TestListScreen.dart';
+import 'package:mid_antlantic/screens/profileScreen.dart';
 import 'package:mid_antlantic/widgets/colors.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -33,11 +34,19 @@ class PurchaseWorkplaceHelpers with ChangeNotifier{
   TextEditingController randomPoolController = TextEditingController();
   TextEditingController workPlacePolicyController = TextEditingController();
 
-  Widget purchaseWorkplaceAppBar(){
+  Widget purchaseWorkplaceAppBar(BuildContext context){
     return AppBar(
       centerTitle: true,
       backgroundColor: constantColors.whiteColor,
       title: Text("Join Random Selection", style: Constants.boldheading),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.person),
+          color: Colors.black,
+          onPressed: (){
+            Navigator.push(context, PageTransition(child: ProfileScreen(), type: PageTransitionType.rightToLeft));
+          }, )
+      ],
     );
   }
 

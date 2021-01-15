@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mid_antlantic/screens/FindLocation.dart';
 import 'package:mid_antlantic/screens/TestListScreen.dart';
+import 'package:mid_antlantic/screens/profileScreen.dart';
 import 'package:mid_antlantic/screens/test_history.dart';
 
 import '../size_config.dart';
@@ -47,7 +48,9 @@ class BottomNavBar with ChangeNotifier{
           ),
           BottomNavigationBarItem(
               icon: GestureDetector(
-                  onTap: (){},
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ProfileScreen()));
+                  },
                   child: Image.asset("assets/images/profileblack.png",  height:4.46428 * SizeConfig.heightMultiplier, width: 9.66183 * SizeConfig.widthMultiplier)),
               label: "Profile"
           ),

@@ -41,25 +41,31 @@ class _DropDownDotAgencyState extends State<DropDownDotAgency> {
           vertical: 10.0
       ),
       child: Center(
-        child: DropdownButton(
-          hint: Text("Dot Agency",style: TextStyle(color: Colors.black.withOpacity(0.5)),),
-          focusColor: Colors.white,
-          dropdownColor:  Colors.white,
-          style: TextStyle(color: Colors.black),
-          value: _itemVal,
-          onChanged: (value){
-              setState(() {
-            _itemVal = value;
-              });
-          },
-          items: _myItems
-              .map((value) {
-            return DropdownMenuItem(
-                value: value,
-                child: Text(value,style: TextStyle(fontSize: 16),)
-            );
-          }
-          ).toList()
+        child: Padding(
+          padding: const EdgeInsets.only(left: 30,right: 10),
+          child: DropdownButton(
+            isExpanded: true,
+            iconSize: 30,
+            hint: Text("Dot Agency",style: TextStyle(color: Colors.black.withOpacity(0.5)),),
+            focusColor: Colors.white,
+            dropdownColor:  Colors.white,
+            style: TextStyle(color: Colors.black),
+            value: _itemVal,
+            onChanged: (value){
+                setState(() {
+              _itemVal = value;
+                });
+            },
+            items: _myItems
+                .map((value) {
+              return DropdownMenuItem(
+
+                  value: value,
+                  child: Text(value,style: TextStyle(fontSize: 16),)
+              );
+            }
+            ).toList()
+          ),
         ),
       ),
     );

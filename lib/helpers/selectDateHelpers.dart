@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mid_antlantic/screens/FindLocation.dart';
 import 'package:mid_antlantic/screens/TestListScreen.dart';
 import 'package:mid_antlantic/screens/confirmDetailScreen.dart';
+import 'package:mid_antlantic/screens/profileScreen.dart';
 import 'package:mid_antlantic/screens/test_history.dart';
 import 'package:mid_antlantic/widgets/colors.dart';
 import 'package:page_transition/page_transition.dart';
@@ -21,11 +22,19 @@ class SelectDateHelpers with ChangeNotifier{
   CalendarController _calendarController = CalendarController();
 
 
-  Widget selectDateAppbar(){
+  Widget selectDateAppbar(BuildContext context){
     return AppBar(
       centerTitle: true,
       backgroundColor: constantColors.whiteColor,
       title: Text("Schedule Test Date", style: Constants.boldheading),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.person),
+          color: Colors.black,
+          onPressed: (){
+            Navigator.push(context, PageTransition(child: ProfileScreen(), type: PageTransitionType.rightToLeft));
+          }, )
+      ],
     );
   }
 

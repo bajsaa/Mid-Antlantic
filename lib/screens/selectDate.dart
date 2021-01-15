@@ -19,9 +19,9 @@ class _ScheduleTestDateState extends State<ScheduleTestDate> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
 
-      appBar: Provider.of<SelectDateHelpers>(context,listen: false).selectDateAppbar(),
+      appBar: Provider.of<SelectDateHelpers>(context,listen: false).selectDateAppbar(context),
       body: Provider.of<SelectDateHelpers>(context,listen: false).selectDateBody(context),
-      bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
+     // bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
     );
   }
 }

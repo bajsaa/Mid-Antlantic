@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mid_antlantic/screens/TestListScreen.dart';
+import 'package:mid_antlantic/screens/profileScreen.dart';
 import 'package:mid_antlantic/widgets/colors.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -33,11 +34,19 @@ class RegisterCompanyHelpers with ChangeNotifier{
   TextEditingController randomPoolController = TextEditingController();
   TextEditingController workPlacePolicyController = TextEditingController();
 
-  Widget registerCompanyAppBar(){
+  Widget registerCompanyAppBar(BuildContext context){
     return AppBar(
       centerTitle: true,
       backgroundColor: constantColors.whiteColor,
       title: Text("Register Your Company", style: Constants.boldheading),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.person),
+          color: Colors.black,
+          onPressed: (){
+            Navigator.push(context, PageTransition(child: ProfileScreen(), type: PageTransitionType.rightToLeft));
+          }, )
+      ],
     );
   }
 
@@ -47,8 +56,6 @@ class RegisterCompanyHelpers with ChangeNotifier{
         //mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-
-
             Form(
               key: formKey,
               child: Column(
@@ -321,42 +328,42 @@ class RegisterCompanyHelpers with ChangeNotifier{
                           border: InputBorder.none),
                     ),
                   ),
-
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: (){
+                        if(companyNameController.text.isEmpty || primaryContactNameController.text.isEmpty || primaryContactEmailController.text.isEmpty || primaryContactPhoneController.text.isEmpty){
+                          validate();
+                        }else{
+                          Navigator.pushReplacement(context, PageTransition(child: TestListScreen(), type: PageTransitionType.bottomToTop));
+                        }
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(left: 1.273 * SizeConfig.widthMultiplier, right: 1.273 * SizeConfig.widthMultiplier, top: 1.5 * SizeConfig.heightMultiplier, bottom: 1.5 * SizeConfig.heightMultiplier),
+                        width: 36.231 * SizeConfig.widthMultiplier,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Colors.black
+                        ),
+                        child: Center(
+                          child: Text("Submit", style:TextStyle(
+                            //16
+                            fontSize: 1.7857 * SizeConfig.textMultiplier,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
 
 
                 ],
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(
-                onTap: (){
-                  if(companyNameController.text.isEmpty || primaryContactNameController.text.isEmpty || primaryContactEmailController.text.isEmpty || primaryContactPhoneController.text.isEmpty){
-                    validate();
-                  }else{
-                    Navigator.pushReplacement(context, PageTransition(child: TestListScreen(), type: PageTransitionType.bottomToTop));
-                  }
-                },
-                child: Container(
-                  padding: EdgeInsets.only(left: 1.273 * SizeConfig.widthMultiplier, right: 1.273 * SizeConfig.widthMultiplier, top: 1.5 * SizeConfig.heightMultiplier, bottom: 1.5 * SizeConfig.heightMultiplier),
-                  width: 36.231 * SizeConfig.widthMultiplier,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.black
-                  ),
-                  child: Center(
-                    child: Text("Submit", style:TextStyle(
-                      //16
-                      fontSize: 1.7857 * SizeConfig.textMultiplier,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+
           ]),
     );
   }

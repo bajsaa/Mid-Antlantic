@@ -13,6 +13,8 @@ import 'package:flutter/material.dart';
 
 import 'package:page_transition/page_transition.dart';
 
+import '../constants.dart';
+
 
 class PaymentScreen extends StatefulWidget {
   @override
@@ -36,6 +38,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
         child: Column(
 
           children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: SizedBox(height: 20,
+                child: Row(
+                  children: [
+                    Image.asset("assets/images/lock.png"),
+                    Text("Secure & Private", style: Constants.regularDarkText,)
+                  ],
+                ),),
+            ),
             CreditCardWidget(
                 cardNumber: cardNumber,
                 expiryDate: expiryDate,

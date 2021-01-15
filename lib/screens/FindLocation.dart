@@ -17,9 +17,9 @@ class _FindLocationState extends State<FindLocation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Provider.of<FindLocationHelpers>(context,listen: false).findLocationAppbar(),
+      appBar: Provider.of<FindLocationHelpers>(context,listen: false).findLocationAppbar(context),
       body: Provider.of<FindLocationHelpers>(context,listen: false).findLocationBody(context),
-      bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
+     // bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
     );
   }
 }

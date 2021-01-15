@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mid_antlantic/screens/FindLocation.dart';
 import 'package:mid_antlantic/screens/TestListScreen.dart';
+import 'package:mid_antlantic/screens/profileScreen.dart';
 import 'package:mid_antlantic/screens/test_history.dart';
 import 'package:mid_antlantic/widgets/colors.dart';
 import 'package:mid_antlantic/widgets/custom_dropdown_Observation.dart';
 import 'package:mid_antlantic/widgets/custom_dropdown_Reason.dart';
 import 'package:mid_antlantic/widgets/custom_dropdown_dot_agency.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../constants.dart';
 import '../size_config.dart';
@@ -32,6 +34,14 @@ class EditDotFormHelpers with ChangeNotifier {
       centerTitle: true,
       backgroundColor: constantColors.whiteColor,
       title: Text("Edit D.O.T", style: Constants.boldheading),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.person),
+          color: Colors.black,
+          onPressed: (){
+            Navigator.push(context, PageTransition(child: ProfileScreen(), type: PageTransitionType.rightToLeft));
+          }, )
+      ],
     );
   }
 

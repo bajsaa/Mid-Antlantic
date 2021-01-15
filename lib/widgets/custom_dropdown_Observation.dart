@@ -15,7 +15,7 @@ class DropDownObservation extends StatefulWidget {
 class _DropDownObservationState extends State<DropDownObservation> {
 
   List _myItems = [
-    "YES", "NO"
+    "YES", "NO",
   ];
 
   String _itemVal;
@@ -41,24 +41,29 @@ class _DropDownObservationState extends State<DropDownObservation> {
           vertical: 10.0
       ),
       child: Center(
-        child: DropdownButton(
-            hint: Text("Observation",style: TextStyle(color: Colors.black.withOpacity(0.5)),),
-            dropdownColor: Colors.white,
-            style: TextStyle(color: Colors.black),
-            value: _itemVal,
-            onChanged: (value){
-              setState(() {
-                _itemVal = value;
-              });
-            },
-            items: _myItems
-                .map((value) {
-              return DropdownMenuItem(
-                  value: value,
-                  child: Text(value,style: TextStyle(fontSize: 16),)
-              );
-            }
-            ).toList()
+        child: Padding(
+          padding: const EdgeInsets.only(left:30.0, right: 10),
+          child: DropdownButton(
+            isExpanded: true,
+            iconSize: 30,
+              hint: Text("Observation",style: TextStyle(color: Colors.black.withOpacity(0.5)),),
+              dropdownColor: Colors.white,
+              style: TextStyle(color: Colors.black),
+              value: _itemVal,
+              onChanged: (value){
+                setState(() {
+                  _itemVal = value;
+                });
+              },
+              items: _myItems
+                  .map((value) {
+                return DropdownMenuItem(
+                    value: value,
+                    child: Text(value,style: TextStyle(fontSize: 16),)
+                );
+              }
+              ).toList()
+          ),
         ),
       ),
     );

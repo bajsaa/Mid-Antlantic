@@ -15,11 +15,11 @@ class _ZoomCallState extends State<ZoomCall> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Provider.of<ZoomCallHelpers>(context).zoomCallAppBar(),
+      appBar: Provider.of<ZoomCallHelpers>(context).zoomCallAppBar(context),
 
       body:Provider.of<ZoomCallHelpers>(context).zoomCallBody(context) ,
 
-      bottomNavigationBar:Provider.of<ZoomCallHelpers>(context).zoomCallBottomNavBar(context) ,
+     // bottomNavigationBar:Provider.of<ZoomCallHelpers>(context).zoomCallBottomNavBar(context) ,
     );
   }
 }

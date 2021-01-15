@@ -20,7 +20,7 @@ import 'package:provider/provider.dart';
 
        body:Provider.of<DotFormHelpers>(context,listen: false).dotFormBody(context) ,
 
-       bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
+      // bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
      );
    }
  }

@@ -16,9 +16,9 @@ class _DrugTestHelpLineState extends State<DrugTestHelpLine> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Provider.of<DrugAddictionHelpers>(context).drugAddictionAppBar(),
+      appBar: Provider.of<DrugAddictionHelpers>(context).drugAddictionAppBar(context),
 
-      body:Provider.of<DrugAddictionHelpers>(context).drugAddictionBody(context) ,
+      //body:Provider.of<DrugAddictionHelpers>(context).drugAddictionBody(context) ,
     );
   }
 }

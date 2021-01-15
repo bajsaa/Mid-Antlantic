@@ -16,11 +16,11 @@ class _JoinRandomFormState extends State<JoinRandomForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      extendBodyBehindAppBar: false,
-      appBar: Provider.of<JoinRandomHelpers>(context,listen: false).joinRandomAppBar(),
+      resizeToAvoidBottomInset: true,
+
+      appBar: Provider.of<JoinRandomHelpers>(context,listen: false).joinRandomAppBar(context),
       body: Provider.of<JoinRandomHelpers>(context,listen: false).joinRandomBody(context),
-      bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
+      //bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
     );
   }
 }

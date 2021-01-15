@@ -17,7 +17,7 @@ class _ConfirmDetailsState extends State<ConfirmDetails> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: false,
-      appBar: Provider.of<ConfirmDetailHelpers>(context,listen: false).confirmDetailAppbar(),
+      appBar: Provider.of<ConfirmDetailHelpers>(context,listen: false).confirmDetailAppbar(context),
       body: Provider.of<ConfirmDetailHelpers>(context,listen: false).confirmDetailBody(context),
     );
   }

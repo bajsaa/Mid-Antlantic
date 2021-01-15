@@ -27,7 +27,7 @@ class _NonDotFormScreenState extends State<NonDotFormScreen> {
       body:Provider.of<NonDotFormHelpers>(context,listen: false).dotFormBody(context) ,
 
 
-      bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
+      //bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
     );
   }
 }

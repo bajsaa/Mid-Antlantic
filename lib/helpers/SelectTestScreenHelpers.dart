@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mid_antlantic/screens/dotForm.dart';
 import 'package:mid_antlantic/screens/notDotForm.dart';
+import 'package:mid_antlantic/screens/profileScreen.dart';
 import 'package:mid_antlantic/widgets/colors.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -17,6 +18,14 @@ class SelectTestHelpers with ChangeNotifier{
       centerTitle: true,
       backgroundColor: constantColors.whiteColor,
       title: Text("Select Test", style:Constants.boldheading),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.person),
+          color: Colors.black,
+          onPressed: (){
+            Navigator.push(context, PageTransition(child: ProfileScreen(), type: PageTransitionType.rightToLeft));
+          }, )
+      ],
     );
 
   }
@@ -171,78 +180,78 @@ class SelectTestHelpers with ChangeNotifier{
           ),
           trailing:  GestureDetector(
               onTap: () {
-                showDialog(context: context, builder: (context) {
-                  return Container(
-                    height: MediaQuery.of(context).size.height * 0.8,
-                    width: MediaQuery.of(context).size.width,
-                    child: AlertDialog(
-                      scrollable: true,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)
-                      ),
-                      title: Text("DOT Drug Panel",
-                        textAlign: TextAlign.center,style: Constants.boldheading,),
-                      content: Column(
-                        children: [
-                          ListTile(
-                            title: Text("AMPHETAMINES",style: Constants.regularDarkText,),
-                            trailing: Text("100 ng/mL",style: Constants.regularDarkText,),
-                          ),
-                          ListTile(
-                            title: Text("Amphetamine",style: Constants.regularDarkText,),
-                            trailing: Text("500 ng/mL",style: Constants.regularDarkText,),
-                          ),
-                          ListTile(
-                            title: Text("Methamphetamine",style: Constants.regularDarkText,),
-                            trailing: Text("500 ng/mL",style: Constants.regularDarkText,),
-                          ),
-                          ListTile(
-                            title: Text("METHAMPHETAMINE",style: Constants.regularDarkText,),
-                            trailing: Text("500 ng/mL",style: Constants.regularDarkText,),
-                          ),
-                          ListTile(
-                            title: Text("COCAINE METABOLITES",style: Constants.regularDarkText,),
-                            trailing: Text("150 ng/mL",style: Constants.regularDarkText,),
-                          ),
-                          ListTile(
-                            title: Text("MARIJUANA METABOLITES",style: Constants.regularDarkText,),
-                            trailing: Text("15ng/mL",style: Constants.regularDarkText,),
-                          ),
-                          ListTile(
-                            title: Text("OPIATES",style: Constants.regularDarkText,),
-                            trailing: Text("2000 ng/mL",style: Constants.regularDarkText,),
-                          ),
-
-                          ListTile(
-                            title: Text("CODEINE",style: Constants.regularDarkText,),
-                            trailing: Text("2000 ng/mL",style: Constants.regularDarkText,),
-                          ),
-                          ListTile(
-                            title: Text("MORPHINE",style: Constants.regularDarkText,),
-                            trailing: Text("2000 ng/mL",style: Constants.regularDarkText,),
-                          ),
-                          ListTile(
-                            title: Text("6-ACETYLMORPHINE",style: Constants.regularDarkText,),
-                            trailing: Text("10 ng/mL",style: Constants.regularDarkText,),
-                          ),
-                          ListTile(
-                            title: Text("PHENCYCLIDINE",style: Constants.regularDarkText,),
-                            trailing: Text("25 ng/mL",style: Constants.regularDarkText,),
-                          ),
-                        ],
-                      ),
-                      actions: [
-                        FlatButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text("Close",
-                              style: TextStyle(color: Colors.black),))
-                      ],
-                    ),
-                  );
-                }
-                );
+                // showDialog(context: context, builder: (context) {
+                //   return Container(
+                //     height: MediaQuery.of(context).size.height * 0.8,
+                //     width: MediaQuery.of(context).size.width,
+                //     child: AlertDialog(
+                //       scrollable: true,
+                //       shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(50)
+                //       ),
+                //       title: Text("DOT Drug Panel",
+                //         textAlign: TextAlign.center,style: Constants.boldheading,),
+                //       content: Column(
+                //         children: [
+                //           ListTile(
+                //             title: Text("AMPHETAMINES",style: Constants.regularDarkText,),
+                //             trailing: Text("100 ng/mL",style: Constants.regularDarkText,),
+                //           ),
+                //           ListTile(
+                //             title: Text("Amphetamine",style: Constants.regularDarkText,),
+                //             trailing: Text("500 ng/mL",style: Constants.regularDarkText,),
+                //           ),
+                //           ListTile(
+                //             title: Text("Methamphetamine",style: Constants.regularDarkText,),
+                //             trailing: Text("500 ng/mL",style: Constants.regularDarkText,),
+                //           ),
+                //           ListTile(
+                //             title: Text("METHAMPHETAMINE",style: Constants.regularDarkText,),
+                //             trailing: Text("500 ng/mL",style: Constants.regularDarkText,),
+                //           ),
+                //           ListTile(
+                //             title: Text("COCAINE METABOLITES",style: Constants.regularDarkText,),
+                //             trailing: Text("150 ng/mL",style: Constants.regularDarkText,),
+                //           ),
+                //           ListTile(
+                //             title: Text("MARIJUANA METABOLITES",style: Constants.regularDarkText,),
+                //             trailing: Text("15ng/mL",style: Constants.regularDarkText,),
+                //           ),
+                //           ListTile(
+                //             title: Text("OPIATES",style: Constants.regularDarkText,),
+                //             trailing: Text("2000 ng/mL",style: Constants.regularDarkText,),
+                //           ),
+                //
+                //           ListTile(
+                //             title: Text("CODEINE",style: Constants.regularDarkText,),
+                //             trailing: Text("2000 ng/mL",style: Constants.regularDarkText,),
+                //           ),
+                //           ListTile(
+                //             title: Text("MORPHINE",style: Constants.regularDarkText,),
+                //             trailing: Text("2000 ng/mL",style: Constants.regularDarkText,),
+                //           ),
+                //           ListTile(
+                //             title: Text("6-ACETYLMORPHINE",style: Constants.regularDarkText,),
+                //             trailing: Text("10 ng/mL",style: Constants.regularDarkText,),
+                //           ),
+                //           ListTile(
+                //             title: Text("PHENCYCLIDINE",style: Constants.regularDarkText,),
+                //             trailing: Text("25 ng/mL",style: Constants.regularDarkText,),
+                //           ),
+                //         ],
+                //       ),
+                //       actions: [
+                //         FlatButton(
+                //             onPressed: () {
+                //               Navigator.pop(context);
+                //             },
+                //             child: Text("Close",
+                //               style: TextStyle(color: Colors.black),))
+                //       ],
+                //     ),
+                //   );
+                // }
+                // );
               },
               child: Padding(
                 padding: const EdgeInsets.only(top:25.0),
@@ -1261,154 +1270,154 @@ class SelectTestHelpers with ChangeNotifier{
                       content: Column(
                         children: [
                           ListTile(
-                            title: Text("AMPHETAMINES", style: Constants.boldheading),
-                            trailing: Text("1000 ng/mL", style: Constants.boldheading),
+                            title: Text("AMPHETAMINES", style: Constants.regularDarkText),
+                            trailing: Text("1000 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Amphetamine", style: Constants.boldheading),
-                            trailing: Text("500 ng/mL", style: Constants.boldheading),
+                            title: Text("Amphetamine", style: Constants.regularDarkText),
+                            trailing: Text("500 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Methamphetamine", style: Constants.boldheading),
-                            trailing: Text("500 ng/mL", style: Constants.boldheading),
+                            title: Text("Methamphetamine", style: Constants.regularDarkText),
+                            trailing: Text("500 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("BARBITURATES", style: Constants.boldheading),
-                            trailing: Text("300 ng/mL", style: Constants.boldheading),
+                            title: Text("BARBITURATES", style: Constants.regularDarkText),
+                            trailing: Text("300 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Amobarbital", style: Constants.boldheading),
-                            trailing: Text("200 ng/mL", style: Constants.boldheading),
+                            title: Text("Amobarbital", style: Constants.regularDarkText),
+                            trailing: Text("200 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Butalbital", style: Constants.boldheading),
-                            trailing: Text("200 ng/mL", style: Constants.boldheading),
+                            title: Text("Butalbital", style: Constants.regularDarkText),
+                            trailing: Text("200 ng/mL", style:Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Pentobarbital", style: Constants.boldheading),
-                            trailing: Text("200 ng/mL", style: Constants.boldheading),
+                            title: Text("Pentobarbital", style: Constants.regularDarkText),
+                            trailing: Text("200 ng/mL", style:Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Phenobarbital", style: Constants.boldheading),
-                            trailing: Text("200 ng/mL", style: Constants.boldheading),
+                            title: Text("Phenobarbital", style: Constants.regularDarkText),
+                            trailing: Text("200 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Secobarbital", style: Constants.boldheading),
-                            trailing: Text("200 ng/mL", style: Constants.boldheading),
+                            title: Text("Secobarbital", style: Constants.regularDarkText),
+                            trailing: Text("200 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("BENZODIAZEPINES", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
+                            title: Text("BENZODIAZEPINES", style: Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Alprazolam Metabolite", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
+                            title: Text("Alprazolam Metabolite", style: Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Clonazepam Metabolite", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
+                            title: Text("Clonazepam Metabolite", style:Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Flurazepam Metabolite", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
+                            title: Text("Flurazepam Metabolite", style: Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Flunitrazepam Metabolite", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
+                            title: Text("Flunitrazepam Metabolite", style: Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Lorzapam", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
+                            title: Text("Lorzapam", style: Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Midazolam Metabolite", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
+                            title: Text("Midazolam Metabolite", style:Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Nordiazepam", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
+                            title: Text("Nordiazepam", style: Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Oxazepam", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
+                            title: Text("Oxazepam", style: Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Temazepam", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
+                            title: Text("Temazepam", style: Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Triazolam Metabolite", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
+                            title: Text("Triazolam Metabolite", style: Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("COCAINE METABOLITES", style: Constants.boldheading),
-                            trailing: Text("300 ng/mL", style: Constants.boldheading),
+                            title: Text("COCAINE METABOLITES", style: Constants.regularDarkText),
+                            trailing: Text("300 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("MARIJUANA METABOLITES", style: Constants.boldheading),
-                            trailing: Text("15 ng/mL", style: Constants.boldheading),
+                            title: Text("MARIJUANA METABOLITES", style: Constants.regularDarkText),
+                            trailing: Text("15 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("METHADONE", style: Constants.boldheading),
-                            trailing: Text("200 ng/mL", style: Constants.boldheading),
+                            title: Text("METHADONE", style: Constants.regularDarkText),
+                            trailing: Text("200 ng/mL", style:Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("MDA-ANALOGUES", style: Constants.boldheading),
-                            trailing: Text("250g/mL", style: Constants.boldheading),
+                            title: Text("MDA-ANALOGUES", style: Constants.regularDarkText),
+                            trailing: Text("250g/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("MDA", style: Constants.boldheading),
-                            trailing: Text("200g/mL", style: Constants.boldheading),
+                            title: Text("MDA", style: Constants.regularDarkText),
+                            trailing: Text("200g/mL",style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("MDMA", style: Constants.boldheading),
-                            trailing: Text("200g/mL", style: Constants.boldheading),
+                            title: Text("MDMA", style: Constants.regularDarkText),
+                            trailing: Text("200g/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("MDEA", style: Constants.boldheading),
-                            trailing: Text("200g/mL", style: Constants.boldheading),
+                            title: Text("MDEA", style: Constants.regularDarkText),
+                            trailing: Text("200g/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("OPIATES", style: Constants.boldheading),
-                            trailing: Text("300 ng/mL", style: Constants.boldheading),
-                          ),
-
-                          ListTile(
-                            title: Text("Codeine", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
-                          ),
-                          ListTile(
-                            title: Text("Morphine", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
-                          ),
-                          ListTile(
-                            title: Text("Hydromorphone", style: Constants.boldheading),
-                            trailing: Text("300 ng/mL", style: Constants.boldheading),
-                          ),
-                          ListTile(
-                            title: Text("Hydrocodone", style: Constants.boldheading),
-                            trailing: Text("300 ng/mL", style: Constants.boldheading),
+                            title: Text("OPIATES", style: Constants.regularDarkText),
+                            trailing: Text("300 ng/mL", style: Constants.regularDarkText),
                           ),
 
                           ListTile(
-                            title: Text("OXYCODONES ", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
+                            title: Text("Codeine", style: Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Oxymorphone", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
+                            title: Text("Morphine", style: Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("Oxycodone", style: Constants.boldheading),
-                            trailing: Text("100 ng/mL", style: Constants.boldheading),
+                            title: Text("Hydromorphone", style:Constants.regularDarkText),
+                            trailing: Text("300 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("PHENCYCLIDINE", style: Constants.boldheading),
-                            trailing: Text("25 ng/mL", style: Constants.boldheading),
+                            title: Text("Hydrocodone", style: Constants.regularDarkText),
+                            trailing: Text("300 ng/mL", style: Constants.regularDarkText),
+                          ),
+
+                          ListTile(
+                            title: Text("OXYCODONES ", style: Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
                           ),
                           ListTile(
-                            title: Text("PROPOXYPHENE", style: Constants.boldheading),
-                            trailing: Text("200 ng/mL", style: Constants.boldheading),
+                            title: Text("Oxymorphone", style: Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
+                          ),
+                          ListTile(
+                            title: Text("Oxycodone", style: Constants.regularDarkText),
+                            trailing: Text("100 ng/mL", style: Constants.regularDarkText),
+                          ),
+                          ListTile(
+                            title: Text("PHENCYCLIDINE", style: Constants.regularDarkText),
+                            trailing: Text("25 ng/mL", style: Constants.regularDarkText),
+                          ),
+                          ListTile(
+                            title: Text("PROPOXYPHENE", style: Constants.regularDarkText),
+                            trailing: Text("200 ng/mL", style: Constants.regularDarkText),
                           ),
                         ],
                       ),
@@ -1455,7 +1464,7 @@ class SelectTestHelpers with ChangeNotifier{
               child: Padding(
                 padding: EdgeInsets.symmetric(
                     vertical: 0.613839 * SizeConfig.heightMultiplier),
-                child: Text("\$105.0}",
+                child: Text("\$105.0",
                   style: TextStyle(color: Colors.white, fontSize: 15),
                   textAlign: TextAlign.center,
                 ),
@@ -1588,7 +1597,7 @@ class SelectTestHelpers with ChangeNotifier{
               child: Padding(
                 padding: EdgeInsets.symmetric(
                     vertical: 0.613839 * SizeConfig.heightMultiplier),
-                child: Text("\$105.0}",
+                child: Text("\$105.0",
                   style: TextStyle(color: Colors.white, fontSize: 15),
                   textAlign: TextAlign.center,
                 ),

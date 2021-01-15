@@ -15,7 +15,7 @@ class _SucideHelpLineState extends State<SucideHelpLine> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Provider.of<SucideHelpers>(context).suicideAppBar(),
+      appBar: Provider.of<SucideHelpers>(context).suicideAppBar(context),
 
       body:Provider.of<SucideHelpers>(context).suicideBody(context) ,
     );

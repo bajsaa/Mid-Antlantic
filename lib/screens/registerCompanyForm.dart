@@ -14,11 +14,11 @@ class _RegisterCompanyFormState extends State<RegisterCompanyForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      extendBodyBehindAppBar: false,
-      appBar: Provider.of<RegisterCompanyHelpers>(context,listen: false).registerCompanyAppBar(),
+      resizeToAvoidBottomInset: true,
+
+      appBar: Provider.of<RegisterCompanyHelpers>(context,listen: false).registerCompanyAppBar(context),
       body: Provider.of<RegisterCompanyHelpers>(context,listen: false).registerCompanyBody(context),
-      bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
+     // bottomNavigationBar: Provider.of<BottomNavBar>(context,listen: false).customBottomNavBar(context),
     );
   }
 }
