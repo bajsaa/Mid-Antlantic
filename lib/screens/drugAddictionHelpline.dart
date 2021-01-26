@@ -18,7 +18,7 @@ class _DrugTestHelpLineState extends State<DrugTestHelpLine> {
     return Scaffold(
       appBar: Provider.of<DrugAddictionHelpers>(context).drugAddictionAppBar(context),
 
-      //body:Provider.of<DrugAddictionHelpers>(context).drugAddictionBody(context) ,
+      body:Provider.of<DrugAddictionHelpers>(context).drugAddictionBody(context) ,
     );
   }
 }

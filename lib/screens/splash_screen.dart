@@ -1,6 +1,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:mid_antlantic/screens/login_screen.dart';
+import 'package:mid_antlantic/screens/registerCompanyForm.dart';
 
 
 
@@ -42,7 +44,7 @@ double sum = 0;
               children: [
                 GestureDetector(
                   onTap: (){
-                    Navigator.pushReplacement(context, PageTransition(child: TestListScreen(), type:PageTransitionType.rightToLeftWithFade));
+                    Navigator.push(context, PageTransition(child: LoginPage(), type:PageTransitionType.rightToLeft));
                   },
                   child: Container(
                     margin: EdgeInsets.symmetric(
@@ -58,7 +60,7 @@ double sum = 0;
                     ),
                     child: Center(
                       child: Text(
-                        "Drug Testing",
+                        "Sign In",
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 2.107 * SizeConfig.textMultiplier,
@@ -69,8 +71,7 @@ double sum = 0;
                 ),
                 GestureDetector(
                   onTap: (){
-                    SnackBar snackBar = SnackBar(content: Text("Coming Soon"),duration: Duration(milliseconds: 2000),);
-                    Scaffold.of(context).showSnackBar(snackBar);
+                    Navigator.push(context, PageTransition(child: TestListScreen(), type:PageTransitionType.leftToRightWithFade));
                   },
                   child: Container(
                     margin: EdgeInsets.symmetric(
@@ -86,7 +87,7 @@ double sum = 0;
                     ),
                     child: Center(
                       child: Text(
-                        "Background Check",
+                        "Register Individual Account ",
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 2.107 * SizeConfig.textMultiplier,
@@ -97,8 +98,7 @@ double sum = 0;
                 ),
                 GestureDetector(
                   onTap: (){
-                    SnackBar snackBar = SnackBar(content: Text("Coming Soon"),duration: Duration(milliseconds: 2000),);
-                    Scaffold.of(context).showSnackBar(snackBar);
+                    Navigator.push(context, PageTransition(child: RegisterCompanyForm(), type:PageTransitionType.leftToRight));
                   },
                   child: Container(
                     margin: EdgeInsets.symmetric(
@@ -114,7 +114,7 @@ double sum = 0;
                     ),
                     child: Center(
                       child: Text(
-                        "DNA Testing",
+                        "Register Company",
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 2.107 * SizeConfig.textMultiplier,
@@ -122,7 +122,63 @@ double sum = 0;
                       ),
                     ),
                   ),
-                )
+                ),
+                // GestureDetector(
+                //   onTap: (){
+                //     SnackBar snackBar = SnackBar(content: Text("Coming Soon"),duration: Duration(milliseconds: 2000),);
+                //     Scaffold.of(context).showSnackBar(snackBar);
+                //   },
+                //   child: Container(
+                //     margin: EdgeInsets.symmetric(
+                //         horizontal: 6.111 * SizeConfig.widthMultiplier,
+                //         vertical: 1 * SizeConfig.heightMultiplier),
+                //     height: 7.90 * SizeConfig.heightMultiplier,
+                //     decoration: BoxDecoration(
+                //       borderRadius: BorderRadius.circular(30),
+                //       border: Border.all(
+                //           color: Colors.white,
+                //           width: 1 * SizeConfig.widthMultiplier),
+                //       color: Colors.black,
+                //     ),
+                //     child: Center(
+                //       child: Text(
+                //         "Background Check",
+                //         style: TextStyle(
+                //             fontWeight: FontWeight.w600,
+                //             fontSize: 2.107 * SizeConfig.textMultiplier,
+                //             color: Colors.white),
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                // GestureDetector(
+                //   onTap: (){
+                //     SnackBar snackBar = SnackBar(content: Text("Coming Soon"),duration: Duration(milliseconds: 2000),);
+                //     Scaffold.of(context).showSnackBar(snackBar);
+                //   },
+                //   child: Container(
+                //     margin: EdgeInsets.symmetric(
+                //         horizontal: 6.111 * SizeConfig.widthMultiplier,
+                //         vertical: 1 * SizeConfig.heightMultiplier),
+                //     height: 7.90 * SizeConfig.heightMultiplier,
+                //     decoration: BoxDecoration(
+                //       borderRadius: BorderRadius.circular(30),
+                //       border: Border.all(
+                //           color: Colors.white,
+                //           width: 1 * SizeConfig.widthMultiplier),
+                //       color: Colors.black,
+                //     ),
+                //     child: Center(
+                //       child: Text(
+                //         "DNA Testing",
+                //         style: TextStyle(
+                //             fontWeight: FontWeight.w600,
+                //             fontSize: 2.107 * SizeConfig.textMultiplier,
+                //             color: Colors.white),
+                //       ),
+                //     ),
+                //   ),
+                // )
               ],
             ),
 

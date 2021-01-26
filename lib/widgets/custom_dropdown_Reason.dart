@@ -1,6 +1,10 @@
-import 'package:mid_antlantic/constants.dart';
+
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:http/http.dart' as http;
+import 'package:mid_antlantic/utils/api.dart';
 
 
 class DropDownReason extends StatefulWidget {
@@ -14,11 +18,32 @@ class DropDownReason extends StatefulWidget {
 
 class _DropDownReasonState extends State<DropDownReason> {
 
-  List _myItems = [
-    "FOLLOW-UP", "OTHER", "POST-ACCIDENT", "PRE-EMPLOYMENT","RANDOM", "REASONABLE SUSPICION", "RETURN TO DUTY"
-  ];
+  // List _myItems = [
+  //   "FOLLOW-UP", "OTHER", "POST-ACCIDENT", "PRE-EMPLOYMENT","RANDOM", "REASONABLE SUSPICION", "RETURN TO DUTY"
+  // ];
 
   String _itemVal;
+  List dataList = List();
+  var mainUrl = Api.authUrl;
+  Map data;
+
+  Future getReason() async{
+    http.Response response = await http.get("$mainUrl/apis/get-dot-reason-list");
+    data = json.decode(response.body);
+    setState(() {
+      dataList = data["data"];
+    });
+
+  }
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getReason();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +80,11 @@ class _DropDownReasonState extends State<DropDownReason> {
                   _itemVal = value;
                 });
               },
-              items: _myItems
-                  .map((value) {
+              items: dataList
+                  .map((item) {
                 return DropdownMenuItem(
-                    value: value,
-                    child: Text(value,style: TextStyle(fontSize: 16),)
+                    value: item['id'].toString(),
+                    child: Text(item["name"],style: TextStyle(fontSize: 16),)
                 );
               }
               ).toList()

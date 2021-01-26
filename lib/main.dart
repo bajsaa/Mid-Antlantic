@@ -1,7 +1,9 @@
-import 'package:device_preview/device_preview.dart';
+
 import 'package:mid_antlantic/helpers/SelectTestScreenHelpers.dart';
+import 'package:mid_antlantic/helpers/createUserHelpers.dart';
 import 'package:mid_antlantic/helpers/profileScreenHelpers.dart';
 import 'package:mid_antlantic/helpers/purchaseWorkplaceHelpers.dart';
+
 
 import 'package:mid_antlantic/size_config.dart';
 import 'package:flutter/material.dart';
@@ -62,9 +64,10 @@ class MyApp extends StatelessWidget {
                 ChangeNotifierProvider(create: (_)=>PurchaseWorkplaceHelpers()),
                 ChangeNotifierProvider(create: (_)=>BottomNavBar()),
                 ChangeNotifierProvider(create: (_)=>ProfileScreenHelpers()),
+                ChangeNotifierProvider(create: (_)=>CreateUserHelpers()),
               ],
               child: MaterialApp(
-                  builder: DevicePreview.appBuilder ,
+
                   debugShowCheckedModeBanner: false,
                   title: 'Drug Testing App',
                   theme: ThemeData(

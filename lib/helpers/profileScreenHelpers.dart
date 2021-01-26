@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mid_antlantic/screens/login_screen.dart';
 import 'package:mid_antlantic/widgets/colors.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:provider/provider.dart';
+
 
 import '../constants.dart';
 

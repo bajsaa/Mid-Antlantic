@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mid_antlantic/helpers/joinRandomHelpers.dart';
-import 'package:mid_antlantic/widgets/BottomNavBar.dart';
+
 
 import 'package:provider/provider.dart';
 

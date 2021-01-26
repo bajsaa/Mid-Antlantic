@@ -38,7 +38,7 @@ class PurchaseWorkplaceHelpers with ChangeNotifier{
     return AppBar(
       centerTitle: true,
       backgroundColor: constantColors.whiteColor,
-      title: Text("Join Random Selection", style: Constants.boldheading),
+      title: Text("Join Random Selection", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.black)),
       actions: [
         IconButton(
           icon: Icon(Icons.person),
@@ -56,6 +56,16 @@ class PurchaseWorkplaceHelpers with ChangeNotifier{
         //mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: SizedBox(height: 20,
+                child: Row(
+                  children: [
+                    Image.asset("assets/images/lock.png"),
+                    Text("Secure & Private", style: Constants.regularDarkText,)
+                  ],
+                ),),
+            ),
 
 
             Form(

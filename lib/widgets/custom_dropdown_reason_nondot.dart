@@ -1,6 +1,9 @@
-import 'package:mid_antlantic/constants.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:http/http.dart' as http;
+import 'package:mid_antlantic/utils/api.dart';
+import 'dart:convert';
 
 
 class DropDownReasonNonDot extends StatefulWidget {
@@ -14,11 +17,33 @@ class DropDownReasonNonDot extends StatefulWidget {
 
 class _DropDownReasonNonDotState extends State<DropDownReasonNonDot> {
 
-  List _myItems = [
-    "ANNUAL", "AUDIOGRAM", "POST-ACCIDENT", "PRE-EMPLOYMENT","RANDOM", "REASONABLE SUSPICION", "RETURN TO DUTY", "BLIND SAMPLE", "COURT ORDERED", "FITNESS FOR DUTY", "FOLLOW UP", "JOB TRANSFER", "PERIODIC", "PERIODIC MEDICAL","POST RANDOM", "POST-ACCIDENT", "PRE-EMPLOYMENT", "PRE-SITE ACCESS", "PROMOTION", "RE-CERTFICATION", "SWEEP", "RETURN TO DUTY"
-  ];
+  // List _myItems = [
+  //   "ANNUAL", "AUDIOGRAM", "POST-ACCIDENT", "PRE-EMPLOYMENT","RANDOM", "REASONABLE SUSPICION", "RETURN TO DUTY", "BLIND SAMPLE", "COURT ORDERED", "FITNESS FOR DUTY", "FOLLOW UP", "JOB TRANSFER", "PERIODIC", "PERIODIC MEDICAL","POST RANDOM", "POST-ACCIDENT", "PRE-EMPLOYMENT", "PRE-SITE ACCESS", "PROMOTION", "RE-CERTFICATION", "SWEEP", "RETURN TO DUTY"
+  // ];
 
   String _itemVal;
+  List dataList = List();
+  var mainUrl = Api.authUrl;
+  Map data;
+
+
+  Future getReason() async{
+    http.Response response = await http.get("$mainUrl/apis/get-non-dot-reason-list");
+    data = json.decode(response.body);
+    setState(() {
+      dataList = data["data"];
+    });
+
+  }
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getReason();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -55,12 +80,12 @@ class _DropDownReasonNonDotState extends State<DropDownReasonNonDot> {
                   _itemVal = value;
                 });
               },
-              items: _myItems
-                  .map((value) {
+              items: dataList
+                  .map((item) {
                 return DropdownMenuItem(
 
-                    value: value,
-                    child: Text(value,style: TextStyle(fontSize: 16),)
+                    value: item['id'].toString(),
+                    child: Text(item["name"],style: TextStyle(fontSize: 16),)
                 );
               }
               ).toList()

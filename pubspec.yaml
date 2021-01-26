@@ -29,24 +29,24 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   google_fonts:
-  table_calendar: ^2.3.0
+
   url_launcher: ^5.7.10
-  device_preview:
-  responsive_framework:
+
+
   page_transition:
   flutter_spinkit: "^4.1.2"
-
   credit_card: any
   provider:
-  flutter_redux: ^0.7.0
-  redux: ^4.0.0+3
-  redux_thunk: ^0.3.0
-  shared_preferences: ^0.5.12+4
   http:
-  pdf_flutter:
+  intl:
+  json_annotation:
+  build_runner:
+  json_serializable:
+  dio:
 
-  path_provider:
-  flutter_calendar_carousel:
+
+
+
 
 dev_dependencies:
   flutter_test:

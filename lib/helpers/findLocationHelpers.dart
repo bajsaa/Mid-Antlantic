@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mid_antlantic/helpers/selectDateHelpers.dart';
 import 'package:mid_antlantic/screens/FindLocation.dart';
 import 'package:mid_antlantic/screens/TestListScreen.dart';
 import 'package:mid_antlantic/screens/profileScreen.dart';
-import 'package:mid_antlantic/screens/selectDate.dart';
+
 import 'package:mid_antlantic/screens/test_history.dart';
 import 'package:mid_antlantic/widgets/colors.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 import '../constants.dart';
 import '../size_config.dart';
@@ -101,7 +103,7 @@ class FindLocationHelpers with ChangeNotifier{
                       child: Text("Select", style: TextStyle(color: Colors.white),),
                       color: Colors.black,
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (_)=>ScheduleTestDate()));
+                       Provider.of<SelectDateHelpers>(context,listen: false).selectDateMethod(context);
                       },
                     )
 
@@ -117,7 +119,7 @@ class FindLocationHelpers with ChangeNotifier{
                       child: Text("Select", style: TextStyle(color: Colors.white),),
                       color: Colors.black,
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (_)=>ScheduleTestDate()));
+                        Provider.of<SelectDateHelpers>(context,listen: false).selectDateMethod(context);
                       },
                     )
                 ),
@@ -132,7 +134,7 @@ class FindLocationHelpers with ChangeNotifier{
                       child: Text("Select", style: TextStyle(color: Colors.white),),
                       color: Colors.black,
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (_)=>ScheduleTestDate()));
+                        Provider.of<SelectDateHelpers>(context,listen: false).selectDateMethod(context);
                       },
                     )
                 ),
@@ -147,7 +149,7 @@ class FindLocationHelpers with ChangeNotifier{
                       child: Text("Select", style: TextStyle(color: Colors.white),),
                       color: Colors.black,
                       onPressed: (){
-                         Navigator.push(context, MaterialPageRoute(builder: (_)=>ScheduleTestDate()));
+                        Provider.of<SelectDateHelpers>(context,listen: false).selectDateMethod(context);
                       },
                     )
                 ),
@@ -162,7 +164,7 @@ class FindLocationHelpers with ChangeNotifier{
                       child: Text("Select", style: TextStyle(color: Colors.white),),
                       color: Colors.black,
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (_)=>ScheduleTestDate()));
+                        Provider.of<SelectDateHelpers>(context,listen: false).selectDateMethod(context);
                       },
                     )
                 ),
@@ -177,7 +179,7 @@ class FindLocationHelpers with ChangeNotifier{
                       child: Text("Select", style: TextStyle(color: Colors.white),),
                       color: Colors.black,
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (_)=>ScheduleTestDate()));
+                        Provider.of<SelectDateHelpers>(context,listen: false).selectDateMethod(context);
                       },
                     )
                 ),
@@ -192,7 +194,7 @@ class FindLocationHelpers with ChangeNotifier{
                       child: Text("Select", style: TextStyle(color: Colors.white),),
                       color: Colors.black,
                       onPressed: (){
-                         Navigator.push(context, MaterialPageRoute(builder: (_)=>ScheduleTestDate()));
+                        Provider.of<SelectDateHelpers>(context,listen: false).selectDateMethod(context);
                       },
                     )
                 ),
@@ -207,7 +209,7 @@ class FindLocationHelpers with ChangeNotifier{
                       child: Text("Select", style: TextStyle(color: Colors.white),),
                       color: Colors.black,
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (_)=>ScheduleTestDate()));
+                        Provider.of<SelectDateHelpers>(context,listen: false).selectDateMethod(context);
                       },
                     )
                 ),
@@ -222,7 +224,7 @@ class FindLocationHelpers with ChangeNotifier{
                       child: Text("Select", style: TextStyle(color: Colors.white),),
                       color: Colors.black,
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (_)=>ScheduleTestDate()));
+                        Provider.of<SelectDateHelpers>(context,listen: false).selectDateMethod(context);
                       },
                     )
                 )

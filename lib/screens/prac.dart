@@ -1,68 +1,27 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:mid_antlantic/models/dotFormModel.dart';
-import 'package:mid_antlantic/screens/dotForm.dart';
-import 'package:mid_antlantic/screens/notDotForm.dart';
-import 'package:mid_antlantic/screens/profileScreen.dart';
-import 'package:mid_antlantic/utils/api.dart';
-import 'package:mid_antlantic/widgets/colors.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:http/http.dart' as http;
 
 import '../constants.dart';
 import '../size_config.dart';
+import 'dotForm.dart';
+import 'notDotForm.dart';
 
-
-class SelectTestHelpers with ChangeNotifier{
-  final ConstantColors constantColors = ConstantColors();
-
-
-  var mainUrl = Api.authUrl;
-
-
-
-Future getData() async{
-  http.Response response = await http.get("$mainUrl/apis/get-test-name-list");
-  debugPrint(response.body);
+class PRAC extends StatefulWidget {
+  @override
+  _PRACState createState() => _PRACState();
 }
 
-
-
-
-
-
-
-
-
-  Widget selectTestAppBar(BuildContext context){
-    return AppBar(
-      centerTitle: true,
-      backgroundColor: constantColors.whiteColor,
-      title: Text("Select Test", style:Constants.boldheading),
-      actions: [
-        IconButton(
-          icon: Icon(Icons.person),
-          color: Colors.black,
-          onPressed: (){
-            Navigator.push(context, PageTransition(child: ProfileScreen(), type: PageTransitionType.rightToLeft));
-          }, )
-      ],
-    );
-
-  }
-
-
-
-  Widget testsList(BuildContext context){
+class _PRACState extends State<PRAC> {
+  @override
+  Widget build(BuildContext context) {
     return ListView(
       children: [
 
-        //TODO: Test Category name => URINE TEST
-        // ListTile(
-        //   title: Text("URINE TEST", style: ConstantText.regularHeading,),
-        // ),
-        //TODO: 5 PANEL
+//TODO: Test Category name => URINE TEST
+// ListTile(
+//   title: Text("URINE TEST", style: ConstantText.regularHeading,),
+// ),
+//TODO: 5 PANEL
         ListTile (
 
           title: Text(
@@ -174,7 +133,7 @@ Future getData() async{
 
         ),
 
-        //TODO: DOT PANEL
+//TODO: DOT PANEL
         ListTile(
 
           title: Text(
@@ -202,78 +161,78 @@ Future getData() async{
           ),
           trailing:  GestureDetector(
               onTap: () {
-                // showDialog(context: context, builder: (context) {
-                //   return Container(
-                //     height: MediaQuery.of(context).size.height * 0.8,
-                //     width: MediaQuery.of(context).size.width,
-                //     child: AlertDialog(
-                //       scrollable: true,
-                //       shape: RoundedRectangleBorder(
-                //           borderRadius: BorderRadius.circular(50)
-                //       ),
-                //       title: Text("DOT Drug Panel",
-                //         textAlign: TextAlign.center,style: Constants.boldheading,),
-                //       content: Column(
-                //         children: [
-                //           ListTile(
-                //             title: Text("AMPHETAMINES",style: Constants.regularDarkText,),
-                //             trailing: Text("100 ng/mL",style: Constants.regularDarkText,),
-                //           ),
-                //           ListTile(
-                //             title: Text("Amphetamine",style: Constants.regularDarkText,),
-                //             trailing: Text("500 ng/mL",style: Constants.regularDarkText,),
-                //           ),
-                //           ListTile(
-                //             title: Text("Methamphetamine",style: Constants.regularDarkText,),
-                //             trailing: Text("500 ng/mL",style: Constants.regularDarkText,),
-                //           ),
-                //           ListTile(
-                //             title: Text("METHAMPHETAMINE",style: Constants.regularDarkText,),
-                //             trailing: Text("500 ng/mL",style: Constants.regularDarkText,),
-                //           ),
-                //           ListTile(
-                //             title: Text("COCAINE METABOLITES",style: Constants.regularDarkText,),
-                //             trailing: Text("150 ng/mL",style: Constants.regularDarkText,),
-                //           ),
-                //           ListTile(
-                //             title: Text("MARIJUANA METABOLITES",style: Constants.regularDarkText,),
-                //             trailing: Text("15ng/mL",style: Constants.regularDarkText,),
-                //           ),
-                //           ListTile(
-                //             title: Text("OPIATES",style: Constants.regularDarkText,),
-                //             trailing: Text("2000 ng/mL",style: Constants.regularDarkText,),
-                //           ),
-                //
-                //           ListTile(
-                //             title: Text("CODEINE",style: Constants.regularDarkText,),
-                //             trailing: Text("2000 ng/mL",style: Constants.regularDarkText,),
-                //           ),
-                //           ListTile(
-                //             title: Text("MORPHINE",style: Constants.regularDarkText,),
-                //             trailing: Text("2000 ng/mL",style: Constants.regularDarkText,),
-                //           ),
-                //           ListTile(
-                //             title: Text("6-ACETYLMORPHINE",style: Constants.regularDarkText,),
-                //             trailing: Text("10 ng/mL",style: Constants.regularDarkText,),
-                //           ),
-                //           ListTile(
-                //             title: Text("PHENCYCLIDINE",style: Constants.regularDarkText,),
-                //             trailing: Text("25 ng/mL",style: Constants.regularDarkText,),
-                //           ),
-                //         ],
-                //       ),
-                //       actions: [
-                //         FlatButton(
-                //             onPressed: () {
-                //               Navigator.pop(context);
-                //             },
-                //             child: Text("Close",
-                //               style: TextStyle(color: Colors.black),))
-                //       ],
-                //     ),
-                //   );
-                // }
-                // );
+// showDialog(context: context, builder: (context) {
+//   return Container(
+//     height: MediaQuery.of(context).size.height * 0.8,
+//     width: MediaQuery.of(context).size.width,
+//     child: AlertDialog(
+//       scrollable: true,
+//       shape: RoundedRectangleBorder(
+//           borderRadius: BorderRadius.circular(50)
+//       ),
+//       title: Text("DOT Drug Panel",
+//         textAlign: TextAlign.center,style: Constants.boldheading,),
+//       content: Column(
+//         children: [
+//           ListTile(
+//             title: Text("AMPHETAMINES",style: Constants.regularDarkText,),
+//             trailing: Text("100 ng/mL",style: Constants.regularDarkText,),
+//           ),
+//           ListTile(
+//             title: Text("Amphetamine",style: Constants.regularDarkText,),
+//             trailing: Text("500 ng/mL",style: Constants.regularDarkText,),
+//           ),
+//           ListTile(
+//             title: Text("Methamphetamine",style: Constants.regularDarkText,),
+//             trailing: Text("500 ng/mL",style: Constants.regularDarkText,),
+//           ),
+//           ListTile(
+//             title: Text("METHAMPHETAMINE",style: Constants.regularDarkText,),
+//             trailing: Text("500 ng/mL",style: Constants.regularDarkText,),
+//           ),
+//           ListTile(
+//             title: Text("COCAINE METABOLITES",style: Constants.regularDarkText,),
+//             trailing: Text("150 ng/mL",style: Constants.regularDarkText,),
+//           ),
+//           ListTile(
+//             title: Text("MARIJUANA METABOLITES",style: Constants.regularDarkText,),
+//             trailing: Text("15ng/mL",style: Constants.regularDarkText,),
+//           ),
+//           ListTile(
+//             title: Text("OPIATES",style: Constants.regularDarkText,),
+//             trailing: Text("2000 ng/mL",style: Constants.regularDarkText,),
+//           ),
+//
+//           ListTile(
+//             title: Text("CODEINE",style: Constants.regularDarkText,),
+//             trailing: Text("2000 ng/mL",style: Constants.regularDarkText,),
+//           ),
+//           ListTile(
+//             title: Text("MORPHINE",style: Constants.regularDarkText,),
+//             trailing: Text("2000 ng/mL",style: Constants.regularDarkText,),
+//           ),
+//           ListTile(
+//             title: Text("6-ACETYLMORPHINE",style: Constants.regularDarkText,),
+//             trailing: Text("10 ng/mL",style: Constants.regularDarkText,),
+//           ),
+//           ListTile(
+//             title: Text("PHENCYCLIDINE",style: Constants.regularDarkText,),
+//             trailing: Text("25 ng/mL",style: Constants.regularDarkText,),
+//           ),
+//         ],
+//       ),
+//       actions: [
+//         FlatButton(
+//             onPressed: () {
+//               Navigator.pop(context);
+//             },
+//             child: Text("Close",
+//               style: TextStyle(color: Colors.black),))
+//       ],
+//     ),
+//   );
+// }
+// );
               },
               child: Padding(
                 padding: const EdgeInsets.only(top:25.0),
@@ -282,7 +241,7 @@ Future getData() async{
           ),
         ),
 
-        //TODO: 7 PANEL
+//TODO: 7 PANEL
         ListTile(
 
           title: Text(
@@ -418,7 +377,7 @@ Future getData() async{
           ),
         ),
 
-        //TODO: 9 PANEL
+//TODO: 9 PANEL
         ListTile(
 
           title: Text(
@@ -570,7 +529,7 @@ Future getData() async{
         ),
 
 
-        //TODO: 10 PANEL
+//TODO: 10 PANEL
         ListTile(
 
           title: Text(
@@ -721,7 +680,7 @@ Future getData() async{
           ),
         ),
 
-        //TODO: 5 PANEL +
+//TODO: 5 PANEL +
         ListTile(
 
           title: Text(
@@ -863,7 +822,7 @@ Future getData() async{
           ),
         ),
 
-        //TODO: 7 PANEL +
+//TODO: 7 PANEL +
         ListTile(
 
           title: Text(
@@ -1042,7 +1001,7 @@ Future getData() async{
           ),
         ),
 
-        //TODO: 9 PANEL +
+//TODO: 9 PANEL +
         ListTile(
 
           title: Text(
@@ -1247,7 +1206,7 @@ Future getData() async{
         ),
 
 
-        //TODO: 10 PANEL +
+//TODO: 10 PANEL +
         ListTile(
 
           title: Text(
@@ -1464,7 +1423,7 @@ Future getData() async{
         ),
 
 
-        //TODO: 5 PANEL HAIR
+//TODO: 5 PANEL HAIR
         ListTile(
 
           title: Text(
@@ -1597,7 +1556,7 @@ Future getData() async{
         ),
 
 
-        //TODO: 5 PANEL +  HAIR
+//TODO: 5 PANEL +  HAIR
         ListTile(
 
           title: Text(
@@ -1754,8 +1713,4 @@ Future getData() async{
       ],
     );
   }
-
-
-
-
 }

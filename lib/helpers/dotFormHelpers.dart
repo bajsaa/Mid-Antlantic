@@ -1,16 +1,18 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:mid_antlantic/helpers/profileScreenHelpers.dart';
+
 import 'package:mid_antlantic/screens/FindLocation.dart';
 import 'package:mid_antlantic/screens/TestListScreen.dart';
 import 'package:mid_antlantic/screens/profileScreen.dart';
 import 'package:mid_antlantic/screens/test_history.dart';
+import 'package:mid_antlantic/utils/api.dart';
 import 'package:mid_antlantic/widgets/colors.dart';
-import 'package:mid_antlantic/widgets/custom_dropdown_Observation.dart';
+
 import 'package:mid_antlantic/widgets/custom_dropdown_Reason.dart';
 import 'package:mid_antlantic/widgets/custom_dropdown_dot_agency.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:provider/provider.dart';
 
+import 'package:http/http.dart' as http;
 import '../constants.dart';
 import '../size_config.dart';
 
@@ -20,6 +22,31 @@ import '../size_config.dart';
 class DotFormHelpers with ChangeNotifier{
   final ConstantColors constantColors = ConstantColors();
   var formKey = GlobalKey<FormState>();
+  Dio dio = new Dio();
+  var mainUrl = Api.authUrl;
+
+  void addData() async{
+    var url = "http://192.168.0.197/testflutter/addData.php";
+    await http.post(url,body: {
+      'dot_first_name':firstNameController.text,
+      'dot_last_name':lastNameController.text,
+      'dot_phone_no':phoneNoController.text,
+      'dot_doner_email':donorMailController.text,
+      'dot_test_result':testResultMailController.text,
+      'dot_dob':dobController.text,
+      // 'dot_agency_id':lastNameController.text,
+      // 'dot_reason_id':lastNameController.text,
+      // 'dot_observation':lastNameController.text,
+      'dot_comment':commentController.text,
+      'dot_zip_code':zipCodeController.text,
+
+
+
+
+    });
+  }
+
+
 
 
   TextEditingController firstNameController = TextEditingController();
@@ -27,7 +54,11 @@ class DotFormHelpers with ChangeNotifier{
   TextEditingController phoneNoController = TextEditingController();
   TextEditingController donorMailController = TextEditingController();
   TextEditingController testResultMailController = TextEditingController();
+  TextEditingController driverLicenseController = TextEditingController();
+  TextEditingController driverLicenseStateController = TextEditingController();
+  TextEditingController driverLicenseCountryController = TextEditingController();
   TextEditingController dobController = TextEditingController();
+  TextEditingController observationController = TextEditingController();
   TextEditingController commentController = TextEditingController();
   TextEditingController zipCodeController = TextEditingController();
 
@@ -85,6 +116,8 @@ class DotFormHelpers with ChangeNotifier{
               key: formKey,
               child: Column(
                 children: [
+
+                  //todo: first name
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
                     decoration: BoxDecoration(
@@ -109,6 +142,7 @@ class DotFormHelpers with ChangeNotifier{
                           border: InputBorder.none),
                     ),
                   ),
+                  //todo: last name
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
                     decoration: BoxDecoration(
@@ -133,6 +167,7 @@ class DotFormHelpers with ChangeNotifier{
                           border: InputBorder.none),
                     ),
                   ),
+                  //todo: phone
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
                     decoration: BoxDecoration(
@@ -157,6 +192,7 @@ class DotFormHelpers with ChangeNotifier{
                           border: InputBorder.none),
                     ),
                   ),
+                  //todo: donor mail
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
                     decoration: BoxDecoration(
@@ -181,6 +217,7 @@ class DotFormHelpers with ChangeNotifier{
                           border: InputBorder.none),
                     ),
                   ),
+                  //todo:test result sent to main
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
                     decoration: BoxDecoration(
@@ -205,10 +242,95 @@ class DotFormHelpers with ChangeNotifier{
                           border: InputBorder.none),
                     ),
                   ),
+                  //todo: divider
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Divider(color: Colors.black,),
                   ),
+
+                  //Todo: driver license
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(30)),
+                    child: TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      controller: driverLicenseController,
+                      // validator: (val){
+                      //   if(val.isEmpty || !val.contains("@")){
+                      //     return "Wrong Email";
+                      //   }else{
+                      //     return null;
+                      //   }
+                      // },
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          hintText: "Driver license #",
+                          hintStyle: TextStyle(color: Colors.black38) ,
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 10),
+                          border: InputBorder.none),
+                    ),
+                  ),
+                  //Todo: driver license state issues
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(30)),
+                    child: TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      controller: driverLicenseStateController,
+                      // validator: (val){
+                      //   if(val.isEmpty || !val.contains("@")){
+                      //     return "Wrong Email";
+                      //   }else{
+                      //     return null;
+                      //   }
+                      // },
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          hintText: "Driver license state issues",
+                          hintStyle: TextStyle(color: Colors.black38) ,
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 10),
+                          border: InputBorder.none),
+                    ),
+                  ),
+                  //Todo: driver license country
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(30)),
+                    child: TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      controller: driverLicenseCountryController,
+                      // validator: (val){
+                      //   if(val.isEmpty || !val.contains("@")){
+                      //     return "Wrong Email";
+                      //   }else{
+                      //     return null;
+                      //   }
+                      // },
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          hintText: "Driver licence country",
+                          hintStyle: TextStyle(color: Colors.black38) ,
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 10),
+                          border: InputBorder.none),
+                    ),
+                  ),
+
+
+                  //todo: divider
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Divider(color: Colors.black,),
+                  ),
+                  //todo:dob
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
                     decoration: BoxDecoration(
@@ -235,7 +357,38 @@ class DotFormHelpers with ChangeNotifier{
                   ),
                   DropDownDotAgency(),
                   DropDownReason(),
-                  DropDownObservation(),
+
+
+
+                  //Todo: observation
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(30)),
+                    child: TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      controller: observationController,
+                      // validator: (val){
+                      //   if(val.isEmpty || !val.contains("@")){
+                      //     return "Wrong Email";
+                      //   }else{
+                      //     return null;
+                      //   }
+                      // },
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          hintText: "Observation Y/N",
+                          hintStyle: TextStyle(color: Colors.black38) ,
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 10),
+                          border: InputBorder.none),
+                    ),
+                  ),
+
+
+
+                  //Todo: comment box
                   Container(
                     margin: EdgeInsets.symmetric(
                         horizontal: 6.111 * SizeConfig.widthMultiplier,
@@ -264,6 +417,8 @@ class DotFormHelpers with ChangeNotifier{
                           border: InputBorder.none),
                     ),
                   ),
+
+                  //Todo: zip code
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
                     decoration: BoxDecoration(
@@ -324,6 +479,7 @@ class DotFormHelpers with ChangeNotifier{
                           SizedBox(width: 3.9511 * SizeConfig.widthMultiplier,),
                           GestureDetector(
                             onTap: (){
+                              addData();
                               Navigator
                                   .of(context)
                                   .push(MaterialPageRoute(builder: (context)=> FindLocation() )

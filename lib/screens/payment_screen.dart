@@ -81,7 +81,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     borderRadius: BorderRadius.circular(30)),
                 child: Center(
                   child: Text(
-                    "Proceed to Pay",
+                    "Pay",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),

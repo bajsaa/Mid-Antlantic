@@ -1,7 +1,10 @@
-import 'package:mid_antlantic/constants.dart';
+
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
+import 'package:http/http.dart' as http;
+import 'package:mid_antlantic/utils/api.dart';
 
 class DropDownDotAgency extends StatefulWidget {
 
@@ -14,11 +17,37 @@ class DropDownDotAgency extends StatefulWidget {
 
 class _DropDownDotAgencyState extends State<DropDownDotAgency> {
 
-  List _myItems = [
-    "FAA", "FMCSA", "FRA", "FTA","HHS", "NRC", "PHMSA", "USCG"
-  ];
+  var mainUrl = Api.authUrl;
+
+  // List _myItems = [
+  //   "FAA", "FMCSA", "FRA", "FTA","HHS", "NRC", "PHMSA", "USCG"
+  // ];
+
+  List dataList = List();
 
   String _itemVal;
+  Map data;
+
+
+
+  Future getAgency() async{
+    http.Response response = await http.get("$mainUrl/apis/get-agencies-list");
+    data = json.decode(response.body);
+    setState(() {
+      dataList = data["data"];
+    });
+
+  }
+
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getAgency();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,12 +85,11 @@ class _DropDownDotAgencyState extends State<DropDownDotAgency> {
               _itemVal = value;
                 });
             },
-            items: _myItems
-                .map((value) {
+            items: dataList
+                .map((item) {
               return DropdownMenuItem(
-
-                  value: value,
-                  child: Text(value,style: TextStyle(fontSize: 16),)
+                  value: item['id'].toString(),
+                  child: Text(item["name"],style: TextStyle(fontSize: 16),)
               );
             }
             ).toList()

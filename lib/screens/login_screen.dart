@@ -1,12 +1,11 @@
 import 'package:mid_antlantic/screens/TestListScreen.dart';
+import 'package:mid_antlantic/screens/register_screen.dart';
 import 'package:mid_antlantic/size_config.dart';
-
-
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 
-import '../constants.dart';
+
 
 class LoginPage extends StatefulWidget {
   @override
@@ -117,7 +116,9 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: (){},
+                          onTap: (){
+                            Navigator.push(context, PageTransition(child: RegisterPage(), type: PageTransitionType.rightToLeft));
+                          },
                           child: Container(
                             height: 7.90 * SizeConfig.heightMultiplier,
                             margin:

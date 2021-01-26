@@ -4,7 +4,7 @@ import 'package:mid_antlantic/screens/TestListScreen.dart';
 import 'package:mid_antlantic/screens/profileScreen.dart';
 import 'package:mid_antlantic/screens/test_history.dart';
 import 'package:mid_antlantic/widgets/colors.dart';
-import 'package:mid_antlantic/widgets/custom_dropdown_Observation.dart';
+
 import 'package:mid_antlantic/widgets/custom_dropdown_dot_agency.dart';
 import 'package:mid_antlantic/widgets/custom_dropdown_reason_nondot.dart';
 import 'package:page_transition/page_transition.dart';
@@ -27,6 +27,7 @@ class NonDotFormHelpers with ChangeNotifier {
   TextEditingController testResultMailController = TextEditingController();
   TextEditingController ssController = TextEditingController();
   TextEditingController dobController = TextEditingController();
+  TextEditingController observationController = TextEditingController();
   TextEditingController commentController = TextEditingController();
   TextEditingController zipCodeController = TextEditingController();
 
@@ -85,6 +86,7 @@ class NonDotFormHelpers with ChangeNotifier {
               key: formKey,
               child: Column(
                 children: [
+                  //todo: first name
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
                     decoration: BoxDecoration(
@@ -109,6 +111,7 @@ class NonDotFormHelpers with ChangeNotifier {
                           border: InputBorder.none),
                     ),
                   ),
+                  //todo: last name
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
                     decoration: BoxDecoration(
@@ -133,6 +136,7 @@ class NonDotFormHelpers with ChangeNotifier {
                           border: InputBorder.none),
                     ),
                   ),
+                  //todo: phone
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
                     decoration: BoxDecoration(
@@ -157,6 +161,7 @@ class NonDotFormHelpers with ChangeNotifier {
                           border: InputBorder.none),
                     ),
                   ),
+                  //todo: donor mail
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
                     decoration: BoxDecoration(
@@ -181,6 +186,7 @@ class NonDotFormHelpers with ChangeNotifier {
                           border: InputBorder.none),
                     ),
                   ),
+                  //todo:test result sent to main
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
                     decoration: BoxDecoration(
@@ -205,6 +211,7 @@ class NonDotFormHelpers with ChangeNotifier {
                           border: InputBorder.none),
                     ),
                   ),
+                  //todo: divider
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Divider(color: Colors.black,),
@@ -259,7 +266,33 @@ class NonDotFormHelpers with ChangeNotifier {
                   ),
                   DropDownDotAgency(),
                   DropDownReasonNonDot(),
-                  DropDownObservation(),
+
+                  //Todo: observation
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(30)),
+                    child: TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      controller: observationController,
+                      // validator: (val){
+                      //   if(val.isEmpty || !val.contains("@")){
+                      //     return "Wrong Email";
+                      //   }else{
+                      //     return null;
+                      //   }
+                      // },
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          hintText: "Observation Y/N",
+                          hintStyle: TextStyle(color: Colors.black38) ,
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 10),
+                          border: InputBorder.none),
+                    ),
+                  ),
+                  //Todo: comment box
                   Container(
                     margin: EdgeInsets.symmetric(
                         horizontal: 6.111 * SizeConfig.widthMultiplier,
@@ -288,6 +321,7 @@ class NonDotFormHelpers with ChangeNotifier {
                           border: InputBorder.none),
                     ),
                   ),
+                  //Todo: zip code
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 6.111 * SizeConfig.widthMultiplier, vertical: 1 * SizeConfig.heightMultiplier),
                     decoration: BoxDecoration(
