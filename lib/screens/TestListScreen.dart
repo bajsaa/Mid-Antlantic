@@ -18,7 +18,7 @@ import 'notDotForm.dart';
 
 
 
-class TestListScreen extends StatefulWidget {
+class TestListScreen extends StatefulWidget with ChangeNotifier{
 
   @override
   _TestListScreenState createState() => _TestListScreenState();
@@ -31,17 +31,24 @@ class _TestListScreenState extends State<TestListScreen> {
   var mainUrl = Api.authUrl;
 
 
-  Map data;
-  List userData;
-
-
-  Future getData() async{
+  Map testData;
+  List testListData;
+  Future getTestList() async{
     http.Response response = await http.get("$mainUrl/apis/get-test-name-list");
-    data = json.decode(response.body);
+    testData = json.decode(response.body);
     setState(() {
-       userData = data["data"];
+      testListData = testData["data"];
     });
 
+  }
+
+  postTestDescription() async {
+    var res =
+    await http.post(
+        "http://testlink.techlancesolution.com/jay-safera/apis/get-test-description",
+        body: jsonEncode({"test_id":"1"})
+    );
+    print(res.body);
   }
 
 
@@ -50,7 +57,8 @@ class _TestListScreenState extends State<TestListScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getData();
+    getTestList();
+    postTestDescription();
   }
 
   @override
@@ -75,20 +83,19 @@ class _TestListScreenState extends State<TestListScreen> {
 
       drawer:CustomDrawer() ,
 
-      body:userData == null ? Center(child: CircularProgressIndicator()) : ListView.builder(
+      body:testListData == null ? Center(child: CircularProgressIndicator()):ListView.builder(
 
-        shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          itemCount: userData == null ? 0 : userData.length,
+          shrinkWrap: true,
+          itemCount: testListData == null ? 0 : testListData.length,
           itemBuilder: (context,index){
-            return userData == null ? Center(child: CircularProgressIndicator()) :  ListTile (
+            return  ListTile (
 
               title: Text(
-                  userData[index]["name"], style: Constants.regularHeading),
+                  testListData[index]["name"], style: Constants.regularHeading),
               subtitle: GestureDetector(
                 onTap: () {
 
-                  userData[index]["id"] == "2" ? Navigator
+                  testListData[index]["id"] == "11" ? Navigator
                       .of(context)
                       .push(PageTransition(child: DotFormScreen(),
                       type:PageTransitionType.rightToLeftWithFade)):
@@ -108,7 +115,7 @@ class _TestListScreenState extends State<TestListScreen> {
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                         vertical: 0.613839 * SizeConfig.heightMultiplier),
-                    child: Text("\$${userData[index]["price"]}",
+                    child: Text("\$${testListData[index]["price"]}",
                       style: TextStyle(color: Colors.white,fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
@@ -117,6 +124,7 @@ class _TestListScreenState extends State<TestListScreen> {
               ),
               trailing: GestureDetector(
                   onTap: () {
+                    //postTestDescription();
                     showDialog(context: context, builder: (context) {
                       return Container(
                         height: MediaQuery.of(context).size.height * 0.8,
@@ -126,55 +134,23 @@ class _TestListScreenState extends State<TestListScreen> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50)
                           ),
-                          title: Text(userData[index]["name"],style: Constants.boldheading,
+                          title: Text(testListData[index]["name"],style: Constants.boldheading,
                             textAlign: TextAlign.center,),
                           content: Column(
                             children: [
-                              ListTile(
-                                title: Text("AMPHETAMINES", style: Constants.regularDarkText,),
-                                trailing: Text("100 ng/mL",style: Constants.regularDarkText),
-                              ),
-                              ListTile(
-                                title: Text("Amphetamine", style: Constants.regularDarkText,),
-                                trailing: Text("500 ng/mL", style: Constants.regularDarkText,),
-                              ),
-                              ListTile(
-                                title: Text("Methamphetamine", style: Constants.regularDarkText,),
-                                trailing: Text("500 ng/mL", style: Constants.regularDarkText,),
-                              ),
-                              ListTile(
-                                title: Text("METHAMPHETAMINE", style: Constants.regularDarkText,),
-                                trailing: Text("500 ng/mL", style: Constants.regularDarkText,),
-                              ),
-                              ListTile(
-                                title: Text("COCAINE METABOLITES", style: Constants.regularDarkText,),
-                                trailing: Text("150 ng/mL", style: Constants.regularDarkText,),
-                              ),
-                              ListTile(
-                                title: Text("MARIJUANA METABOLITES", style: Constants.regularDarkText,),
-                                trailing: Text("15ng/mL", style: Constants.regularDarkText,),
-                              ),
-                              ListTile(
-                                title: Text("OPIATES", style: Constants.regularDarkText,),
-                                trailing: Text("2000 ng/mL", style: Constants.regularDarkText,),
-                              ),
-
-                              ListTile(
-                                title: Text("CODEINE", style: Constants.regularDarkText,),
-                                trailing: Text("2000 ng/mL", style: Constants.regularDarkText,),
-                              ),
-                              ListTile(
-                                title: Text("MORPHINE", style: Constants.regularDarkText,),
-                                trailing: Text("2000 ng/mL", style: Constants.regularDarkText,),
-                              ),
-                              ListTile(
-                                title: Text("6-ACETYLMORPHINE", style: Constants.regularDarkText,),
-                                trailing: Text("10 ng/mL", style: Constants.regularDarkText,),
-                              ),
-                              ListTile(
-                                title: Text("PHENCYCLIDINE", style: Constants.regularDarkText,),
-                                trailing: Text("25 ng/mL", style: Constants.regularDarkText,),
-                              ),
+                                  FutureBuilder(
+                                    future: postTestDescription(),
+                                    builder: (context,snapshot){
+                                      return ListView.builder(
+                                          shrinkWrap: true,
+                                          itemCount: snapshot.data["data"].length,
+                                          itemBuilder: (context, index){
+                                            return ListTile(
+                                              title: Text(snapshot.data["data"]["name"], style: Constants.regularDarkText,),
+                                              trailing: Text(snapshot.data["data"]["value"],style: Constants.regularDarkText),
+                                            );
+                                          });},
+                                  )
                             ],
                           ),
                           actions: [

@@ -49,18 +49,18 @@ class DotFormRequestModel {
 
   Map<String, dynamic> toJson() {
     Map<String,dynamic> map = {
-      "dot_first_name" : dot_first_name,
-      "dot_last_name" : dot_last_name,
-      "dot_phone_no" : dot_phone_no,
-      "dot_agency_id" : dot_agency_id,
-      "dot_comment" : dot_comment,
-      "dot_dob" : dot_dob,
-      "dot_doner_email" : dot_doner_email,
-      "dot_driver_license" : dot_driver_license,
-      "dot_driver_license_state" : dot_driver_license_state,
-      "dot_observation" : dot_observation,
-      "dot_test_result" : dot_test_result,
-      "dot_zip_code" : dot_zip_code,
+      "first_name" : dot_first_name,
+      "last_name" : dot_last_name,
+      "phone_no" : dot_phone_no,
+      "reason_id" : dot_agency_id,
+      "comment" : dot_comment,
+      "dob" : dot_dob,
+      "doner_email" : dot_doner_email,
+      "driver_license" : dot_driver_license,
+      "driver_license_state" : dot_driver_license_state,
+      "observation" : dot_observation,
+      "test_result" : dot_test_result,
+      "zip_code" : dot_zip_code,
 
 
     };

@@ -1,6 +1,6 @@
-import 'package:dio/dio.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
-
+import 'package:mid_antlantic/main.dart';
 import 'package:mid_antlantic/screens/FindLocation.dart';
 import 'package:mid_antlantic/screens/TestListScreen.dart';
 import 'package:mid_antlantic/screens/profileScreen.dart';
@@ -22,31 +22,7 @@ import '../size_config.dart';
 class DotFormHelpers with ChangeNotifier{
   final ConstantColors constantColors = ConstantColors();
   var formKey = GlobalKey<FormState>();
-  Dio dio = new Dio();
   var mainUrl = Api.authUrl;
-
-  void addData() async{
-    var url = "http://192.168.0.197/testflutter/addData.php";
-    await http.post(url,body: {
-      'dot_first_name':firstNameController.text,
-      'dot_last_name':lastNameController.text,
-      'dot_phone_no':phoneNoController.text,
-      'dot_doner_email':donorMailController.text,
-      'dot_test_result':testResultMailController.text,
-      'dot_dob':dobController.text,
-      // 'dot_agency_id':lastNameController.text,
-      // 'dot_reason_id':lastNameController.text,
-      // 'dot_observation':lastNameController.text,
-      'dot_comment':commentController.text,
-      'dot_zip_code':zipCodeController.text,
-
-
-
-
-    });
-  }
-
-
 
 
   TextEditingController firstNameController = TextEditingController();
@@ -61,6 +37,33 @@ class DotFormHelpers with ChangeNotifier{
   TextEditingController observationController = TextEditingController();
   TextEditingController commentController = TextEditingController();
   TextEditingController zipCodeController = TextEditingController();
+
+
+  void addData() async{
+    var url = "$mainUrl/apis/save-dot-data";
+      var res =  await http.post(url,body: jsonEncode({
+      "first_name":firstNameController.text,
+      "last_name":lastNameController.text,
+      "phone_no":phoneNoController.text,
+      "doner_email":donorMailController.text,
+      "test_result":testResultMailController.text,
+      "driver_license":driverLicenseController.text,
+      "driver_license_state":driverLicenseStateController.text,
+      "driver_license_country":driverLicenseCountryController.text,
+      "dob":dobController.text,
+      "agency_id":"1",
+      "reason_id":"1",
+      "observation":observationController.text,
+      "comment":commentController.text,
+      "zip_code":zipCodeController.text
+    }));
+    print(res.body);
+  }
+
+
+
+
+
 
 
   Widget dotAppBar(BuildContext context) {

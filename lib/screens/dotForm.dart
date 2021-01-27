@@ -1,18 +1,15 @@
 import 'dart:convert';
-
-import 'package:mid_antlantic/api/api_service.dart';
 import 'package:mid_antlantic/models/dotFormModel.dart';
+import 'package:mid_antlantic/screens/TestListScreen.dart';
 import 'package:mid_antlantic/screens/profileScreen.dart';
 import 'package:mid_antlantic/utils/api.dart';
 import 'package:mid_antlantic/widgets/colors.dart';
 import 'package:mid_antlantic/widgets/custom_dropdown_Reason.dart';
-import 'package:mid_antlantic/widgets/custom_dropdown_dot_agency.dart';
 import 'package:http/http.dart' as http;
 import 'package:mid_antlantic/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-
 import '../constants.dart';
 import '../size_config.dart';
 import 'FindLocation.dart';
@@ -27,6 +24,8 @@ import 'FindLocation.dart';
    DotFormRequestModel dotFormRequestModel;
 
    var formKey = GlobalKey<FormState>();
+
+
    TextEditingController firstNameController = TextEditingController();
    TextEditingController lastNameController = TextEditingController();
    TextEditingController phoneNoController = TextEditingController();
@@ -42,29 +41,63 @@ import 'FindLocation.dart';
 
    var mainUrl = Api.authUrl;
 
-   bool error, sending, success;
-   String msg;
-   List dataList = List();
 
-   String _itemVal;
-   Map data;
+   List agencyDataList = List();
+   List reasonDataList = List();
+
+   String _agencyItemVal;
+   String _reasonItemVal;
+
+   Map agencyData;
+   Map reasonData;
+
    @override
    void initState() {
      getAgency();
-     dotFormRequestModel = new DotFormRequestModel();
+     getReason();
      super.initState();
    }
 
-
    Future getAgency() async{
-     http.Response response = await http.get("$mainUrl/apis/get-agencies-list");
-     data = json.decode(response.body);
+     var response = await http.get("$mainUrl/apis/get-agencies-list");
+     agencyData = json.decode(response.body);
      setState(() {
-       dataList = data["data"];
+       agencyDataList = agencyData["data"];
      });
 
    }
 
+   Future getReason() async{
+     var response = await http.get("$mainUrl/apis/get-dot-reason-list");
+     reasonData = jsonDecode(response.body);
+     setState(() {
+       reasonDataList = reasonData["data"];
+     });
+   }
+
+
+   void addData() async{
+     var url = "$mainUrl/apis/save-dot-data";
+     var res =  await http.post(url,body: jsonEncode({
+     "client_id":"1",
+       "test_id":Provider.of<TestListScreen>(context).,
+       "first_name":firstNameController.text,
+       "last_name":lastNameController.text,
+       "phone_no":phoneNoController.text,
+       "doner_email":donorMailController.text,
+       "test_result":testResultMailController.text,
+       "driver_license":driverLicenseController.text,
+       "driver_license_state":driverLicenseStateController.text,
+       "driver_license_country":driverLicenseCountryController.text,
+       "dob":dobController.text,
+       "agency_id":_agencyItemVal,
+       "reason_id":_reasonItemVal,
+       "observation":observationController.text,
+       "comment":commentController.text,
+       "zip_code":zipCodeController.text
+     }));
+     print(res.body);
+   }
 
 
 
@@ -421,13 +454,14 @@ import 'FindLocation.dart';
                                  focusColor: Colors.white,
                                  dropdownColor:  Colors.white,
                                  style: TextStyle(color: Colors.black),
-                                 value: _itemVal,
+                                 value: _agencyItemVal,
+
                                  onChanged: (value){
                                    setState(() {
-                                     _itemVal = value;
+                                     _agencyItemVal = value;
                                    });
                                  },
-                                 items: dataList
+                                 items: agencyDataList
                                      .map((item) {
                                    return DropdownMenuItem(
                                        value: item['id'].toString(),
@@ -439,7 +473,49 @@ import 'FindLocation.dart';
                            ),
                          ),
                        ),
-                       DropDownReason(),
+                       Container(
+                         height: 60.0,
+                         width: MediaQuery.of(context).size.width * 0.9,
+
+
+                         decoration: BoxDecoration(
+
+                             border: Border.all(
+                                 color: Colors.black
+                             ),
+                             borderRadius: BorderRadius.circular(50.0)
+                         ),
+                         margin: EdgeInsets.symmetric(
+                             horizontal: 24.0,
+                             vertical: 10.0
+                         ),
+                         child: Center(
+                           child: Padding(
+                             padding: const EdgeInsets.only(left: 30.0,right: 10),
+                             child: DropdownButton(
+                                 isExpanded: true,
+                                 hint: Text("Reason",style: TextStyle(color: Colors.black.withOpacity(0.5)),),
+                                 dropdownColor:  Colors.white,
+                                 iconSize: 30,
+                                 style: TextStyle(color: Colors.black),
+                                 value: _reasonItemVal,
+                                 onChanged: (value){
+                                   setState(() {
+                                     _reasonItemVal = value;
+                                   });
+                                 },
+                                 items: reasonDataList
+                                     .map((item) {
+                                   return DropdownMenuItem(
+                                       value: item['id'].toString(),
+                                       child: Text(item["name"],style: TextStyle(fontSize: 16),)
+                                   );
+                                 }
+                                 ).toList()
+                             ),
+                           ),
+                         ),
+                       ),
 
 
                        //Todo: observation
@@ -575,11 +651,10 @@ import 'FindLocation.dart';
                                  width: 3.9511 * SizeConfig.widthMultiplier,),
                                GestureDetector(
                                  onTap: () {
-                                   if(validateAndSave()){
-                                     print(dotFormRequestModel.toJson());
-                                   }
-
+                                   addData();
                                    Navigator.push(context, MaterialPageRoute(builder: (_)=>FindLocation()));
+
+
                                  },
                                  child: Container(
                                    padding: EdgeInsets.only(
