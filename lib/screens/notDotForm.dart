@@ -12,6 +12,7 @@ import 'package:page_transition/page_transition.dart';
 import 'dart:convert';
 import '../constants.dart';
 import '../size_config.dart';
+import 'confirmDetailScreen.dart';
 
 class NonDotFormScreen extends StatefulWidget{
 
@@ -75,64 +76,69 @@ class _NonDotFormScreenState extends State<NonDotFormScreen> with ChangeNotifier
     var url = "$mainUrl/apis/save-non-dot-data";
     var res = await http
         .post(url,
-            body: jsonEncode({
-              "client_id": "1",
-              "test_id": "1",
-              "first_name": firstNameController.text,
-              "last_name": lastNameController.text,
-              "phone_no": phoneNoController.text,
-              "doner_email": donorMailController.text,
-              "test_result": testResultMailController.text,
-              "ss_no": ssController.text,
-              "dob": dobController.text,
-              "agency_id": "NOT APPLICABLE",
-              "reason_id": _reasonItemVal,
-              "observation": observationController.text,
-              "comment": commentController.text,
-              "zip_code": zipCodeController.text
-            }));
+        body: jsonEncode({
+          "client_id": "1",
+          "test_id": "1",
+          "first_name": firstNameController.text,
+          "last_name": lastNameController.text,
+          "phone_no": phoneNoController.text,
+          "doner_email": donorMailController.text,
+          "test_result": testResultMailController.text,
+          "ss_no": ssController.text,
+          "dob": dobController.text,
+          "agency_id": "NOT APPLICABLE",
+          "reason_id": _reasonItemVal,
+          "observation": observationController.text,
+          "comment": commentController.text,
+          "zip_code": zipCodeController.text
+        }));
     print(res.body);
   }
 
   Future<NonDotFormModel> addDataClient() async {
     var url = "https://demo.i3screen.net/api/scheduling/create";
     var res = await http.post(
-      url,
-      headers: {
-        'Content-type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization':
-            'Basic bWlkYXRsYW50aWNvcmRlcjpqWGZkN3VXRFpORDJHYVBUN002TQ=='
-      },
-      body: jsonEncode(
-          {
-            "org_id": "507053",
-            "location_code": "114798",
-            "package_code": "MA5PUNON",
-            "order_reference_number": "12345789abc",
-            "participant_government_id": ssController.text,
-            "order_reason": _reasonItemVal,
-            "participant_first_name": firstNameController.text,
-            "participant_last_name": lastNameController.text,
-            "participant_phone": phoneNoController.text,
-            "participant_email": donorMailController.text,
-            "participant_postal_code": zipCodeController.text,
-            "participant_region": "CO",
-            "participant_municipality": "Denver",
-            "participant_address": "9501 Northfield Blvd",
-            "participant_dob": dobController.text,
-            "expiration_date_time": "2019-12-31 23:59:59",
-            "dot_agency": "NOT APPLICABLE",
-            "report_message": commentController.text,
-            "lab_location_code": "123456abc"
-          }
-      )
+        url,
+        headers: {
+          'Content-type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization':
+          'Basic bWlkYXRsYW50aWNvcmRlcjpqWGZkN3VXRFpORDJHYVBUN002TQ=='
+        },
+        body: jsonEncode(
+            {
+              "org_id": "507053",
+              "location_code": "114798",
+              "package_code": "MA5PUNON",
+              "order_reference_number": "12345789abc",
+              "participant_government_id": ssController.text,
+              "order_reason": _reasonItemVal,
+              "participant_first_name": firstNameController.text,
+              "participant_last_name": lastNameController.text,
+              "participant_phone": phoneNoController.text,
+              "participant_email": donorMailController.text,
+              "participant_postal_code": zipCodeController.text,
+              "participant_region": "CO",
+              "participant_municipality": "Denver",
+              "participant_address": "9501 Northfield Blvd",
+              "participant_dob": dobController.text,
+              "expiration_date_time": "2019-12-31 23:59:59",
+              "dot_agency": "NOT APPLICABLE",
+              "report_message": commentController.text,
+              "lab_location_code": "123456abc"
+            }
+        )
     );
-    print(res.body);
-    if(res.statusCode == 201){
+    if (res.statusCode == 201) {
+      NonDotFormModel nonDotFormModel =
+      NonDotFormModel.fromJson(jsonDecode(res.body));
+      print(nonDotFormModel);
+      Navigator.push(
+          context,
+          PageTransition(
+              child: ConfirmDetails(nonDotFormModel: nonDotFormModel),
+              type: PageTransitionType.rightToLeft));
       return NonDotFormModel.fromJson(jsonDecode(res.body));
-    }else{
-      throw Exception('Failed');
     }
   }
 
@@ -162,7 +168,7 @@ class _NonDotFormScreenState extends State<NonDotFormScreen> with ChangeNotifier
       body: SingleChildScrollView(
         child: Column(
 
-            //mainAxisAlignment: MainAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
@@ -183,16 +189,16 @@ class _NonDotFormScreenState extends State<NonDotFormScreen> with ChangeNotifier
               Container(
                 child: Center(
                     child: Padding(
-                  padding: EdgeInsets.all(2.0089 * SizeConfig.heightMultiplier),
-                  child: Text(
-                    " This is an effective test to Identify drug use and discourage consumption of illicit substances.",
-                    style: TextStyle(
-                      fontSize: 2.23214 * SizeConfig.textMultiplier,
-                      color: Colors.black,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                )),
+                      padding: EdgeInsets.all(2.0089 * SizeConfig.heightMultiplier),
+                      child: Text(
+                        " This is an effective test to Identify drug use and discourage consumption of illicit substances.",
+                        style: TextStyle(
+                          fontSize: 2.23214 * SizeConfig.textMultiplier,
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    )),
               ),
               Form(
                 key: formKey,
@@ -545,7 +551,7 @@ class _NonDotFormScreenState extends State<NonDotFormScreen> with ChangeNotifier
                                     style: TextStyle(
                                       //16
                                       fontSize:
-                                          1.7857 * SizeConfig.textMultiplier,
+                                      1.7857 * SizeConfig.textMultiplier,
                                       fontWeight: FontWeight.w600,
                                       color: Colors.white,
                                     ),
@@ -582,7 +588,7 @@ class _NonDotFormScreenState extends State<NonDotFormScreen> with ChangeNotifier
                                     style: TextStyle(
                                       //16
                                       fontSize:
-                                          1.7857 * SizeConfig.textMultiplier,
+                                      1.7857 * SizeConfig.textMultiplier,
                                       fontWeight: FontWeight.w600,
                                       color: Colors.white,
                                     ),

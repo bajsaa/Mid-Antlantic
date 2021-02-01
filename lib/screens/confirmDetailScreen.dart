@@ -50,7 +50,7 @@ class _ConfirmDetailsState extends State<ConfirmDetails> {
           "owner_company_loc": "test",
           "confirm_date": _nonDotModel.participantDob,
           "collection_site": "test",
-          "location_code": _nonDotModel.locationCode,
+          "location_code": widget.nonDotFormModel.locationCode,
           "federal_agc": "test",
           "obseravtion": "test"
         }));
@@ -60,6 +60,13 @@ class _ConfirmDetailsState extends State<ConfirmDetails> {
     }else{
       throw Exception('Failed');
     }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _nonDotModel = widget.nonDotFormModel;
   }
 
   @override
@@ -113,15 +120,80 @@ class _ConfirmDetailsState extends State<ConfirmDetails> {
                           decoration: BoxDecoration(
                               border:
                                   Border.all(width: 2, color: Colors.black)),
-                          child: FutureBuilder<NonDotFormModel>(
-                            future: _FutureNonDotModel,
-                            builder: (context, snapshot) {
-                              if (snapshot.hasData) {
-                                return Text(widget.nonDotFormModel.orderReason);
-                              }
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              //Todo: Order Reason
+                              Row(
+                                children: [
+                                  Text("Order Reason:  ",style: TextStyle(fontWeight: FontWeight.bold),),
+                                  _nonDotModel == null ? Text("") :Text(_nonDotModel.orderReason)
 
-                              return CircularProgressIndicator();
-                            },
+                                ],
+                              ),
+                              //Todo: package Code
+                              Row(
+                                children: [
+                                  Text("Package Code:  ",style: TextStyle(fontWeight: FontWeight.bold),),
+                                  _nonDotModel == null ? Text("") :Text(_nonDotModel.packageCode)
+                                ],
+                              ),
+
+                              Row(
+                                children: [
+                                  Text(
+                                    "Company Location: ",style: TextStyle(fontWeight: FontWeight.bold),),
+                                  Text(
+                                      "MID ATLANTIC MOBILE DRUG"),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text("Owner Company Location :",style: TextStyle(fontWeight: FontWeight.bold),),
+                                ],
+                              ),
+
+                              Row(
+                                children: [
+                                  Text("Date : ",style: TextStyle(fontWeight: FontWeight.bold),),
+                                  Text(formattedDate)
+                                ],
+                              ),
+
+                              Row(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text("Collection Site: ",style: TextStyle(fontWeight: FontWeight.bold),),
+                                      Text("MID ATLANTIC MOBILE ",),
+                                    ],
+                                  ),
+                                ],
+                              ),
+
+                              Row(
+                                children: [
+                                  Text("Location Code: ",style: TextStyle(fontWeight: FontWeight.bold),),
+                                  _nonDotModel == null ? Text("") :Text(_nonDotModel.locationCode)
+                                ],
+                              ),
+                              Text("Federal Agency: ",style: TextStyle(fontWeight: FontWeight.bold)),
+                              Row(
+                                children: [
+                                  Text("Observed Collection Required: ",style: TextStyle(fontWeight: FontWeight.bold),),
+                                  Text(Provider.of<DotFormHelpers>(context,
+                                      listen: false)
+                                      .observationController
+                                      .text) ,
+                                  // Text(Provider.of<NonDotFormHelpers>(context,
+                                  //     listen: false)
+                                  //     .observationController
+                                  //     .text)
+                                ],
+                              ),
+                            ],
                           )),
                     ),
                     Padding(
