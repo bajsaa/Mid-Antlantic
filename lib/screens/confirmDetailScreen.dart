@@ -22,9 +22,9 @@ import 'createUser.dart';
 
 class ConfirmDetails extends StatefulWidget {
 
-  final NonDotFormModel nonDotFormModel;
+  NonDotFormModel nonDotFormModel;
 
-  const ConfirmDetails({Key key, this.nonDotFormModel}) : super(key: key);
+  ConfirmDetails({Key key, this.nonDotFormModel}) : super(key: key);
 
 
   @override
@@ -44,11 +44,11 @@ class _ConfirmDetailsState extends State<ConfirmDetails> {
         body: jsonEncode({
           "non_dot_id": "1",
           "client_id": "1",
-          "confirm_order_reason":_nonDotModel.orderReason,
-          "test_name": _nonDotModel.packageCode,
+          "confirm_order_reason":widget.nonDotFormModel.orderReason,
+          "test_name": widget.nonDotFormModel.packageCode,
           "company_location": _nonDotModel.locationCode,
           "owner_company_loc": "test",
-          "confirm_date": _nonDotModel.participantDob,
+          "confirm_date":widget.nonDotFormModel.expirationDateTime,
           "collection_site": "test",
           "location_code": widget.nonDotFormModel.locationCode,
           "federal_agc": "test",
@@ -129,7 +129,7 @@ class _ConfirmDetailsState extends State<ConfirmDetails> {
                               Row(
                                 children: [
                                   Text("Order Reason:  ",style: TextStyle(fontWeight: FontWeight.bold),),
-                                  _nonDotModel == null ? Text("") :Text(_nonDotModel.orderReason)
+                                  _nonDotModel == null ? Text("") :Text(widget.nonDotFormModel.orderReason)
 
                                 ],
                               ),
@@ -137,7 +137,7 @@ class _ConfirmDetailsState extends State<ConfirmDetails> {
                               Row(
                                 children: [
                                   Text("Package Code:  ",style: TextStyle(fontWeight: FontWeight.bold),),
-                                  _nonDotModel == null ? Text("") :Text(_nonDotModel.packageCode)
+                                  _nonDotModel == null ? Text("") :Text(widget.nonDotFormModel.packageCode)
                                 ],
                               ),
 
@@ -176,7 +176,7 @@ class _ConfirmDetailsState extends State<ConfirmDetails> {
                               Row(
                                 children: [
                                   Text("Location Code: ",style: TextStyle(fontWeight: FontWeight.bold),),
-                                  _nonDotModel == null ? Text("") :Text(_nonDotModel.locationCode)
+                                  _nonDotModel == null ? Text("") :Text(widget.nonDotFormModel.locationCode)
                                 ],
                               ),
                               Text("Federal Agency: ",style: TextStyle(fontWeight: FontWeight.bold)),

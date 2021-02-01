@@ -16,7 +16,8 @@ import 'confirmDetailScreen.dart';
 
 class NonDotFormScreen extends StatefulWidget{
 
-
+  NonDotFormModel nonDotFormModel;
+  NonDotFormScreen({Key key, this.nonDotFormModel}) : super(key: key);
 
 
   @override
@@ -95,6 +96,17 @@ class _NonDotFormScreenState extends State<NonDotFormScreen> with ChangeNotifier
     print(res.body);
   }
 
+  // Future<NonDotFormModel> addDataClient() async {
+  //   NonDotFormModel nonDotFormModel = NonDotFormModel(
+  //     orgId: "507053",
+  //     participantGovernmentId: ssController.text,
+  //     participantFirstName: firstNameController.text,
+  //     participantLastName: lastNameController.text,
+  //   );
+  //   return nonDotFormModel;
+  // }
+
+
   Future<NonDotFormModel> addDataClient() async {
     var url = "https://demo.i3screen.net/api/scheduling/create";
     var res = await http.post(
@@ -129,17 +141,7 @@ class _NonDotFormScreenState extends State<NonDotFormScreen> with ChangeNotifier
             }
         )
     );
-    if (res.statusCode == 201) {
-      NonDotFormModel nonDotFormModel =
-      NonDotFormModel.fromJson(jsonDecode(res.body));
-      print(nonDotFormModel);
-      Navigator.push(
-          context,
-          PageTransition(
-              child: ConfirmDetails(nonDotFormModel: nonDotFormModel),
-              type: PageTransitionType.rightToLeft));
-      return NonDotFormModel.fromJson(jsonDecode(res.body));
-    }
+    print(res.body);
   }
 
   @override
@@ -567,7 +569,7 @@ class _NonDotFormScreenState extends State<NonDotFormScreen> with ChangeNotifier
                                 addDataLocal();
 
                                 setState(() {
-                                  _futureNonDotModel = addDataClient().whenComplete(() => Navigator.push(context, PageTransition(child: FindLocation(), type: PageTransitionType.rightToLeft)));
+                                  _futureNonDotModel = addDataClient().whenComplete(() => Navigator.push(context, PageTransition(child: FindLocation(nonDotFormModel:widget.nonDotFormModel ,), type: PageTransitionType.rightToLeft)));
                                 });
 
 
