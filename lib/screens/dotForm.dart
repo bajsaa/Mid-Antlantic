@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:mid_antlantic/models/dotFormModel.dart';
 import 'package:mid_antlantic/screens/TestListScreen.dart';
 import 'package:mid_antlantic/screens/profileScreen.dart';
 import 'package:mid_antlantic/utils/api.dart';
@@ -20,8 +19,6 @@ import 'FindLocation.dart';
  }
 
  class _DotFormScreenState extends State<DotFormScreen> {
-
-   DotFormRequestModel dotFormRequestModel;
 
    var formKey = GlobalKey<FormState>();
 
@@ -45,9 +42,9 @@ import 'FindLocation.dart';
    List agencyDataList = List();
    List reasonDataList = List();
 
+   //TODO: declaring strings to store dropdown options
    String _agencyItemVal;
    String _reasonItemVal;
-
    Map agencyData;
    Map reasonData;
 
@@ -58,6 +55,8 @@ import 'FindLocation.dart';
      super.initState();
    }
 
+
+    //TODO: getting agency dropdown options
    Future getAgency() async{
      var response = await http.get("$mainUrl/apis/get-agencies-list");
      agencyData = json.decode(response.body);
@@ -67,6 +66,7 @@ import 'FindLocation.dart';
 
    }
 
+   //TODO: getting reason dropdown options
    Future getReason() async{
      var response = await http.get("$mainUrl/apis/get-dot-reason-list");
      reasonData = jsonDecode(response.body);
@@ -79,8 +79,8 @@ import 'FindLocation.dart';
    void addData() async{
      var url = "$mainUrl/apis/save-dot-data";
      var res =  await http.post(url,body: jsonEncode({
-     "client_id":"1",
-       "test_id":Provider.of<TestListScreen>(context).,
+       "client_id":"1",
+       "test_id":"11",
        "first_name":firstNameController.text,
        "last_name":lastNameController.text,
        "phone_no":phoneNoController.text,
@@ -95,7 +95,7 @@ import 'FindLocation.dart';
        "observation":observationController.text,
        "comment":commentController.text,
        "zip_code":zipCodeController.text
-     }));
+     })).whenComplete(() => formKey.currentState.reset());
      print(res.body);
    }
 
@@ -171,7 +171,7 @@ import 'FindLocation.dart';
                              border: Border.all(color: Colors.black),
                              borderRadius: BorderRadius.circular(30)),
                          child: TextFormField(
-                           onSaved: (input)=>dotFormRequestModel.dot_first_name,
+                           //onSaved: (input)=>dotFormRequestModel.dot_first_name,
                            autovalidateMode: AutovalidateMode.onUserInteraction,
                            controller: firstNameController,
                            // validator: (val){
@@ -199,7 +199,7 @@ import 'FindLocation.dart';
                              border: Border.all(color: Colors.black),
                              borderRadius: BorderRadius.circular(30)),
                          child: TextFormField(
-                           onSaved: (input)=>dotFormRequestModel.dot_last_name,
+                          // onSaved: (input)=>dotFormRequestModel.dot_last_name,
                            autovalidateMode: AutovalidateMode.onUserInteraction,
                            controller: lastNameController,
                            // validator: (val){
@@ -227,7 +227,7 @@ import 'FindLocation.dart';
                              border: Border.all(color: Colors.black),
                              borderRadius: BorderRadius.circular(30)),
                          child: TextFormField(
-                           onSaved: (input)=>dotFormRequestModel.dot_phone_no,
+                           //onSaved: (input)=>dotFormRequestModel.dot_phone_no,
                            autovalidateMode: AutovalidateMode.onUserInteraction,
                            controller: phoneNoController,
                            // validator: (val){
@@ -255,7 +255,7 @@ import 'FindLocation.dart';
                              border: Border.all(color: Colors.black),
                              borderRadius: BorderRadius.circular(30)),
                          child: TextFormField(
-                           onSaved: (input)=>dotFormRequestModel.dot_doner_email,
+                           //onSaved: (input)=>dotFormRequestModel.dot_doner_email,
                            autovalidateMode: AutovalidateMode.onUserInteraction,
                            controller: donorMailController,
                            // validator: (val){
@@ -283,7 +283,7 @@ import 'FindLocation.dart';
                              border: Border.all(color: Colors.black),
                              borderRadius: BorderRadius.circular(30)),
                          child: TextFormField(
-                           onSaved: (input)=>dotFormRequestModel.dot_test_result,
+                           //onSaved: (input)=>dotFormRequestModel.dot_test_result,
                            autovalidateMode: AutovalidateMode.onUserInteraction,
                            controller: testResultMailController,
                            // validator: (val){
@@ -317,7 +317,7 @@ import 'FindLocation.dart';
                              border: Border.all(color: Colors.black),
                              borderRadius: BorderRadius.circular(30)),
                          child: TextFormField(
-                           onSaved: (input)=>dotFormRequestModel.dot_driver_license,
+                           //onSaved: (input)=>dotFormRequestModel.dot_driver_license,
                            autovalidateMode: AutovalidateMode.onUserInteraction,
                            controller: driverLicenseController,
                            // validator: (val){
@@ -345,7 +345,7 @@ import 'FindLocation.dart';
                              border: Border.all(color: Colors.black),
                              borderRadius: BorderRadius.circular(30)),
                          child: TextFormField(
-                           onSaved: (input)=>dotFormRequestModel.dot_driver_license_state,
+                           //onSaved: (input)=>dotFormRequestModel.dot_driver_license_state,
                            autovalidateMode: AutovalidateMode.onUserInteraction,
                            controller: driverLicenseStateController,
                            // validator: (val){
@@ -373,7 +373,7 @@ import 'FindLocation.dart';
                              border: Border.all(color: Colors.black),
                              borderRadius: BorderRadius.circular(30)),
                          child: TextFormField(
-                           onSaved: (input)=>dotFormRequestModel.dot_driver_license_country,
+                           //onSaved: (input)=>dotFormRequestModel.dot_driver_license_country,
                            autovalidateMode: AutovalidateMode.onUserInteraction,
                            controller: driverLicenseCountryController,
                            // validator: (val){
@@ -408,7 +408,7 @@ import 'FindLocation.dart';
                              border: Border.all(color: Colors.black),
                              borderRadius: BorderRadius.circular(30)),
                          child: TextFormField(
-                           onSaved: (input)=>dotFormRequestModel.dot_dob,
+                          // onSaved: (input)=>dotFormRequestModel.dot_dob,
                            autovalidateMode: AutovalidateMode.onUserInteraction,
                            controller: dobController,
                            // validator: (val){
@@ -527,7 +527,7 @@ import 'FindLocation.dart';
                              border: Border.all(color: Colors.black),
                              borderRadius: BorderRadius.circular(30)),
                          child: TextFormField(
-                           onSaved: (input)=>dotFormRequestModel.dot_observation,
+                           //onSaved: (input)=>dotFormRequestModel.dot_observation,
                            autovalidateMode: AutovalidateMode.onUserInteraction,
                            controller: observationController,
                            // validator: (val){
@@ -558,7 +558,7 @@ import 'FindLocation.dart';
                              border: Border.all(color: Colors.black),
                              borderRadius: BorderRadius.circular(30)),
                          child: TextFormField(
-                           onSaved: (input)=>dotFormRequestModel.dot_comment,
+                          // onSaved: (input)=>dotFormRequestModel.dot_comment,
                            maxLines: 5,
                            autovalidateMode: AutovalidateMode.onUserInteraction,
                            controller: commentController,
@@ -588,7 +588,7 @@ import 'FindLocation.dart';
                              border: Border.all(color: Colors.black),
                              borderRadius: BorderRadius.circular(30)),
                          child: TextFormField(
-                           onSaved: (input)=>dotFormRequestModel.dot_zip_code,
+                          // onSaved: (input)=>dotFormRequestModel.dot_zip_code,
                            autovalidateMode: AutovalidateMode.onUserInteraction,
                            controller: zipCodeController,
                            // validator: (val){

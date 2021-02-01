@@ -56,7 +56,7 @@ class _RegisterCompanyFormState extends State<RegisterCompanyForm> {
           "looking_join":numberOfLocationsController.text,
           "interested":workPlacePolicyController.text
         })
-    );
+    ).whenComplete(() => formKey.currentState.reset());
 
     print(res.body);
 

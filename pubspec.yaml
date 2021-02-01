@@ -39,10 +39,7 @@ dependencies:
   provider:
   http:
   intl:
-  json_annotation:
-  build_runner:
-  json_serializable:
-  dio:
+  fluttertoast:
 
 
 

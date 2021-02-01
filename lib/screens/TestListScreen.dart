@@ -18,7 +18,15 @@ import 'notDotForm.dart';
 
 
 
-class TestListScreen extends StatefulWidget with ChangeNotifier{
+class TestListScreen extends StatefulWidget{
+
+
+
+
+
+
+
+
 
   @override
   _TestListScreenState createState() => _TestListScreenState();
@@ -43,12 +51,12 @@ class _TestListScreenState extends State<TestListScreen> {
   }
 
   postTestDescription() async {
-    var res =
-    await http.post(
+    var res= await http.post(
         "http://testlink.techlancesolution.com/jay-safera/apis/get-test-description",
         body: jsonEncode({"test_id":"1"})
     );
-    print(res.body);
+  print(res.body);
+
   }
 
 
@@ -58,7 +66,7 @@ class _TestListScreenState extends State<TestListScreen> {
     // TODO: implement initState
     super.initState();
     getTestList();
-    postTestDescription();
+   postTestDescription();
   }
 
   @override
@@ -143,12 +151,16 @@ class _TestListScreenState extends State<TestListScreen> {
                                     builder: (context,snapshot){
                                       return ListView.builder(
                                           shrinkWrap: true,
-                                          itemCount: snapshot.data["data"].length,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: snapshot.data.length,
                                           itemBuilder: (context, index){
+                                           // print(snapshot.data.length);
+                                           //  print(snapshot.data[index]["name"]);
                                             return ListTile(
-                                              title: Text(snapshot.data["data"]["name"], style: Constants.regularDarkText,),
-                                              trailing: Text(snapshot.data["data"]["value"],style: Constants.regularDarkText),
+                                              title: Text(snapshot.data[index]["name"], style: Constants.regularDarkText,),
+                                              trailing: Text(snapshot.data[index]["value"],style: Constants.regularDarkText),
                                             );
+
                                           });},
                                   )
                             ],

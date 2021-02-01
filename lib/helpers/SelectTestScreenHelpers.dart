@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:mid_antlantic/models/dotFormModel.dart';
+
 import 'package:mid_antlantic/screens/dotForm.dart';
 import 'package:mid_antlantic/screens/notDotForm.dart';
 import 'package:mid_antlantic/screens/profileScreen.dart';

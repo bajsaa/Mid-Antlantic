@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mid_antlantic/helpers/dotFormHelpers.dart';
 
-import 'package:mid_antlantic/helpers/nonDotFormHelpers.dart';
+
 import 'package:mid_antlantic/helpers/selectDateHelpers.dart';
 import 'package:mid_antlantic/screens/FindLocation.dart';
 import 'package:mid_antlantic/screens/TestListScreen.dart';
@@ -103,10 +103,10 @@ class ConfirmDetailHelpers with ChangeNotifier {
                                   listen: false)
                                   .observationController
                                   .text) ,
-                              Text(Provider.of<NonDotFormHelpers>(context,
-                                  listen: false)
-                                  .observationController
-                                  .text)
+                              // Text(Provider.of<NonDotFormHelpers>(context,
+                              //     listen: false)
+                              //     .observationController
+                              //     .text)
                             ],
                           ),
                         ],
@@ -142,10 +142,10 @@ class ConfirmDetailHelpers with ChangeNotifier {
                                             listen: false)
                                         .firstNameController
                                         .text) ,
-                            Text(Provider.of<NonDotFormHelpers>(context,
-                                listen: false)
-                                .firstNameController
-                                .text)
+                            // Text(Provider.of<NonDotFormHelpers>(context,
+                            //     listen: false)
+                            //     .firstNameController
+                            //     .text)
 
 
                           ],
@@ -160,10 +160,10 @@ class ConfirmDetailHelpers with ChangeNotifier {
                                 listen: false)
                                 .lastNameController
                                 .text) ,
-                            Text(Provider.of<NonDotFormHelpers>(context,
-                                listen: false)
-                                .lastNameController
-                                .text)
+                            // Text(Provider.of<NonDotFormHelpers>(context,
+                            //     listen: false)
+                            //     .lastNameController
+                            //     .text)
                           ],
                         ),
                         Row(
@@ -173,10 +173,10 @@ class ConfirmDetailHelpers with ChangeNotifier {
                               style: TextStyle(color: Colors.black),
                             ),
 
-                            Text(Provider.of<NonDotFormHelpers>(context,
-                                listen: false)
-                                .ssController
-                                .text)
+                            // Text(Provider.of<NonDotFormHelpers>(context,
+                            //     listen: false)
+                            //     .ssController
+                            //     .text)
                           ],
                         ),
                         Row(
@@ -189,10 +189,10 @@ class ConfirmDetailHelpers with ChangeNotifier {
                                 listen: false)
                                 .dobController
                                 .text) ,
-                            Text(Provider.of<NonDotFormHelpers>(context,
-                                listen: false)
-                                .dobController
-                                .text)
+                            // Text(Provider.of<NonDotFormHelpers>(context,
+                            //     listen: false)
+                            //     .dobController
+                            //     .text)
                           ],
                         ),
                         Row(
@@ -205,10 +205,10 @@ class ConfirmDetailHelpers with ChangeNotifier {
                                 listen: false)
                                 .donorMailController
                                 .text) ,
-                            Text(Provider.of<NonDotFormHelpers>(context,
-                                listen: false)
-                                .donorMailController
-                                .text)
+                            // Text(Provider.of<NonDotFormHelpers>(context,
+                            //     listen: false)
+                            //     .donorMailController
+                            //     .text)
 
                           ],
                         ),
@@ -223,10 +223,10 @@ class ConfirmDetailHelpers with ChangeNotifier {
                                 listen: false)
                                 .phoneNoController
                                 .text) ,
-                            Text(Provider.of<NonDotFormHelpers>(context,
-                                listen: false)
-                                .phoneNoController
-                                .text)
+                            // Text(Provider.of<NonDotFormHelpers>(context,
+                            //     listen: false)
+                            //     .phoneNoController
+                            //     .text)
                           ],
                         ),
 
@@ -266,10 +266,10 @@ class ConfirmDetailHelpers with ChangeNotifier {
                                 listen: false)
                                 .zipCodeController
                                 .text) ,
-                            Text(Provider.of<NonDotFormHelpers>(context,
-                                listen: false)
-                                .zipCodeController
-                                .text)
+                            // Text(Provider.of<NonDotFormHelpers>(context,
+                            //     listen: false)
+                            //     .zipCodeController
+                            //     .text)
                           ],
                         ),
                       ],

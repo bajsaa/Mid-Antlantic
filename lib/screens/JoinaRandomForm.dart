@@ -51,7 +51,7 @@ class _JoinRandomFormState extends State<JoinRandomForm> {
           "looking_join":numberOfLocationsController.text,
           "interested":workPlacePolicyController.text
         })
-    );
+    ).whenComplete(() => formKey.currentState.reset());
 
     print(res.body);
 
